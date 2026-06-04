@@ -77,7 +77,7 @@ https://<namespace>.adobeioruntime.net/api/v1/web/llm-apps/mcp
 
 ### 打开“应用程序”页面
 
-在[!DNL ChatGPT]中，转到[!UICONTROL 应用程序&#x200B;]**→的**[!UICONTROL &#x200B;设置]。
+在[!DNL ChatGPT]中，转到[!UICONTROL 应用程序&#x200B;]&#x200B;**→的**&#x200B;[!UICONTROL &#x200B;设置]。
 
 ![ChatGPT — 应用程序页面](/help/assets/guide-test-chatgpt/chatgpt-apps-page.png)
 
@@ -97,8 +97,8 @@ https://<namespace>.adobeioruntime.net/api/v1/web/llm-apps/mcp
 | **MCP服务器URL** | 粘贴[!DNL LLM Apps]中的URL |
 | **[!UICONTROL 身份验证]** | 选择&#x200B;*无身份验证* |
 
-选中&#x200B;**我了解并想要继续**复选框 — 确认MCP服务器
-尚未由OpenAI审阅 — 然后单击**创建**。
+选中&#x200B;**我了解并想要继续**&#x200B;复选框 — 确认MCP服务器
+尚未由OpenAI审阅 — 然后单击&#x200B;**创建**。
 
 ### 验证是否已启用应用程序
 
