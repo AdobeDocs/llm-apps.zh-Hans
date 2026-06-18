@@ -1,15 +1,15 @@
 ---
-title: 引用
+title: Adobe LLM应用程序参考文档
 description: Adobe LLM应用程序UI中操作配置的字段级引用。
-source-git-commit: 483a71f5f1de5caf1bd89b26f4d67d2d5a0aa15a
+source-git-commit: 98d5590c927bf8ffad54061ee027664452c129c1
 workflow-type: tm+mt
-source-wordcount: '489'
+source-wordcount: '494'
 ht-degree: 6%
 
 ---
 
 
-# 引用
+# 引用 {#reference}
 
 >[!IMPORTANT]
 >

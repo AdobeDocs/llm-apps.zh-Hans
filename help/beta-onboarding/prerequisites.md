@@ -1,13 +1,15 @@
 ---
-title: 先决条件
+title: Adobe LLM应用程序先决条件
 description: 在Adobe LLM应用程序Beta入门培训课程之前需要设置的内容。
-source-git-commit: 1ff383dff82068f68746d665d079216375ba523a
+source-git-commit: 98d5590c927bf8ffad54061ee027664452c129c1
 workflow-type: tm+mt
-source-wordcount: '530'
+source-wordcount: '539'
 ht-degree: 2%
 
 ---
 
+
+# Adobe LLM应用程序先决条件 {#prerequisites-for-adobe-llm-apps}
 
 在Adobe入门培训课程之前，确认您已具备以下条件。 如果可能，请运行下面的验证步骤 — 结果会告诉您需要加入聊天室的人员，而不是您是否可以继续。
 
