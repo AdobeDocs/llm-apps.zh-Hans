@@ -1,9 +1,9 @@
 ---
 title: 设置构件(EDS)
 description: 了解如何设置Edge Delivery Services构件项目并实施块合同，以在LLM平台内呈现可视化响应。
-source-git-commit: 483a71f5f1de5caf1bd89b26f4d67d2d5a0aa15a
+source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
 workflow-type: tm+mt
-source-wordcount: '1214'
+source-wordcount: '1226'
 ht-degree: 1%
 
 ---
@@ -13,7 +13,9 @@ ht-degree: 1%
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。 此处显示的功能、工作流和UI不一定表示产品的最终状态。
+>[!DNL Adobe LLM Apps]当前在Beta中。
+>
+>此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
 本指南介绍如何端到端地构建EDS小组件：从在[!DNL LLM Apps] UI中配置您的操作，到设置您的EDS项目，再到编写在LLM平台中呈现您的数据的块代码。 有关高级概述，请参阅[核心概念](/help/overview/overview.md#widgets-eds)。
 

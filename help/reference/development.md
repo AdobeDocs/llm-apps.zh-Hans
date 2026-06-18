@@ -1,9 +1,9 @@
 ---
 title: Adobe LLM应用程序的开发
 description: Adobe LLM应用程序处理程序代码的项目结构、本地开发工作流和测试设置。
-source-git-commit: 51ffb31eec82f9639bd7ade9052d61028c262d0e
+source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
 workflow-type: tm+mt
-source-wordcount: '318'
+source-wordcount: '324'
 ht-degree: 4%
 
 ---
@@ -13,9 +13,11 @@ ht-degree: 4%
 
 >[!IMPORTANT]
 >
->**免责声明：**&#x200B;这是[!DNL LLM Apps]的测试版本。 此处显示的功能、工作流和UI不一定表示应用程序或产品的最终状态。
+>[!DNL Adobe LLM Apps]当前在Beta中。
+>
+>此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
-此部分介绍了处理程序项目结构、本地开发工作流和测试设置。 有关处理程序协定和示例代码，请参阅[编写操作处理程序](/help/guides/write-action-handler.md)。
+本节介绍[!DNL Adobe LLM Apps]的处理程序项目结构、本地开发工作流和测试设置。 有关处理程序协定和示例代码，请参阅[编写操作处理程序](/help/guides/write-action-handler.md)。
 
 ## 项目结构
 

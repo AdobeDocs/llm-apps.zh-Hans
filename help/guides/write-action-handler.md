@@ -1,9 +1,9 @@
 ---
 title: 编写操作处理程序
 description: 了解如何为Adobe LLM应用程序编写操作处理程序，包括处理程序合同、structuredContent和工作示例。
-source-git-commit: 483a71f5f1de5caf1bd89b26f4d67d2d5a0aa15a
+source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
 workflow-type: tm+mt
-source-wordcount: '714'
+source-wordcount: '719'
 ht-degree: 0%
 
 ---
@@ -13,9 +13,11 @@ ht-degree: 0%
 
 >[!IMPORTANT]
 >
->**免责声明：**&#x200B;这是[!DNL LLM Apps]的测试版本。 此处显示的功能、工作流和UI不一定表示应用程序或产品的最终状态。
+>[!DNL Adobe LLM Apps]当前在Beta中。
+>
+>此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
-在UI中创建操作后，元数据存储在[!DNL LLM Apps] API中，但尚未包含代码。 本指南将指导您编写在LLM平台（如[!DNL ChatGPT]或Claude）调用您的操作时运行的处理程序函数。
+在[!DNL Adobe LLM Apps] UI中创建操作后，元数据存储在[!DNL LLM Apps] API中，但尚未包含代码。 本指南将指导您编写在LLM平台（如[!DNL ChatGPT]或Claude）调用您的操作时运行的处理程序函数。
 
 有关项目布局、本地开发和测试的详细信息，请参阅[开发](/help/reference/development.md)。
 

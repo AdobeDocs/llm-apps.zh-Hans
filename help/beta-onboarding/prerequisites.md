@@ -1,17 +1,23 @@
 ---
 title: Adobe LLM应用程序先决条件
 description: 在Adobe LLM应用程序Beta入门培训课程之前需要设置的内容。
-source-git-commit: 98d5590c927bf8ffad54061ee027664452c129c1
+source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
 workflow-type: tm+mt
-source-wordcount: '539'
-ht-degree: 2%
+source-wordcount: '571'
+ht-degree: 1%
 
 ---
 
 
 # Adobe LLM应用程序先决条件 {#prerequisites-for-adobe-llm-apps}
 
-在Adobe入门培训课程之前，确认您已具备以下条件。 如果可能，请运行下面的验证步骤 — 结果会告诉您需要加入聊天室的人员，而不是您是否可以继续。
+>[!IMPORTANT]
+>
+>[!DNL Adobe LLM Apps]当前在Beta中。
+>
+>此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+
+在Adobe的[!DNL Adobe LLM Apps]入门培训课程之前，确认您已具备以下条件。 如果可能，请运行下面的验证步骤 — 结果会告诉您需要加入聊天室的人员，而不是您是否可以继续。
 
 ## Adobe Developer Console
 

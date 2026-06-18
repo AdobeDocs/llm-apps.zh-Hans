@@ -1,9 +1,9 @@
 ---
 title: 创建应用程序
 description: 了解如何创建首个LLM应用程序并将其链接到您的GitHub存储库。
-source-git-commit: 914b8a659e690ff47257c2c112f76816f4b0232c
+source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
 workflow-type: tm+mt
-source-wordcount: '735'
+source-wordcount: '745'
 ht-degree: 0%
 
 ---
@@ -11,19 +11,21 @@ ht-degree: 0%
 
 # 创建应用程序
 
+>[!IMPORTANT]
+>
+>[!DNL Adobe LLM Apps]当前在Beta中。
+>
+>此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+
 >[!NOTE]
 >
 >如果您是&#x200B;**Beta计划参与者**，请改用[Beta入门指南](/help/beta-onboarding/beta-onboarding.md) — 它涵盖您的特定应用程序的端到端完整设置。
-
->[!IMPORTANT]
->
->[!DNL Adobe LLM Apps]当前在Beta中。 此处显示的功能、工作流和UI不一定表示产品的最终状态。
 
 >[!NOTE]
 >
 >在开始之前，请确保满足所有[先决条件](/help/overview/overview.md#prerequisites)。
 
-本指南将指导您完成创建第一个LLM应用程序 — 从空状态到链接到[!DNL GitHub]存储库的完全配置项目。
+本指南将指导您完成创建第一个[!DNL Adobe LLM Apps] — 从空状态到链接到[!DNL GitHub]存储库的完全配置项目。
 
 ## 打开[!DNL LLM Apps]
 
