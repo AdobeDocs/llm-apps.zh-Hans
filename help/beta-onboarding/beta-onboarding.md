@@ -1,13 +1,15 @@
 ---
-title: Beta入门
+title: Adobe LLM应用程序的Beta入门
 description: Adobe LLM应用程序作为Beta计划参与者快速入门。
-source-git-commit: f144ccfc0ede6c556ccf4d99173f91d372add6f7
+source-git-commit: 98d5590c927bf8ffad54061ee027664452c129c1
 workflow-type: tm+mt
-source-wordcount: '1545'
+source-wordcount: '1551'
 ht-degree: 0%
 
 ---
 
+
+# Beta入门 {#beta-onboarding}
 
 >[!IMPORTANT]
 >
@@ -89,7 +91,7 @@ git push -u origin main
 
 ![创建应用程序对话框](/help/assets/guide-create-app/app-details-1.png)
 
-在&#x200B;**[!UICONTROL Analytics数据区域]**&#x200B;下，选择将存储分析数据的区域。 创建应用程序后，无法更改此&#x200B;**&#x200B;**。
+在&#x200B;**[!UICONTROL Analytics数据区域]**&#x200B;下，选择将存储分析数据的区域。 创建应用程序后，无法更改此&#x200B;****。
 
 >[!IMPORTANT]
 >
@@ -226,7 +228,7 @@ curl -X POST "https://admin.hlx.page/code/<your-github-org>/<your-eds-repo>/main
 
    ![ChatGPT — 已启用开发人员模式](/help/assets/guide-test-chatgpt/chatgpt-developer-mode.png)
 
-3. 转到[!UICONTROL 应用&#x200B;]&#x200B;**→的**&#x200B;[!UICONTROL &#x200B;设置]，然后单击&#x200B;**[!UICONTROL 创建应用]**。
+3. 转到[!UICONTROL 应用&#x200B;]**→的**[!UICONTROL &#x200B;设置]，然后单击&#x200B;**[!UICONTROL 创建应用]**。
 
    ![ChatGPT — 创建应用程序对话框](/help/assets/guide-test-chatgpt/chatgpt-create-app.png)
 
