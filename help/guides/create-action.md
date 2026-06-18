@@ -1,15 +1,21 @@
 ---
 title: 创建操作
 description: 了解如何在LLM应用程序UI中定义操作，包括元数据、输入参数和构件配置。
-source-git-commit: 483a71f5f1de5caf1bd89b26f4d67d2d5a0aa15a
+source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
 workflow-type: tm+mt
-source-wordcount: '868'
+source-wordcount: '900'
 ht-degree: 1%
 
 ---
 
 
 # 创建操作
+
+>[!IMPORTANT]
+>
+>[!DNL Adobe LLM Apps]当前在Beta中。
+>
+>此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
 本指南将指导您完成在[!DNL LLM Apps] UI中定义操作的过程。 有关操作的背景及其工作方式，请参阅[核心概念](/help/overview/overview.md#actions)。
 

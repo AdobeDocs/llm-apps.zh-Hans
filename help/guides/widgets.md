@@ -1,9 +1,9 @@
 ---
 title: 设置构件(EDS)
 description: 了解如何设置Edge Delivery Services构件项目并实施块合同，以在LLM平台内呈现可视化响应。
-source-git-commit: 483a71f5f1de5caf1bd89b26f4d67d2d5a0aa15a
+source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
 workflow-type: tm+mt
-source-wordcount: '1214'
+source-wordcount: '1226'
 ht-degree: 1%
 
 ---
@@ -13,7 +13,9 @@ ht-degree: 1%
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。 此处显示的功能、工作流和UI不一定表示产品的最终状态。
+>[!DNL Adobe LLM Apps]当前在Beta中。
+>
+>此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
 本指南介绍如何端到端地构建EDS小组件：从在[!DNL LLM Apps] UI中配置您的操作，到设置您的EDS项目，再到编写在LLM平台中呈现您的数据的块代码。 有关高级概述，请参阅[核心概念](/help/overview/overview.md#widgets-eds)。
 
@@ -47,7 +49,7 @@ const { structuredContent } = await app.toolResult;
 
 当AI调用您的操作并且处理程序返回`structuredContent`时，LLM平台在对话中呈现一个交互式构件。 三点因素共同促成了这一工作：
 
-**1&rbrace; UI** — 在创建操作时，在“小组件”元数据选项卡中输入&#x200B;**[!UICONTROL 脚本URL]**&#x200B;和&#x200B;**[!UICONTROL 小组件URL]**。 [!DNL LLM Apps]脚本URL指向`aem-embed.js` — SDK附带的文件，该文件位于`scripts/llm-apps/aem-embed.js`的EDS存储库中。 这会告知LLM平台在调用操作时要加载哪个脚本。
+**1} UI** — 在创建操作时，在“小组件”元数据选项卡中输入&#x200B;**[!UICONTROL 脚本URL]**&#x200B;和&#x200B;**[!UICONTROL 小组件URL]**。 [!DNL LLM Apps]脚本URL指向`aem-embed.js` — SDK附带的文件，该文件位于`scripts/llm-apps/aem-embed.js`的EDS存储库中。 这会告知LLM平台在调用操作时要加载哪个脚本。
 
 **`aem-embed.js`** — LLM平台将此脚本加载到沙盒小组件表面。 `aem-embed.js`是一个自定义HTML元素(`<aem-embed>`)，它充当Widget的EDS感知入口点。 它使用SDK与LLM主机执行握手，禁止正常的EDS页面管道（无页眉/页脚），从小组件URL中提取EDS页面内容，运行EDS块管道，并向每个块的`decorate()`函数提供实时`bridge`对象。
 

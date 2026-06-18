@@ -1,9 +1,9 @@
 ---
 title: Adobe LLM应用程序的Beta入门
 description: Adobe LLM应用程序作为Beta计划参与者快速入门。
-source-git-commit: 98d5590c927bf8ffad54061ee027664452c129c1
+source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
 workflow-type: tm+mt
-source-wordcount: '1551'
+source-wordcount: '1557'
 ht-degree: 0%
 
 ---
@@ -13,13 +13,15 @@ ht-degree: 0%
 
 >[!IMPORTANT]
 >
->**免责声明：**&#x200B;这是[!DNL LLM Apps]的测试版本。 此处显示的功能、工作流和UI不一定表示应用程序或产品的最终状态。
+>[!DNL Adobe LLM Apps]当前在Beta中。
+>
+>此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
 >[!NOTE]
 >
 >在开始之前，请确保满足所有[先决条件](/help/beta-onboarding/prerequisites.md)。
 
-作为Beta计划参与者，您将收到一封电子邮件，其中包含两个zip存档和一个应用程序配置参考。 请按照以下步骤让您的应用程序上线。
+作为[!DNL Adobe LLM Apps]的Beta计划参与者，您将收到一封包含两个zip存档和应用程序配置引用的电子邮件。 请按照以下步骤让您的应用程序上线。
 
 ## 开始之前
 
@@ -91,7 +93,7 @@ git push -u origin main
 
 ![创建应用程序对话框](/help/assets/guide-create-app/app-details-1.png)
 
-在&#x200B;**[!UICONTROL Analytics数据区域]**&#x200B;下，选择将存储分析数据的区域。 创建应用程序后，无法更改此&#x200B;**&#x200B;**。
+在&#x200B;**[!UICONTROL Analytics数据区域]**&#x200B;下，选择将存储分析数据的区域。 创建应用程序后，无法更改此&#x200B;****。
 
 >[!IMPORTANT]
 >
@@ -228,7 +230,7 @@ curl -X POST "https://admin.hlx.page/code/<your-github-org>/<your-eds-repo>/main
 
    ![ChatGPT — 已启用开发人员模式](/help/assets/guide-test-chatgpt/chatgpt-developer-mode.png)
 
-3. 转到[!UICONTROL 应用&#x200B;]&#x200B;**→的**&#x200B;[!UICONTROL &#x200B;设置]，然后单击&#x200B;**[!UICONTROL 创建应用]**。
+3. 转到[!UICONTROL 应用&#x200B;]**→的**[!UICONTROL &#x200B;设置]，然后单击&#x200B;**[!UICONTROL 创建应用]**。
 
    ![ChatGPT — 创建应用程序对话框](/help/assets/guide-test-chatgpt/chatgpt-create-app.png)
 
