@@ -49,7 +49,7 @@ const { structuredContent } = await app.toolResult;
 
 当AI调用您的操作并且处理程序返回`structuredContent`时，LLM平台在对话中呈现一个交互式构件。 三点因素共同促成了这一工作：
 
-**1} UI** — 在创建操作时，在“小组件”元数据选项卡中输入&#x200B;**[!UICONTROL 脚本URL]**&#x200B;和&#x200B;**[!UICONTROL 小组件URL]**。 [!DNL LLM Apps]脚本URL指向`aem-embed.js` — SDK附带的文件，该文件位于`scripts/llm-apps/aem-embed.js`的EDS存储库中。 这会告知LLM平台在调用操作时要加载哪个脚本。
+**1&rbrace; UI** — 在创建操作时，在“小组件”元数据选项卡中输入&#x200B;**[!UICONTROL 脚本URL]**&#x200B;和&#x200B;**[!UICONTROL 小组件URL]**。 [!DNL LLM Apps]脚本URL指向`aem-embed.js` — SDK附带的文件，该文件位于`scripts/llm-apps/aem-embed.js`的EDS存储库中。 这会告知LLM平台在调用操作时要加载哪个脚本。
 
 **`aem-embed.js`** — LLM平台将此脚本加载到沙盒小组件表面。 `aem-embed.js`是一个自定义HTML元素(`<aem-embed>`)，它充当Widget的EDS感知入口点。 它使用SDK与LLM主机执行握手，禁止正常的EDS页面管道（无页眉/页脚），从小组件URL中提取EDS页面内容，运行EDS块管道，并向每个块的`decorate()`函数提供实时`bridge`对象。
 
