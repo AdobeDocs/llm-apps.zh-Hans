@@ -1,9 +1,9 @@
 ---
 title: 创建应用程序
 description: 了解如何创建首个LLM应用程序并将其链接到您的GitHub存储库。
-source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
+source-git-commit: 344c5457eb79a19b1dae823732a1cd9866dcd9dc
 workflow-type: tm+mt
-source-wordcount: '745'
+source-wordcount: '720'
 ht-degree: 0%
 
 ---
@@ -16,10 +16,6 @@ ht-degree: 0%
 >[!DNL Adobe LLM Apps]当前在Beta中。
 >
 >此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
-
->[!NOTE]
->
->如果您是&#x200B;**Beta计划参与者**，请改用[Beta入门指南](/help/beta-onboarding/beta-onboarding.md) — 它涵盖您的特定应用程序的端到端完整设置。
 
 >[!NOTE]
 >
