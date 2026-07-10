@@ -1,9 +1,9 @@
 ---
 title: Adobe LLM应用程序概述
 description: 了解什么是Adobe LLM应用程序、其工作方式以及您需要什么来开始使用。
-source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
+source-git-commit: 344c5457eb79a19b1dae823732a1cd9866dcd9dc
 workflow-type: tm+mt
-source-wordcount: '873'
+source-wordcount: '831'
 ht-degree: 1%
 
 ---
@@ -117,10 +117,5 @@ LLM交互与传统搜索有着根本的不同。 平均[!DNL ChatGPT]会话的�
 
 ## 开始使用
 
-选择与您的情况相匹配的路径：
-
-| | **Beta参与者** | **正式发布** |
-|---|---|---|
-| **您有** | 您参与了Beta计划，并从Adobe收到了应用程序代码存档、EDS项目存档和应用程序配置参考 | 作为一个用例 — Adobe会指导您完成应用程序的构建和部署 |
-| **从此处开始** | [Beta入门](/help/beta-onboarding/beta-onboarding.md) | [创建应用程序](/help/guides/create-app.md) |
+考虑使用案例，[创建应用程序](/help/guides/create-app.md)以开始生成和部署您的[!DNL LLM Apps]体验。
 
