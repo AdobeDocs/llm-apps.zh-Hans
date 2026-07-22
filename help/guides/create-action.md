@@ -1,7 +1,7 @@
 ---
 title: 创建操作
 description: 了解如何在LLM应用程序UI中定义操作，包括元数据、输入参数和构件配置。
-source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
+source-git-commit: ae2748319b5401555c3a616971f5697c17e74ac3
 workflow-type: tm+mt
 source-wordcount: '900'
 ht-degree: 1%
@@ -154,4 +154,3 @@ ht-degree: 1%
 ## 后续步骤
 
 - [指南：设置小组件(EDS)](/help/guides/widgets.md)
-
