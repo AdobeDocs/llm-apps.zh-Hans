@@ -1,9 +1,9 @@
 ---
 title: 自定义生成的EDS小组件
-description: 了解和自定义由Adobe LLM应用程序登录代理创建的Edge Delivery Services构件。
-source-git-commit: 4c259a4587c0a84bb634a9a56c043dfe1cfc31fb
+description: 了解和自定义由Adobe LLM应用程序自动创建的Edge Delivery Services构件。
+source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
 workflow-type: tm+mt
-source-wordcount: '650'
+source-wordcount: '646'
 ht-degree: 0%
 
 ---
@@ -21,7 +21,7 @@ ht-degree: 0%
 >
 >本指南假定您基本熟悉Adobe Edge Delivery Services (EDS)。 如果您是EDS新手，请先阅读[EDS开发人员教程](https://www.aem.live/developer/tutorial)和[浏览块](https://www.aem.live/docs/exploring-blocks)以了解要点（块、`decorate`函数和EDS项目结构），然后再自定义构件。
 
-载入代理为每个生成的操作创建一个EDS构件。 构件已接收操作结果，呈现示例数据，应用主机样式，并链接到[!DNL LLM Apps]中的操作。
+该平台为每个生成的操作创建一个EDS构件。 构件已接收操作结果，呈现示例数据，应用主机样式，并链接到[!DNL LLM Apps]中的操作。
 
 首先测试生成的构件。 然后自定义其数据约定、交互和可视化设计。
 
@@ -42,7 +42,7 @@ blocks/
 - CSS文件控制布局、响应式行为和可视化设计。
 - 生成的拉取请求会显示为该操作创建的确切文件。
 
-载入代理还配置构件URL和支持的SDK文件。 您无需再创建一个EDS项目或重新输入这些值即可自定义生成的构件。
+该平台还会配置构件URL和支持的SDK文件。 您无需再创建一个EDS项目或重新输入这些值即可自定义生成的构件。
 
 ## LLM应用程序SDK如何连接构件
 
@@ -196,4 +196,4 @@ aem up
 
 ## 其他EDS设置
 
-如果您未使用入门代理或希望集成现有的EDS站点，请参阅[自带EDS项目](/help/guides/bring-your-own-eds.md)。
+如果您未自动构建应用程序或希望集成现有的EDS站点，请参阅[自带EDS项目](/help/guides/bring-your-own-eds.md)。

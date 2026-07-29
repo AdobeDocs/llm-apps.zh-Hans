@@ -1,5 +1,5 @@
 ---
-source-git-commit: eec74b87457bc852d7a8dd0e46c2a4385a93ae0a
+source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
 workflow-type: tm+mt
 source-wordcount: '398'
 ht-degree: 0%
@@ -39,7 +39,7 @@ Source文件名不需要与最终文件名匹配。 该技能按可见的UI状�
 
 - 状态：载入时的操作页面。
 - 包括：进度消息和生成步骤。
-- 替换文本： `Actions — Onboarding Agent generating recommendations`
+- 替换文本： `Actions — generating recommendations`
 
 ### `actions-ready-for-review.png`
 
@@ -103,7 +103,7 @@ Source文件名不需要与最终文件名匹配。 该技能按可见的UI状�
 ### `chatgpt-plugin-connect.png`
 
 - 状态：插件创建后确认。
-- 包括：**添加 <plugin> 到ChatGPT &#x200B;** 和**&#x200B;连接&#x200B;**。
+- 包括：**添加 <plugin> 到ChatGPT **和**&#x200B;连接&#x200B;**。
 - 掩码：浏览器URL和连接器标识符。
 - 替换文本： `ChatGPT — connect the new plugin`
 

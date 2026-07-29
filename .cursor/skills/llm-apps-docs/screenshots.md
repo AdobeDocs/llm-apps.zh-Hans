@@ -1,7 +1,7 @@
 ---
-source-git-commit: eec74b87457bc852d7a8dd0e46c2a4385a93ae0a
+source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
 workflow-type: tm+mt
-source-wordcount: '695'
+source-wordcount: '696'
 ht-degree: 0%
 
 ---
@@ -76,7 +76,7 @@ EDS repo: llm-apps-docs-<YYYYMMDD>-eds
 1. 在连接GitHub之前创建应用程序。
 2. GitHub应用程序存储库访问权限选择。
 3. **自动构建我的应用程序**，并选择了两个存储库。
-4. 应用程序创建或载入代理启动。
+4. 应用程序创建或自动应用程序构建启动。
 5. 正在生成的操作。
 6. 生成的操作可供审查。
 7. 一个代表性操作的元数据、处理程序和小组件。

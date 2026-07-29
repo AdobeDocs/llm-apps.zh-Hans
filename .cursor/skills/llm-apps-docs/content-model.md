@@ -1,7 +1,7 @@
 ---
-source-git-commit: eec74b87457bc852d7a8dd0e46c2a4385a93ae0a
+source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
 workflow-type: tm+mt
-source-wordcount: '387'
+source-wordcount: '436'
 ht-degree: 0%
 
 ---
@@ -59,7 +59,6 @@ ht-degree: 0%
 
 - **Adobe LLM应用程序** — 首次提及的完整产品名称。
 - **LLM应用程序** — 一个由产品管理的应用程序。
-- **载入代理** — 创建初始基架的功能。
 - **构建我的应用程序** — “创建应用程序”对话框中的UI部分。
 - **自动构建我的应用程序** — 确切的复选框标签。
 - **操作** — 对LLM平台公开的功能。
@@ -74,10 +73,12 @@ ht-degree: 0%
 
 除非对MCP协议的详细信息进行了说明，否则避免在面向用户的文章中的“tool”和“action”之间进行切换。
 
+产品与平台无关：其MCP服务器可与任何受支持的LLM平台配合使用，而不仅仅是ChatGPT。 使用“支持的LLM平台，如ChatGPT”（或类似的）进行一般或说明性声明。 仅在当前真正特定于ChatGPT的内容中命名ChatGPT — ChatGPT指南中的测试、其直接交叉链接以及ChatGPT特定的参考或故障排除内容。
+
 ## 推荐的读者历程
 
 1. 概述和先决条件。
-2. 使用载入代理创建应用程序。
+2. 自动创建应用程序。
 3. 查看生成的操作。
 4. 部署到暂存并测试ChatGPT插件。
 5. 自定义生成的处理程序和小组件。

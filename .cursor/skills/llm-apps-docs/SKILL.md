@@ -1,9 +1,9 @@
 ---
 name: llm-apps-docs
 description: 创建、更新、查看和验证Adobe LLM应用程序公共文档和屏幕截图。 在编辑llm-apps.en文章、其Experience League TOC、载入代理指南、EDS小组件文档、生产就绪指南或文档屏幕截图时使用。
-source-git-commit: ca0d8f49a295e6465f2e9b20809e69436bfa93d5
+source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
 workflow-type: tm+mt
-source-wordcount: '716'
+source-wordcount: '813'
 ht-degree: 0%
 
 ---
@@ -34,10 +34,11 @@ ht-degree: 0%
 
 ## 创作规则
 
-- 通过载入代理引导首次访问用户。
+- 通过自动应用程序创建为首次创建的用户提前期（**[!UICONTROL 自动构建我的应用程序]**&#x200B;流程）。
 - 组织关于用户历程和结果的导航，而不是实施主题。
 - 在每个指南的开头附近说明旅程序列，并提供下一个共享步骤。
-- 将&#x200B;**入门代理程序**&#x200B;用于产品功能和确切的UI副本，例如&#x200B;**[!UICONTROL 自动构建我的应用程序]**&#x200B;用于控件。
+- 请勿在面向客户的文档中使用内部代码名（例如，“载入代理”） — 该功能永远不会在产品UI中显示。 对其作概括性的描述（例如，“平台”），并使用精确的UI副本，例如&#x200B;**[!UICONTROL 自动构建我的应用程序]**&#x200B;以用于控件。
+- [!DNL Adobe LLM Apps]与平台无关 — 其MCP服务器可与任何受支持的LLM平台配合使用，而不仅仅是[!DNL ChatGPT]。 不要将[!DNL ChatGPT]作为唯一目标来表述常规或说明性声明（例如，与“ChatGPT”相比，更喜欢“受支持的LLM平台，如[!DNL ChatGPT]”）。 仅在真正且当前特定于[!DNL ChatGPT]的内容中明确命名[!DNL ChatGPT]： ChatGPT指南中的专用[测试](/help/guides/test-in-chatgpt.md)、其直接交叉链接/过程步骤，以及特定于[!DNL ChatGPT]的引用或故障排除内容。
 - 当用户首次遇到某个技术概念时对其进行解释；链接到更深入的概念或参考资料。
 - 使教程保持线性，使用方法指南以任务为中心，并参考页面事实。
 - 仅包括读者当前任务所需的信息；偏好短而直接的句子。
@@ -45,7 +46,7 @@ ht-degree: 0%
 - 将生成的基架与生产就绪型集成区分开来。
 - 避免使用内部工作程序名称、数据库字段、实施票证以及不稳定的管道详细信息。
 - 不要在参考线之间复制字段表；链接以供参考。
-- 保留Experience League前件和指令： `[!DNL]`、&grave;&grave;、`[!IMPORTANT]`、`[!NOTE]`和`[!TIP]`。
+- 保留Experience League前件和指令： `[!DNL]`、``、`[!IMPORTANT]`、`[!NOTE]`和`[!TIP]`。
 - 使用根相对内部链接： `/help/...`。
 - 标题和标题使用句子大小写，除非产品标签另有要求。
 - 使用说明性图像替代文本，说明屏幕和状态。

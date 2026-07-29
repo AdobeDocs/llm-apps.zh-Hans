@@ -1,9 +1,9 @@
 ---
 title: 从头开始创建操作
 description: 定义操作元数据，实施其处理程序，连接EDS小组件，对其进行测试，然后使用Adobe LLM应用程序进行部署。
-source-git-commit: 4c259a4587c0a84bb634a9a56c043dfe1cfc31fb
+source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
 workflow-type: tm+mt
-source-wordcount: '1141'
+source-wordcount: '1137'
 ht-degree: 0%
 
 ---
@@ -21,11 +21,11 @@ ht-degree: 0%
 >
 >本指南假定您基本熟悉Adobe Edge Delivery Services (EDS)。 如果您是EDS新手，请先阅读[EDS开发人员教程](https://www.aem.live/developer/tutorial)和[浏览块](https://www.aem.live/docs/exploring-blocks)以了解要点（块、`decorate`函数和EDS项目结构），然后再连接构件。
 
-使用本指南可添加载入代理未创建的功能。 您将在[!DNL LLM Apps]中定义操作，在链接的存储库中编写其处理程序，根据需要添加构件，对其进行测试和部署。
+使用本指南可添加平台未创建的功能。 您将在[!DNL LLM Apps]中定义操作，在链接的存储库中编写其处理程序，根据需要添加构件，对其进行测试和部署。
 
 **历程：**&#x200B;规划操作→创建其元数据→编写处理程序→连接构件→在本地测试→部署并测试插件。
 
-对于您的第一个应用程序，从[开始使用入门代理创建您的第一个应用程序](/help/guides/create-app.md)。
+对于您的第一个应用，从[开始，自动创建您的第一个应用](/help/guides/create-app.md)。
 
 ## 开始之前
 

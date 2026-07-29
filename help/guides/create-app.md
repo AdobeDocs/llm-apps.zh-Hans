@@ -1,15 +1,15 @@
 ---
-title: 使用载入代理创建您的第一个LLM应用程序
-description: 从您的网站创建一个Adobe LLM应用程序，审查生成的操作，将其部署，然后在ChatGPT中进行测试。
-source-git-commit: b9242903f930aa1770a999a2665e1e80d64d56b6
+title: 自动创建您的第一个LLM应用程序
+description: 从您的网站创建一个Adobe LLM应用程序，查看生成的操作，将其部署，然后在支持的LLM平台（如ChatGPT）中进行测试。
+source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
 workflow-type: tm+mt
-source-wordcount: '1219'
+source-wordcount: '1217'
 ht-degree: 0%
 
 ---
 
 
-# 使用载入代理创建您的第一个应用程序 {#create-first-app}
+# 自动创建您的第一个应用程序 {#create-first-app}
 
 >[!IMPORTANT]
 >
@@ -17,9 +17,9 @@ ht-degree: 0%
 >
 >此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
-载入代理将您的网站转换为可用的应用程序基架。 它建议操作、编写处理程序代码和测试、创建EDS小部件，并将生成的文件发送到您拥有的两个[!DNL GitHub]存储库。
+该平台可将您的网站转换为可用的应用程序基架。 它建议操作、编写处理程序代码和测试、创建EDS小部件，并将生成的文件发送到您拥有的两个[!DNL GitHub]存储库。
 
-生成大约需要15分钟。 在本教程结束时，您将拥有一个可以在[!DNL ChatGPT]中测试的已部署应用程序。
+生成大约需要15分钟。 在本教程结束时，您将拥有一个已部署的应用程序，您可以在支持的LLM平台（如[!DNL ChatGPT]）中测试该应用程序。
 
 **历程：**&#x200B;确认→创建两个存储库→创建应用程序→查看生成的操作→部署到暂存环境→测试插件→连接生产系统的要求。
 
@@ -31,14 +31,14 @@ ht-degree: 0%
 
 ## 创建两个空存储库
 
-载入代理需要两个空存储库。 在同一个[!DNL GitHub]帐户或组织下创建两者：
+该平台需要两个空存储库。 在同一个[!DNL GitHub]帐户或组织下创建两者：
 
 - **处理程序存储库** — 存储操作处理程序和测试。 例如，`my-brand-llm-app`。
 - **EDS存储库** — 存储生成的构件块和样式。 例如，`my-brand-llm-app-eds`。
 
 前往每个存储库的[github.com/new](https://github.com/new)。
 
-不要使用README、`.gitignore`或许可证初始化任一存储库。 载入代理准备了所需的项目结构。
+不要使用README、`.gitignore`或许可证初始化任一存储库。 该平台准备了所需的项目结构。
 
 >[!TIP]
 >
@@ -55,7 +55,7 @@ ht-degree: 0%
    >创建应用程序后，无法更改Analytics区域。
 
 4. 在&#x200B;**[!UICONTROL 构建我的应用程序]**&#x200B;中，选择&#x200B;**[!UICONTROL 自动构建我的应用程序]**。
-5. 在&#x200B;**[!UICONTROL 您的网站]**&#x200B;中，输入包括`https://`协议的网站URL。 载入代理会分析此站点，以确定有用的操作和具有代表性的示例结果。
+5. 在&#x200B;**[!UICONTROL 您的网站]**&#x200B;中，输入包括`https://`协议的网站URL。 该平台会分析此站点，以确定有用的操作和具有代表性的示例结果。
 
 ![创建LLM应用程序 — 启用应用程序详细信息并构建我的应用程序](/help/assets/guide-onboarding-agent/app-details-onboarding.png)
 
@@ -118,13 +118,13 @@ Adobe LLM Apps [!DNL GitHub]应用程序为您选择的存储库授予[!DNL LLM 
 
 3. 返回[!DNL LLM Apps]，刷新EDS存储库，然后再次选择&#x200B;**[!UICONTROL 创建应用程序]**。
 
-在存储库和管理员检查通过后，[!DNL LLM Apps]创建应用程序并启动载入代理。
+在存储库和管理员检查通过后，[!DNL LLM Apps]将创建应用程序并开始生成操作。
 
 ## 等待操作生成
 
 从左侧转到&#x200B;**[!UICONTROL 操作]**&#x200B;页面。 “操作”页面显示&#x200B;**在代理分析网站并生成应用程序时发现对话体验的操作**。 生成通常大约需要15分钟。 您可以离开此页面，稍后再返回。
 
-![操作 — 载入代理正在生成推荐](/help/assets/guide-onboarding-agent/actions-generating.png)
+![操作 — 生成推荐](/help/assets/guide-onboarding-agent/actions-generating.png)
 
 在生成期间，[!DNL LLM Apps]：
 
@@ -180,7 +180,7 @@ Adobe LLM Apps [!DNL GitHub]应用程序为您选择的存储库授予[!DNL LLM 
 
 ## 在[!DNL ChatGPT]中测试
 
-在ChatGPT[&#128279;](/help/guides/test-in-chatgpt.md)中执行测试，以使用暂存MCP服务器URL创建插件。
+在ChatGPT](/help/guides/test-in-chatgpt.md)中执行[测试，以使用暂存MCP服务器URL创建插件。
 
 提出与生成的操作之一匹配的问题。 验证：
 
@@ -205,5 +205,5 @@ Adobe LLM Apps [!DNL GitHub]应用程序为您选择的存储库授予[!DNL LLM 
 6. **在暂存中验证** — 通过[!DNL ChatGPT]插件重新部署和测试每个操作。
 7. **部署到生产** — 暂存测试成功后，部署到生产，并使用生产MCP服务器URL创建或更新插件。
 
-要添加载入代理未创建的功能，请参阅[从头开始创建操作](/help/guides/create-action.md)。
+若要添加平台未创建的功能，请参阅[从头开始创建操作](/help/guides/create-action.md)。
 

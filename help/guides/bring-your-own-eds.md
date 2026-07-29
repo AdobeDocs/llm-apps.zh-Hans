@@ -1,7 +1,7 @@
 ---
 title: 自带Edge Delivery Services项目
 description: 将现有Adobe Edge Delivery Services项目连接到Adobe LLM Apps操作。
-source-git-commit: eec74b87457bc852d7a8dd0e46c2a4385a93ae0a
+source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
 workflow-type: tm+mt
 source-wordcount: '472'
 ht-degree: 2%
@@ -17,9 +17,9 @@ ht-degree: 2%
 >
 >此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
-如果您已有Edge Delivery Services (EDS)项目，或者您在没有载入代理的情况下创建应用程序，请阅读本指南。
+当您已经拥有Edge Delivery Services (EDS)项目或创建应用程序但未自动构建该项目时，请阅读本指南。
 
-如果载入代理已创建您的小组件，请改为遵循[自定义生成的小组件](/help/guides/widgets.md)。 生成的项目已包含此处所述的SDK文件、块、内容和操作配置。
+如果平台自动创建了小组件，请改为遵循[自定义生成的小组件](/help/guides/widgets.md)。 生成的项目已包含此处所述的SDK文件、块、内容和操作配置。
 
 **历程：**&#x200B;准备EDS项目→安装SDK →生成和发布块→配置操作→部署和测试。
 

@@ -1,9 +1,9 @@
 ---
 title: 自定义生成的操作处理程序
 description: 了解Adobe LLM应用程序处理程序合同，替换生成的示例数据，并使处理程序输出与其小部件保持一致。
-source-git-commit: eec74b87457bc852d7a8dd0e46c2a4385a93ae0a
+source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
 workflow-type: tm+mt
-source-wordcount: '542'
+source-wordcount: '541'
 ht-degree: 0%
 
 ---
@@ -17,7 +17,7 @@ ht-degree: 0%
 >
 >此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
-载入代理为每个生成的操作创建一个工作处理程序。 处理程序最初会返回示例数据，以便您测试整个体验。
+平台会为每个生成的操作创建一个工作处理程序。 处理程序最初会返回示例数据，以便您测试整个体验。
 
 使用本指南了解处理程序合同，并将示例数据替换为您的API或数据源。
 

@@ -1,9 +1,9 @@
 ---
 title: 部署您的应用程序
 description: 了解如何使用LLM应用程序UI将Adobe LLM应用程序部署到暂存和生产环境。
-source-git-commit: eec74b87457bc852d7a8dd0e46c2a4385a93ae0a
+source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
 workflow-type: tm+mt
-source-wordcount: '309'
+source-wordcount: '322'
 ht-degree: 0%
 
 ---
@@ -19,7 +19,7 @@ ht-degree: 0%
 
 编写处理程序代码并将其推送到链接的存储库后，即可从[!DNL LLM Apps] UI部署应用程序。
 
-这是每个历程的共享步骤。 部署后，继续[测试ChatGPT插件](/help/guides/test-in-chatgpt.md)。
+这是每个历程的共享步骤。 部署后，继续[测试ChatGPT插件](/help/guides/test-in-chatgpt.md)或[测试克劳德连接器](/help/guides/test-in-claude.md)。
 
 ## 开始部署
 
@@ -58,10 +58,11 @@ ht-degree: 0%
 
 ![部署历史记录](/help/assets/guide-deploy/deployment-history.png)
 
-每一行显示目标&#x200B;**环境** （暂存或生产）、**状态** （成功或失败）以及&#x200B;**部署于**&#x200B;日期。 您可以使用此表跟踪部署的时间，并验证
+每一行显示目标&#x200B;**环境** （暂存或生产）、**状态** （成功或失败）以及&#x200B;**部署于**日期。 您可以使用此表跟踪部署的时间，并验证
 最新部署成功。
 
 ## 下一步
 
-[将已部署的应用作为ChatGPT插件进行测试](/help/guides/test-in-chatgpt.md)。
+- [将已部署的应用作为ChatGPT插件进行测试](/help/guides/test-in-chatgpt.md)。
+- [将已部署的应用程序作为Claude连接器进行测试](/help/guides/test-in-claude.md)。
 

@@ -1,9 +1,9 @@
 ---
 title: Adobe LLM应用程序概述
 description: 了解什么是Adobe LLM应用程序、其工作方式以及您需要什么来开始使用。
-source-git-commit: 8b4027d0fd73b8134a7478a5044f992e6cf03024
+source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
 workflow-type: tm+mt
-source-wordcount: '972'
+source-wordcount: '970'
 ht-degree: 1%
 
 ---
@@ -34,17 +34,13 @@ ht-degree: 1%
 
 ## 为什么[!DNL LLM Apps]重要
 
-LLM交互与传统搜索有着根本的不同。 平均[!DNL ChatGPT]会话的持续时间是传统搜索会话的四倍。 超过40%的消费者依赖人工智能工具做出复杂的购买决策。 如果没有[!DNL LLM Apps]，您可能会赢得提及但失去客户。 [!DNL LLM Apps]确保您的品牌不仅可见，而且可在用户准备做出决定的确切时刻操作。
+LLM交互与传统搜索有着根本的不同。 平均LLM会话的持续时间是传统搜索会话的四倍。 超过40%的消费者依赖人工智能工具做出复杂的购买决策。 如果没有[!DNL LLM Apps]，您可能会赢得提及但失去客户。 [!DNL LLM Apps]确保您的品牌不仅可见，而且可在用户准备做出决定的确切时刻操作。
 
 ## 重要概念 {#key-concepts}
 
 ### LLM应用程序
 
 用户在[!DNL ChatGPT]或其他LLM平台内与之交互的品牌助理。 它将您的所有操作组合在一起，并作为一个单元进行部署。
-
-### 载入代理
-
-通过&#x200B;**[!UICONTROL 自动构建我的应用程序]**&#x200B;启动的引导式应用程序构建工作流。 它分析您的网站，提出操作，并为每个操作生成处理程序和小组件。
 
 ### 操作 {#actions}
 
@@ -133,23 +129,23 @@ LLM交互与传统搜索有着根本的不同。 平均[!DNL ChatGPT]会话的�
 
 ### 网站
 
-您需要一个公共HTTPS网站，以表示应用程序应支持的产品、服务或任务。 载入代理将分析此网站以建议操作并创建具有代表性的示例数据。
+您需要一个公共HTTPS网站，以表示应用程序应支持的产品、服务或任务。 该平台分析该网站以建议操作并创建具有代表性的示例数据。
 
 请勿使用公开机密或受访问控制的信息的网站。
 
-### [!DNL ChatGPT]以进行测试
+### 用于测试的[!DNL ChatGPT]或[!DNL Claude]
 
-要完成入门教程，请使用支持的[!DNL ChatGPT]计划并启用开发人员模式。 Workspace管理员可以限制访问。 查看ChatGPT中的[测试](/help/guides/test-in-chatgpt.md#plan-requirements)。
+要完成入门教程，请使用支持且启用了开发人员模式的[!DNL ChatGPT]计划，或者使用支持且启用了自定义连接器的[!DNL Claude]计划。 Workspace或组织管理员可以限制访问权限。 查看ChatGPT中的[测试](/help/guides/test-in-chatgpt.md#plan-requirements)或Claude中的[测试](/help/guides/test-in-claude.md#plan-requirements)。
 
 ## 选择您的历程 {#choose-your-journey}
 
 ### &#x200B;1. 构建和启动您的第一个应用程序
 
-从[生成并启动您的第一个应用程序](/help/guides/create-app.md)开始。 此历程从两个空存储库开始，以经测试为[!DNL ChatGPT]插件的生产就绪应用程序结束。
+从[生成并启动您的第一个应用程序](/help/guides/create-app.md)开始。 此历程从两个空存储库开始，以作为受支持的LLM平台（如[!DNL ChatGPT]）中的插件测试的生产就绪应用程序结束。
 
 ### &#x200B;2. 自定义生成的应用程序
 
-在载入代理创建了应用程序并且您希望替换示例行为时，选择此历程：
+当平台自动创建应用程序并且您希望替换示例行为时，请选择此历程：
 
 1. [自定义生成的处理程序](/help/guides/customize-handler.md)以连接您的API并定义每个操作返回的数据。
 2. [自定义生成的构件](/help/guides/widgets.md)以使用该数据并应用您的交互和设计。
@@ -160,7 +156,7 @@ LLM交互与传统搜索有着根本的不同。 平均[!DNL ChatGPT]会话的�
 
 ### &#x200B;4. 连接现有EDS项目
 
-当您已经拥有EDS网站或未使用入门代理时，请选择[连接现有的EDS项目](/help/guides/bring-your-own-eds.md)。
+当您已经拥有EDS网站或未自动构建应用程序时，请选择[连接现有的EDS项目](/help/guides/bring-your-own-eds.md)。
 
-每个历程都使用共享的[部署](/help/guides/deploy-your-app.md)和[ChatGPT插件测试](/help/guides/test-in-chatgpt.md)步骤。
+每个历程都使用共享的[部署](/help/guides/deploy-your-app.md)步骤，然后[ChatGPT插件测试](/help/guides/test-in-chatgpt.md)或[克劳德连接器测试](/help/guides/test-in-claude.md)。
 
