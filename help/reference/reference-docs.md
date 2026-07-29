@@ -1,15 +1,15 @@
 ---
-title: Adobe LLM应用程序参考文档
-description: Adobe LLM应用程序UI中操作配置的字段级引用。
-source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
+title: 操作和构件字段
+description: Adobe LLM应用程序中操作元数据、参数、小组件、CSP和权限的字段定义。
+source-git-commit: eec74b87457bc852d7a8dd0e46c2a4385a93ae0a
 workflow-type: tm+mt
-source-wordcount: '500'
-ht-degree: 6%
+source-wordcount: '606'
+ht-degree: 5%
 
 ---
 
 
-# 参考资料 {#reference-material}
+# 操作和构件字段 {#action-widget-configuration}
 
 >[!IMPORTANT]
 >
@@ -17,11 +17,11 @@ ht-degree: 6%
 >
 >此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
-本节提供[!DNL Adobe LLM Apps] UI中操作配置的字段级引用。
+使用此页可在操作编辑器中查找字段。 有关完整的创建历程，请参阅[从头开始创建操作](/help/guides/create-action.md)。
 
 ## 操作参数
 
-输入参数是LLM平台([!DNL ChatGPT]， Claude)发送到操作处理程序的值。 该模型从用户的消息中提取这些字段，并自动将其映射到这些字段。
+输入参数是LLM平台发送到操作处理程序的值。 该模型从用户的消息中提取这些字段并将它们映射到这些字段。
 
 | 属性 | 描述 |
 |----------|-------------|
@@ -32,7 +32,7 @@ ht-degree: 6%
 
 ### 文件参数
 
-文件参数携带具有`download_url`和`file_id`属性的文件对象。 定义在用户上传对话中的文件时应接收文件数据的输入字段名称。
+文件参数是在操作编辑器中配置的输入字段名称。 当用户上传文件时，主机会为这些参数（通常包括`download_url`和`file_id`）提供文件对象。
 
 ## 元数据字段
 
@@ -40,8 +40,10 @@ ht-degree: 6%
 
 | 字段 | 必需 | 描述 |
 |-------|----------|-------------|
-| **操作名称** | 是 | 操作的标识符（例如，*搜索产品*） |
+| **操作名称** | 是 | 操作的显示名称（例如，*搜索产品*） |
 | **描述** | 是 | 操作功能的说明 — LLM平台使用此项来决定何时调用它 |
+
+创建后，编辑器还会显示不可变的&#x200B;**代码标识符**。 它将操作映射到处理程序存储库中的`actions/<code-identifier>/index.js`。
 
 ### 注释
 
@@ -60,6 +62,9 @@ ht-degree: 6%
 |-------|------------|-------------|
 | **正在调用状态文本** | 64个字符 | 运行操作时在LLM平台中显示的消息（例如，*正在加载产品……* ） |
 | **调用状态文本** | 64个字符 | 操作完成后显示的消息（例如，*产品已加载……*） |
+| **构件描述** | 512个字符 | 映射到`_meta["openai/widgetDescription"]`；汇总模型的渲染组件并减少重复的旁白 |
+
+操作描述控制模型何时选择操作。 构件描述说明了组件在呈现之后显示的内容。
 
 ### 可见性
 
@@ -67,6 +72,14 @@ ht-degree: 6%
 |--------|-------------|
 | **公开给AI模型** | AI模型可在对话期间调用操作 |
 | **在应用程序表面中显示为小组件** | 操作在应用程序中呈现可视化构件 |
+
+### 分析
+
+| 字段 | 描述 |
+|-------|-------------|
+| **收集用户意图** | 收集导致执行分析操作的对话摘要 |
+
+## 构件字段
 
 ### 构件信息
 
@@ -80,8 +93,8 @@ ht-degree: 6%
 
 | 字段 | 描述 |
 |-------|-------------|
-| **[!UICONTROL 脚本URL]** | 入口点脚本 — `https://main--<repo>--<owner>.aem.live/scripts/aem-embed.js`。 在所有操作中共享 |
-| **小组件嵌入URL** | 此操作的EDS页面 — `https://main--<repo>--<owner>.aem.live/eds-widgets/<action-name>`。 每个操作的唯一性 |
+| **[!UICONTROL 脚本URL]** | EDS `scripts/aem-embed.js`入口点的HTTPS URL。 在同一EDS项目中跨操作共享 |
+| **小组件URL** | 此操作渲染的EDS页面的HTTPS URL。 生成的操作可自动配置此项 |
 
 ## CSP配置
 

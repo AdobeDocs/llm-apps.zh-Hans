@@ -1,15 +1,15 @@
 ---
-title: Adobe LLM应用程序的开发
-description: Adobe LLM应用程序处理程序代码的项目结构、本地开发工作流和测试设置。
-source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
+title: 本地处理程序开发和测试
+description: Adobe LLM应用程序的处理程序项目结构、本地服务器命令、MCP测试和单元测试。
+source-git-commit: eec74b87457bc852d7a8dd0e46c2a4385a93ae0a
 workflow-type: tm+mt
-source-wordcount: '324'
-ht-degree: 4%
+source-wordcount: '280'
+ht-degree: 1%
 
 ---
 
 
-# 开发 {#development}
+# 本地处理程序开发和测试 {#development}
 
 >[!IMPORTANT]
 >
@@ -17,7 +17,13 @@ ht-degree: 4%
 >
 >此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
-本节介绍[!DNL Adobe LLM Apps]的处理程序项目结构、本地开发工作流和测试设置。 有关处理程序协定和示例代码，请参阅[编写操作处理程序](/help/guides/write-action-handler.md)。
+在本地开发处理程序时使用此引用。 有关处理程序结果协定，请参阅[自定义生成的处理程序](/help/guides/customize-handler.md)。
+
+## 要求
+
+- Node.js 24或更高版本。
+- npm。
+- 链接处理程序存储库的本地克隆。
 
 ## 项目结构
 
@@ -27,15 +33,11 @@ ht-degree: 4%
 your-llm-app/
 ├── entry.js                   # Webpack entry — do not modify
 ├── actions/                   # One folder per action
-│   ├── search-products/
-│   │   └── index.js           # Handler (async function)
-│   ├── get-product-details/
-│   │   └── index.js
 │   └── echo/
-│       └── index.js
+│       └── index.js           # Example handler
 ├── test/
 │   ├── actions/
-│   │   └── search-products.test.js
+│   │   └── echo.test.js
 │   ├── fixtures/
 │   │   └── actions.json
 │   ├── html-transform.js
@@ -43,7 +45,7 @@ your-llm-app/
 │   └── server.test.js
 ├── server/
 │   └── local.js               # Local dev server (port 9080)
-├── actions.json               # Gitignored — local copy of UI metadata
+├── actions.json               # Gitignored — optional local metadata
 ├── app.config.yaml            # Adobe I/O Runtime config
 ├── webpack.config.js
 └── package.json
@@ -52,7 +54,7 @@ your-llm-app/
 要点：
 
 - **`entry.js`**&#x200B;是webpack入口点。 在生成时，它会发现每`actions/*/index.js`个文件并将它们捆绑到单个`dist/index.js`中。 请勿修改。
-- **`actions.json`**&#x200B;已授权。 从UI中的“操作”页面下载以进行本地开发。 对于部署，管道会自动从API写入它。
+- **`actions.json`**&#x200B;已授权。 部署管道自动从[!DNL LLM Apps]中的操作元数据写入它。
 - **测试**&#x200B;位于`test/actions/`下，**不在`actions/`内**。 Webpack将`actions/`下的所有内容捆绑到已部署的工件中 — 共同定位测试会将它们发往[!DNL Adobe I/O Runtime]。
 
 ## 本地开发
@@ -66,11 +68,11 @@ npm run dev:local
 
 这将使用webpack生成项目，并在`http://localhost:9080`上启动纯Node.js HTTP服务器。 服务器自动发现`actions/`下的处理程序文件，并将它们注册为MCP工具。
 
-### 下载`actions.json`
+### 本地元数据行为
 
-若要让本地服务器知道您的操作元数据（名称、描述、输入架构），请从[!DNL LLM Apps] UI的“操作”页面下载`actions.json`，并将其放在存储库根目录下。 如果没有它，服务器将发现您的处理程序，但使用最少的元数据注册它们。
+当前UI不提供`actions.json`下载。 您可以运行没有此文件的本地服务器；它将发现`actions/`下的处理程序并使用最少的元数据注册它们。
 
-您还可以将`actions.example.json`复制到`actions.json`作为起点。
+如果没有`actions.json`，则不会针对UI输入架构验证本地操作参数。 单元测试和集成测试使用`test/fixtures/actions.json`作为代表性元数据。
 
 ### 使用curl进行测试
 
@@ -81,11 +83,11 @@ curl -sX POST "http://localhost:9080" \
   -H 'accept: application/json;q=1.0, text/event-stream;q=0.5' \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}'
 
-# Call the search-products action
+# Call the boilerplate echo action
 curl -sX POST "http://localhost:9080" \
   -H 'content-type: application/json' \
   -H 'accept: application/json;q=1.0, text/event-stream;q=0.5' \
-  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"search-products","arguments":{"category":"bagged-coffee"}}}'
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"echo","arguments":{"message":"hello"}}}'
 ```
 
 ### 使用MCP检查器进行测试
@@ -101,30 +103,17 @@ npx @modelcontextprotocol/inspector
 处理程序单元测试位于`test/actions/`下并镜像`actions/`布局：
 
 ```javascript
-// test/actions/search-products.test.js
-const handler = require('../../actions/search-products/index.js')
+// test/actions/echo.test.js
+const handler = require('../../actions/echo/index.js')
 
-test('returns all products when no filter is given', async () => {
+test('echoes the message', async () => {
+  const result = await handler({ message: 'hello' })
+  expect(result.content[0].text).toBe('Echo: hello')
+})
+
+test('always returns content parts', async () => {
   const result = await handler({})
-  expect(result.content[0].text).toContain('product')
-  expect(result.structuredContent.products.length).toBeGreaterThan(0)
-})
-
-test('filters by category', async () => {
-  const result = await handler({ category: 'bagged-coffee' })
-  expect(result.structuredContent.products.every(
-    (p) => p.category === 'bagged-coffee'
-  )).toBe(true)
-})
-
-test('filters by query', async () => {
-  const result = await handler({ query: 'dark-roast' })
-  expect(result.structuredContent.products.length).toBeGreaterThan(0)
-})
-
-test('returns empty result for unknown category', async () => {
-  const result = await handler({ category: 'nonexistent' })
-  expect(result.structuredContent.products).toHaveLength(0)
+  expect(Array.isArray(result.content)).toBe(true)
 })
 ```
 
@@ -132,20 +121,8 @@ test('returns empty result for unknown category', async () => {
 
 ```bash
 npm test                                      # all tests
-npx jest test/actions/search-products        # one action only
+npx jest test/actions/echo                   # one action only
 ```
 
-## 部署
-
-您不会手动生成或部署。 有关部署管道的完整演练，请参阅[部署您的应用程序](/help/guides/deploy-your-app.md)。
-
-您的日常工作流程是：
-
-| 步骤 | 操作 |
-|------|--------|
-| &#x200B;1. 编写或编辑处理程序 | `actions/<name>/index.js` |
-| &#x200B;2. 下载元数据 | “操作”页面→ **下载actions.json** |
-| &#x200B;3. 本地测试 | `npm run dev:local` |
-| &#x200B;4. 推送代码 | `git push` |
-| &#x200B;5. 部署 | **[!UICONTROL 部署]**→应用程序详细信息页面 |
+在本地测试通过后，推送更改并遵循[部署更改](/help/guides/deploy-your-app.md)。
 

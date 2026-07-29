@@ -1,9 +1,9 @@
 ---
 title: Adobe LLM应用程序概述
 description: 了解什么是Adobe LLM应用程序、其工作方式以及您需要什么来开始使用。
-source-git-commit: 344c5457eb79a19b1dae823732a1cd9866dcd9dc
+source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
 workflow-type: tm+mt
-source-wordcount: '831'
+source-wordcount: '970'
 ht-degree: 1%
 
 ---
@@ -19,9 +19,9 @@ ht-degree: 1%
 
 ## 什么是[!DNL Adobe LLM Apps]？
 
-[!DNL Adobe LLM Apps]允许您的品牌直接在AI助理（如[!DNL ChatGPT]或Claude）中公开关键操作，如产品发现、可用性检查或服务预订。 您的品牌不必在人工智能生成的答案中被被动提及，而是可以指导客户完成真实的业务流，而无需他们离开对话。
+[!DNL Adobe LLM Apps]允许您的品牌在AI助理（如[!DNL ChatGPT]）内提供有用的操作，如产品发现、可用性检查或服务预订。
 
-[!DNL LLM Apps]位于[experience.adobe.com/llm-apps](https://experience.adobe.com/llm-apps)。
+[!DNL LLM Apps]位于[experience.adobe.com](https://experience.adobe.com/#/@llmapps/llm-apps/)。
 
 ## 您可以使用[!DNL LLM Apps]做什么
 
@@ -34,17 +34,29 @@ ht-degree: 1%
 
 ## 为什么[!DNL LLM Apps]重要
 
-LLM交互与传统搜索有着根本的不同。 平均[!DNL ChatGPT]会话的持续时间是传统搜索会话的四倍。 超过40%的消费者依赖人工智能工具做出复杂的购买决策。 如果没有[!DNL LLM Apps]，您可能会赢得提及但失去客户。 [!DNL LLM Apps]确保您的品牌不仅可见，而且可在用户准备做出决定的确切时刻操作。
+LLM交互与传统搜索有着根本的不同。 平均LLM会话的持续时间是传统搜索会话的四倍。 超过40%的消费者依赖人工智能工具做出复杂的购买决策。 如果没有[!DNL LLM Apps]，您可能会赢得提及但失去客户。 [!DNL LLM Apps]确保您的品牌不仅可见，而且可在用户准备做出决定的确切时刻操作。
 
-## 重要概念
+## 重要概念 {#key-concepts}
 
-**LLM应用程序** — 用户在[!DNL ChatGPT]或其他LLM平台中与之交互的品牌助理。 它将您的所有操作组合在一起，并作为一个单元进行部署。
+### LLM应用程序
 
-**操作** — 您的应用程序提供的功能。 例如，“查找分销商”或“浏览产品”。 当用户提出相关问题时，LLM会调用每个操作。 每个操作包含两个部分：在[!DNL LLM Apps] UI中管理的元数据（名称、描述、参数）以及在[!DNL GitHub]中管理的处理程序（您的代码）。
+用户在[!DNL ChatGPT]或其他LLM平台内与之交互的品牌助理。 它将您的所有操作组合在一起，并作为一个单元进行部署。
 
-**操作处理程序** — 调用操作时运行的代码。 它可以调用您的API、获取实时数据或返回静态数据。 处理程序位于`actions/<name>/index.js`的[!DNL GitHub]存储库中。
+### 操作 {#actions}
 
-**小组件** — 向用户显示的可视响应 — 卡片、轮播、表格或任何在LLM文本回复旁边呈现的自定义UI。 小组件是在[!DNL Edge Delivery Services] (EDS)网站上托管的HTML页面。
+应用提供的功能，如&#x200B;*查找分发服务器*&#x200B;或&#x200B;*浏览产品*。 当请求与其描述匹配时，LLM平台将调用操作。 操作元数据在[!DNL LLM Apps]中管理，而它的处理程序是您[!DNL GitHub]存储库中的代码。
+
+### 操作处理程序
+
+调用操作时运行的服务器端函数。 它可以验证输入、调用API并返回文本和结构化数据。
+
+### 小组件 {#widgets-eds}
+
+随LLM回复一起显示的可视响应，如信息卡、轮盘或表格。 生成的构件是您拥有的[!DNL Edge Delivery Services] (EDS)存储库中的块。
+
+### MCP服务器
+
+部署后公开的端点。 受支持的LLM平台连接到此端点，以发现和调用您的操作。
 
 ## 工作原理
 
@@ -79,43 +91,72 @@ LLM交互与传统搜索有着根本的不同。 平均[!DNL ChatGPT]会话的�
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 先决条件
+## 要求 {#requirements}
+
+在创建应用程序之前，请完成以下所有要求。
 
 ### Adobe Developer Console
 
-您需要使用Adobe IMS组织中的&#x200B;**开发人员**&#x200B;角色（或&#x200B;**系统管理员**&#x200B;角色）访问[Adobe Developer Console](https://developer.adobe.com/console)。 确保您的组织有权访问[[!DNL App Builder]](https://developer.adobe.com/app-builder/docs/intro_and_overview/)。
+您的Adobe IMS组织必须有权访问[[!DNL App Builder]](https://developer.adobe.com/app-builder/docs/intro_and_overview/)。 您需要&#x200B;**开发人员**&#x200B;或&#x200B;**系统管理员**&#x200B;角色。
 
-要进行验证，请转到[developer.adobe.com/console](https://developer.adobe.com/console)。 如果您看到“快速入门”屏幕，则表明您的权限设置正确。
+要验证您的访问权限，请打开[Adobe Developer Console](https://developer.adobe.com/console)。 “快速入门”屏幕确认您具有所需的访问权限。
 
 ![Adobe Developer Console — 确认开发人员访问权限的快速入门屏幕](/help/assets/overview/dev-console-access-granted.png)
 
-如果您看到的是&#x200B;**受限访问**&#x200B;消息，则您没有开发人员角色。 请联系您的IMS组织管理员以请求访问权限。
+如果您看到&#x200B;**受限访问**，请联系您的IMS组织管理员并请求开发人员角色。
 
 ![Adobe Developer Console — 访问受限消息](/help/assets/overview/dev-console-access-denied.png)
 
 ### [!DNL GitHub]
 
-您需要在组织中拥有以下权限的[!DNL GitHub]帐户：
+您需要一个[!DNL GitHub]帐户能够：
 
-- **创建存储库** — 您需要在组织中创建两个存储库：一个用于应用程序代码，另一个用于EDS项目。 要进行验证，请转到[github.com/new](https://github.com/new) — 如果您可以从&#x200B;**所有者**&#x200B;下拉列表中选择您的组织，则您具有权限。
+- 在拥有应用程序的帐户或组织中创建两个存储库。
+- 安装或请求安装Adobe LLM应用程序[!DNL GitHub]应用程序。
+- 安装或请求安装适用于EDS存储库的AEM代码同步。
 
-  ![GitHub新存储库所有者下拉列表显示组织选择](/help/assets/overview/github-repo-owner-dropdown.png)
+要验证存储库创建权限，请打开[github.com/new](https://github.com/new)，并确认目标帐户或组织出现在&#x200B;**所有者**&#x200B;下。
 
-- **安装[!DNL GitHub]应用** — 您需要相应的权限才能在组织上安装[!DNL GitHub]应用。 请参阅安装GitHub应用程序的[要求](https://docs.github.com/en/apps/using-github-apps/installing-a-github-app-from-a-third-party#requirements-to-install-a-github-app)。
+![GitHub — 选择存储库所有者](/help/assets/overview/github-repo-owner-dropdown.png)
 
-### AEM Sites与[!DNL Edge Delivery Services]
+对于组织拥有的存储库，组织管理员可能需要批准[!DNL GitHub]应用。 仅向LLM应用程序使用的存储库授予每个应用程序访问权限。
 
-操作构件托管在&#x200B;**Adobe Experience Manager [!DNL Edge Delivery Services] (EDS)**&#x200B;上。 您的组织需要包含[!DNL Edge Delivery Services]的AEM Sites许可证。 您的EDS组织中必须具有&#x200B;**管理员**&#x200B;角色。
+### AEM Sites与Edge Delivery Services
 
-要进行验证，请转到[EDS用户管理工具](https://tools.aem.live/tools/user-admin/index.html)，输入组织名称，将&#x200B;**站点**&#x200B;留空，然后单击&#x200B;**获取用户**。 在列表中查找您的帐户，并确认它显示&#x200B;**管理员**&#x200B;徽章。
+您的组织需要包含Edge Delivery Services (EDS)的Adobe Experience Manager Sites许可证。 您还需要具有从构件存储库创建的EDS站点的管理员访问权限。
 
-![EDS用户管理员工具显示具有管理员角色的用户](/help/assets/overview/eds-user-admin.png)
+要验证访问权限，请打开[EDS用户管理工具](https://tools.aem.live/tools/user-admin/index.html)，输入组织名称，然后获取用户。 确认您的帐户具有&#x200B;**管理员**&#x200B;徽章。
 
-### LLM平台（用于测试）
+### 网站
 
-要测试已部署的应用程序，您需要一个支持允许自定义MCP应用程序并启用&#x200B;**开发人员模式**&#x200B;的订阅层。 例如，[!DNL ChatGPT]需要&#x200B;**Pro**、**Business**&#x200B;或&#x200B;**Enterprise / Edu**&#x200B;订阅。
+您需要一个公共HTTPS网站，以表示应用程序应支持的产品、服务或任务。 该平台分析该网站以建议操作并创建具有代表性的示例数据。
 
-## 开始使用
+请勿使用公开机密或受访问控制的信息的网站。
 
-考虑使用案例，[创建应用程序](/help/guides/create-app.md)以开始生成和部署您的[!DNL LLM Apps]体验。
+### 用于测试的[!DNL ChatGPT]或[!DNL Claude]
+
+要完成入门教程，请使用支持且启用了开发人员模式的[!DNL ChatGPT]计划，或者使用支持且启用了自定义连接器的[!DNL Claude]计划。 Workspace或组织管理员可以限制访问权限。 查看ChatGPT中的[测试](/help/guides/test-in-chatgpt.md#plan-requirements)或Claude中的[测试](/help/guides/test-in-claude.md#plan-requirements)。
+
+## 选择您的历程 {#choose-your-journey}
+
+### &#x200B;1. 构建和启动您的第一个应用程序
+
+从[生成并启动您的第一个应用程序](/help/guides/create-app.md)开始。 此历程从两个空存储库开始，以作为受支持的LLM平台（如[!DNL ChatGPT]）中的插件测试的生产就绪应用程序结束。
+
+### &#x200B;2. 自定义生成的应用程序
+
+当平台自动创建应用程序并且您希望替换示例行为时，请选择此历程：
+
+1. [自定义生成的处理程序](/help/guides/customize-handler.md)以连接您的API并定义每个操作返回的数据。
+2. [自定义生成的构件](/help/guides/widgets.md)以使用该数据并应用您的交互和设计。
+
+### &#x200B;3. 从头开始添加新操作
+
+选择[从头开始添加新操作](/help/guides/create-action.md)以定义新元数据、编写处理程序、连接构件、测试和部署操作。
+
+### &#x200B;4. 连接现有EDS项目
+
+当您已经拥有EDS网站或未自动构建应用程序时，请选择[连接现有的EDS项目](/help/guides/bring-your-own-eds.md)。
+
+每个历程都使用共享的[部署](/help/guides/deploy-your-app.md)步骤，然后[ChatGPT插件测试](/help/guides/test-in-chatgpt.md)或[克劳德连接器测试](/help/guides/test-in-claude.md)。
 

@@ -6,10 +6,10 @@ product_v2:
 usetq: true
 type: Documentation
 mini-toc-levels: 2
-git-repo: https://github.com/AdobeDocs/smoke-test.zh-Hans
+git-repo: https://github.com/Adobe-Enterprise-Docs/llm-apps.zh-Hans
 hide: true
 index: false
-source-git-commit: a6ccc6dbcff8c309d7f63b0118b20f2fde5be79f
+source-git-commit: eec74b87457bc852d7a8dd0e46c2a4385a93ae0a
 workflow-type: tm+mt
 source-wordcount: 13
 ht-degree: 0%
@@ -17,6 +17,4 @@ ht-degree: 0%
 ---
 
 
-# 元数据供内部使用
-
-在上方添加存储库元数据。
+# Adobe LLM应用程序元数据文档
