@@ -1,9 +1,9 @@
 ---
 title: Adobe LLM应用程序疑难解答
-description: 解决构建、部署和测试Adobe LLM应用程序时出现的常见问题。
-source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
+description: 解决常见的存储库、入门、处理程序、构件、部署和ChatGPT插件问题。
+source-git-commit: eec74b87457bc852d7a8dd0e46c2a4385a93ae0a
 workflow-type: tm+mt
-source-wordcount: '451'
+source-wordcount: '632'
 ht-degree: 0%
 
 ---
@@ -17,47 +17,55 @@ ht-degree: 0%
 >
 >此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
-这提供了使用[!DNL Adobe LLM Apps]时的故障排除信息。
+从您所看到的症状开始。 进行故障排除时，请勿共享凭据、令牌、专用MCP URL或敏感处理程序结果。
 
-## 常见问题
+## 应用程序创建和载入
 
-| 症状 | 可能的原因 | 尝试什么 |
-|---------|----------------|-------------|
-| 应用程序未显示在LLM平台中 | 您的LLM平台订阅不支持自定义MCP应用程序，或者未启用开发人员模式 | 验证您的计划是否支持自定义MCP应用程序。 在&#x200B;**设置→应用程序→高级设置中启用开发人员模式** |
-| LLM平台中出现“无法连接”错误 | MCP服务器URL不正确或部署失败 | 从“应用程序详细信息”页面中双击该URL。 检查部署历史记录是否有故障 |
-| 未调用操作 | LLM平台无法将用户的问题与您的操作相匹配 | 使用`@YourApp`显式调用它。 改进操作描述以帮助模型匹配意图 |
-| 构件未呈现 | EDS小组件URL或CSP域配置错误 | 在“创建操作”对话框中验证脚本URL和构件嵌入URL。 检查CSP资源和连接域是否包含您的EDS源 |
-| 空响应或错误响应 | 处理程序存在错误或缺失 | 首先使用`npm start`在本地测试。 查看[本地开发](/help/reference/development.md#local-development) |
-| 小组件已加载，但不显示数据 | `structuredContent`形状与块期望的形状不匹配 | 在块的`decorate`函数中记录`bridge.toolResult`，并与处理程序输出进行比较 |
-| 在“克隆并构建”时部署失败 | 存储库中出现`npm install`或webpack生成错误 | 在本地运行`npm install && npm run build`以重现错误 |
-| 部署在“收集凭据”失败 | 存储库未链接或Developer Console项目配置错误 | 验证是否在“应用程序详细信息”设置页面上链接了存储库 |
-| 加载构件时出现CORS错误 | EDS站点缺少`access-control-allow-origin`标头 | 通过`admin.hlx.page`配置CORS标头 |
-| 保存CORS标头时，HTTP标头编辑器返回`404 Error updating config: config not found` | 站点配置缺少`headers`节 | 请参阅下面的[初始化EDS站点配置标头部分](#initialize-the-eds-site-config-headers-section) |
-| 构件在预览中呈现，但在LLM平台中则不呈现 | 块在预览模式下回退到示例数据，但实时数据失败 | 使用MCP检查器或CURL对实际`structuredContent`进行测试 |
+| 症状 | 尝试什么 |
+|---------|-------------|
+| 新存储库不显示 | 选择&#x200B;**在GitHub上管理存储库**，授予Adobe LLM应用程序GitHub应用程序访问这两个存储库的权限，返回到对话框，并刷新列表 |
+| EDS存储库需要AEM代码同步 | 为EDS存储库安装AEM代码同步，然后返回创建LLM应用程序对话框 |
+| EDS验证表明您不是管理员 | 选择&#x200B;**打开AEM Live Admin**，将自己添加为EDS网站的管理员，然后刷新存储库 |
+| 载入仍在生成 | 等待大约15分钟。 您可以离开页面并稍后返回 |
+| 载入报告失败 | 确认两个存储库均可访问，并且网站是通过HTTPS公开的，然后联系Beta团队并提供显示的错误消息 |
 
-## 初始化EDS站点配置标头部分
+## 操作和处理程序
 
-如果HTTP标头编辑器返回`404 Error updating config: config not found`，则站点配置缺少`headers`节。 手动修复：
+| 症状 | 尝试什么 |
+|---------|-------------|
+| 未调用操作 | 附加ChatGPT插件，确认已启用&#x200B;**向AI模型公开**，改进操作说明并重新部署元数据更改 |
+| 空响应或错误响应 | 运行`npm test`，然后使用MCP检查器或`curl`调用处理程序。 查看[本地处理程序开发和测试](/help/reference/development.md) |
+| 处理程序在本地工作，但在部署后无法正常工作 | 确认已推送最新的提交，存在运行时配置，并且操作代码标识符与`actions/<code-identifier>/index.js`匹配 |
+| 无法将生成的操作标记为已审阅 | 确认已成功生成处理程序和构件。 检查生成的拉取请求是否存在合并冲突，重新加载操作，然后再次选择&#x200B;**标记为已审核** |
 
-1. 转到[tools.aem.live/tools/headers-edit/index.html](https://tools.aem.live/tools/headers-edit/index.html)，输入您的组织和网站，然后单击&#x200B;**[!UICONTROL 提取]**。
-2. 打开浏览器DevTools（“网络”选项卡），并从Fetch请求复制`x-auth-token`标头的值。
-3. 检索当前站点配置：
+## 小组件
 
-   ```bash
-   curl -H "x-auth-token: $TOKEN" \
-     https://admin.hlx.page/config/<your-github-org>/sites/<your-eds-repo>.json > config.json
-   ```
+| 症状 | 尝试什么 |
+|---------|-------------|
+| 构件未呈现 | 验证脚本URL、构件URL、HTTPS、EDS发布、CSP域和CORS标头 |
+| 构件将呈现，但不显示数据 | 使用MCP检查器调用处理程序，并将其`structuredContent`形状与从`bridge.toolResult`读取的字段进行比较 |
+| 构件在直接预览中起作用，但在ChatGPT中不起作用 | 直接预览可能使用示例数据。 测试已部署的处理程序结果并验证CORS和CSP是否允许EDS源 |
+| 浏览器请求被阻止 | 仅将所需源添加到正确的CSP字段并重新部署 |
+| HTTP标头编辑器无法保存配置 | 使用[AEM配置服务](https://aem.live/docs/config-service-setup)或要求EDS管理员初始化站点标头配置 |
 
-4. 打开`config.json`并将`"headers": {}`添加到JSON对象。
-5. 将更新的配置发布回：
+当完整的`bridge.toolResult`值可能包含个人或敏感数据时，请勿记录这些值。
 
-   ```bash
-   curl -X POST \
-     -H "x-auth-token: $TOKEN" \
-     -H "Content-Type: application/json" \
-     -d @config.json \
-     "https://admin.hlx.page/config/<your-github-org>/sites/<your-eds-repo>.json"
-   ```
+## 部署
 
-6. 重新加载标头编辑器并正常保存`Access-Control-Allow-Origin`标头。
+| 症状 | 尝试什么 |
+|---------|-------------|
+| 在&#x200B;**准备**&#x200B;期间部署失败 | 验证处理程序存储库是否已链接，并且您的Adobe Developer Console访问权限仍然有效 |
+| 在&#x200B;**生成应用程序**&#x200B;期间部署失败 | 在本地运行`npm install`、`npm test`和`npm run build`。 修复依赖关系、语法或测试故障并推送更改 |
+| 部署成功，但缺少更改 | 确认预期的提交已推送，并重新部署到同一环境 |
+| 操作仍为&#x200B;**未部署** | 查看操作或更改其元数据后再次部署 |
 
+## ChatGPT插件
+
+| 症状 | 尝试什么 |
+|---------|-------------|
+| 插件未出现 | 启用开发人员模式，打开[chatgpt.com/plugins](https://chatgpt.com/plugins)，验证插件是否存在，然后选择&#x200B;**连接** |
+| 插件创建失败 | 确认已启用开发人员模式，从&#x200B;**测试应用程序**&#x200B;再次复制MCP服务器URL，并使用&#x200B;**服务器URL**&#x200B;和&#x200B;**无身份验证** |
+| 插件可连接，但无法调用操作 | 确认该插件已附加到聊天，操作已公开到模型，并且已部署最新版本 |
+| 插件使用了错误的环境 | 使用预期的暂存或生产MCP服务器URL编辑或重新创建插件 |
+
+如果问题仍然存在，请在联系Beta团队之前记录应用程序名称、环境、失败的步骤、时间和显示的错误消息。 请勿包含机密或敏感的客户数据。

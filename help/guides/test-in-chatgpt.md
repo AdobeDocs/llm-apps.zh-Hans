@@ -1,15 +1,15 @@
 ---
-title: 在ChatGPT中测试
-description: 了解如何将已部署的Adobe LLM应用程序添加到ChatGPT并在实际对话中进行测试。
-source-git-commit: 1a99e2e80e50a3bcf9ce6fb910365202bf06e113
+title: 将LLM应用程序作为ChatGPT插件进行测试
+description: 从您的Adobe LLM应用程序MCP服务器URL创建一个ChatGPT插件，并在对话中进行测试。
+source-git-commit: b7199fbb387d91a5c77deac47a2bc883381931c1
 workflow-type: tm+mt
-source-wordcount: '804'
-ht-degree: 2%
+source-wordcount: '335'
+ht-degree: 1%
 
 ---
 
 
-# 在[!DNL ChatGPT]中测试
+# 将您的LLM应用程序作为[!DNL ChatGPT]插件进行测试 {#test-in-chatgpt}
 
 >[!IMPORTANT]
 >
@@ -17,143 +17,68 @@ ht-degree: 2%
 >
 >此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
->[!NOTE]
->
->本指南以[!DNL ChatGPT]为例。 一般步骤（注册MCP服务器URL和在对话中进行测试）也适用于其他LLM平台，但设置流程和UI会有所不同。
+部署后，LLM应用程序会公开MCP服务器URL。 将此URL作为插件添加到[!DNL ChatGPT]，然后测试生成的操作和小组件。
 
-使用[!DNL Adobe LLM Apps]成功部署后，您的应用程序将在[!DNL Adobe I/O Runtime]上运行，并公开MCP服务器URL。 本指南向您说明如何将其添加到[!DNL ChatGPT]并在实际对话中进行测试。
+这是构建、自定义或扩展应用程序后的最后一个验证步骤。
 
 ## 计划要求
 
-将自定义开发人员应用程序添加到[!DNL ChatGPT]受OpenAI的订阅层控制 — 这不是[!DNL LLM Apps]限制，而是OpenAI当前管理对自定义MCP应用程序访问的方式。
-
-| [!DNL ChatGPT]计划 | 自定义MCP应用程序 |
-|--------------|-----------------|
-| 免费 | 不可用 |
-| 转到 | 不可用 |
-| 加号 | 不可用 |
-| Pro | 可用 |
-| 商务 | 可用 |
-| 企业/教育 | 可用 |
-
->[!NOTE]
->
->如果您使用免费、转到或加号计划，则&#x200B;**无法将您部署的应用程序**&#x200B;添加到[!DNL ChatGPT]。 升级到&#x200B;**Pro**&#x200B;或要求贵组织的管理员在&#x200B;**Business**&#x200B;或&#x200B;**Enterprise**&#x200B;工作区中启用它。
+Pro、Plus、Business、Enterprise和Education帐户的Web上提供了开发人员模式。 Workspace管理员可以限制访问。
 
 ## 启用开发人员模式
 
-要添加自定义MCP应用，必须在[!DNL ChatGPT]帐户中启用&#x200B;**开发人员模式**。 关注
-执行以下步骤来验证和启用它。
+在[!DNL ChatGPT]内：
 
-### 打开设置
+1. 打开&#x200B;**[!UICONTROL 设置] → [!UICONTROL 安全和登录]**。
+2. 打开&#x200B;**[!UICONTROL 开发人员模式]**。
 
-单击左下角的配置文件头像，然后单击“**[!UICONTROL 设置]**”。
+仅在启用开发人员模式后，“插件”页面上的加号按钮才会创建MCP支持的插件。 查看[ChatGPT开发人员模式](https://developers.openai.com/api/docs/guides/developer-mode)。
 
-![ChatGPT — “设置”菜单](/help/assets/guide-test-chatgpt/chatgpt-settings-menu.png)
+## 复制MCP服务器URL
 
-### 导航到应用程序
+在[!DNL LLM Apps]内：
 
-在“设置”对话框中，选择左侧边栏中的&#x200B;**[!UICONTROL 应用程序]**。 单击底部的&#x200B;**[!UICONTROL 高级设置]**。
+1. 打开“应用程序详细信息”页面。
+2. 查找&#x200B;**[!UICONTROL 测试应用程序]**。
+3. 在&#x200B;**[!UICONTROL 暂存环境]**&#x200B;下，选择&#x200B;**[!UICONTROL 复制URL]**。
 
-![ChatGPT — 应用程序设置](/help/assets/guide-test-chatgpt/chatgpt-apps-settings.png)
+## 创建插件
 
-### 打开开发人员模式
+1. 打开[chatgpt.com/plugins](https://chatgpt.com/plugins)。
+2. 在&#x200B;**[!UICONTROL 插件]**&#x200B;选项卡上，选择搜索字段旁边的&#x200B;**+**。
 
-确保&#x200B;**[!UICONTROL 开发人员模式]**&#x200B;切换打开（蓝色）。 这允许您注册自定义的未验证MCP服务器URL。
+   ![ChatGPT — 插件页面](/help/assets/guide-onboarding-agent/chatgpt-plugins-page.png)
 
->[!NOTE]
->
->开发人员模式被标记为&#x200B;*提升的风险*，因为它允许尚未由OpenAI审阅的应用程序。 [!DNL ChatGPT]自动禁用使用开发人员模式应用的对话的内存。
+3. 在&#x200B;**[!UICONTROL 新插件]**&#x200B;中，输入：
+   - **[!UICONTROL 名称]** — 插件名称。
+   - **[!UICONTROL 描述]** — 可选。
+   - **[!UICONTROL 连接]** — 选择&#x200B;**[!UICONTROL 服务器URL]**&#x200B;并粘贴MCP服务器URL。
+   - **[!UICONTROL 身份验证]** — 选择&#x200B;**[!UICONTROL 无身份验证]**。
+4. 选择&#x200B;**[!UICONTROL 我理解并希望继续]**。
+5. 选择&#x200B;**[!UICONTROL 创建]**。
 
-![ChatGPT — 已启用开发人员模式](/help/assets/guide-test-chatgpt/chatgpt-developer-mode.png)
+   ![ChatGPT — 使用MCP服务器URL](/help/assets/guide-onboarding-agent/chatgpt-new-plugin.png)创建插件
 
-## 将你的应用添加到[!DNL ChatGPT]
+6. 在确认对话框中，选择&#x200B;**[!UICONTROL 连接]**。
 
-### 复制MCP服务器URL
+   ![ChatGPT — 连接新插件](/help/assets/guide-onboarding-agent/chatgpt-plugin-connect.png)
 
-转到[!DNL LLM Apps]中的&#x200B;**应用程序详细信息**&#x200B;页面，并找到&#x200B;**[!UICONTROL 测试应用程序]**&#x200B;部分。 复制&#x200B;**暂存**&#x200B;或&#x200B;**生产** URL — 它看起来像：
+## 测试插件
 
-```
-https://<namespace>.adobeioruntime.net/api/v1/web/llm-apps/mcp
-```
+1. 开始新聊天。
+2. 从“加号”菜单中，选择&#x200B;**[!UICONTROL 开发人员模式]**&#x200B;并选择插件。
+3. 提出与生成的操作之一匹配的问题。 例如：*给我看点咖啡。*
 
-### 打开“应用程序”页面
+![ChatGPT — 生成的LLM应用程序插件响应](/help/assets/guide-onboarding-agent/chatgpt-generated-app.png)
 
-在[!DNL ChatGPT]中，转到[!UICONTROL 应用程序&#x200B;]&#x200B;**→的**&#x200B;[!UICONTROL &#x200B;设置]。
+验证：
 
-![ChatGPT — 应用程序页面](/help/assets/guide-test-chatgpt/chatgpt-apps-page.png)
-
-### 创建新应用程序
-
-在“高级设置”行中单击&#x200B;**[!UICONTROL 创建应用程序]**。
-
-![ChatGPT — 创建应用程序对话框](/help/assets/guide-test-chatgpt/chatgpt-create-app.png)
-
-填写以下内容：
-
-| 字段 | 值 |
-|-------|-------|
-| **图标** | 可选 — 上传128x128 PNG（最大10 KB） |
-| **名称** | 您应用程序的显示名称（例如，*我的品牌应用程序*） |
-| **描述** | 有关应用程序功能的简短描述 |
-| **MCP服务器URL** | 粘贴[!DNL LLM Apps]中的URL |
-| **[!UICONTROL 身份验证]** | 选择&#x200B;*无身份验证* |
-
-选中&#x200B;**我了解并想要继续**&#x200B;复选框 — 确认MCP服务器
-尚未由OpenAI审阅 — 然后单击&#x200B;**创建**。
-
-### 验证是否已启用应用程序
-
-创建后，您的应用程序将显示在具有&#x200B;**[!UICONTROL DEV]**&#x200B;徽章的&#x200B;**[!UICONTROL 启用的应用程序]**&#x200B;下，确认其处于活动状态。
-
->[!NOTE]
->
->您的应用程序也出现在&#x200B;**草稿**&#x200B;下 — 这些是您在开发人员模式下创建的专用应用程序，仅对您的帐户可见。
-
-您的应用现在可以在[!DNL ChatGPT]对话中使用。
-
-![ChatGPT — 已启用应用程序](/help/assets/guide-test-chatgpt/chatgpt-app-enabled.png)
-
-## 在对话中测试
-
-应用启用后，在[!DNL ChatGPT]中开始新对话。 在提出问题之前，请使用以下两种方法之一附加您的应用程序。
-
-### 选项1 — 从菜单中选择
-
-单击聊天输入中的&#x200B;**+**&#x200B;按钮，然后单击&#x200B;**更多**&#x200B;以展开可用工具的完整列表。 从列表中选择应用程序以将其附加到当前对话。
-
-![ChatGPT — 从菜单中选择应用程序](/help/assets/guide-test-chatgpt/chatgpt-select-app.png)
-
-### 选项2 — 使用@mention
-
-在聊天输入中键入&#x200B;**@**，然后从下拉菜单中选择您的应用程序。 这会附加内联应用程序，您可以在同一条消息中继续键入您的问题。
-
->[!NOTE]
->
->在同一应用上再次使用&#x200B;**@mention**&#x200B;将取消选择该应用并将其从对话中删除。
-
-![ChatGPT —@mention用应用程序](/help/assets/guide-test-chatgpt/chatgpt-mention-app.png)
-
-选择后，该应用程序将内联附加，您可以在同一消息中键入您的问题：
-
-![ChatGPT — 通过@mention](/help/assets/guide-test-chatgpt/chatgpt-mention.png)附加的应用程序
-
-### 查看结果
-
-附加应用程序后，键入与配置的操作之一一致的问题 — 例如，*“显示您的产品”。* [!DNL ChatGPT]将其与相关操作匹配，提取输入参数，在[!DNL Adobe I/O Runtime]上调用您的处理程序，并呈现结果：
-
-![ChatGPT — 操作结果](/help/assets/guide-test-chatgpt/chatgpt-response.png)
-
-响应包括：
-
-- **EDS小组件** — 具有图像、评级和操作按钮的富UI组件。
-- **文本响应** — 在小组件下，[!DNL ChatGPT]使用您的处理程序返回的`content`
-制定自然语言的结果摘要。
-- **状态指示器** — 您在“创建操作”对话框中配置的&#x200B;*调用状态文本*。
+- [!DNL ChatGPT]调用预期的操作。
+- 该构件显示预期的示例数据。
+- 文本响应与构件匹配。
+- 构件控件按预期工作。
 
 ## 后续内容
 
-- **添加更多操作** — 在UI中定义其他操作、编写其处理程序并重新部署。
-- **部署到生产环境** — 如果您在暂存环境中进行了测试，请部署到生产环境，以获得实时体验。
-- **与您的团队共享** — 使用“应用程序详细信息”页面上的&#x200B;**复制URL**&#x200B;与团队成员共享MCP服务器URL。
-
+- [自定义生成的构件](/help/guides/widgets.md)。
+- [从头开始创建操作](/help/guides/create-action.md)。
