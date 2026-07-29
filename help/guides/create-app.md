@@ -180,7 +180,7 @@ Adobe LLM Apps [!DNL GitHub]应用程序为您选择的存储库授予[!DNL LLM 
 
 ## 在[!DNL ChatGPT]中测试
 
-在ChatGPT](/help/guides/test-in-chatgpt.md)中执行[测试，以使用暂存MCP服务器URL创建插件。
+在ChatGPT[&#128279;](/help/guides/test-in-chatgpt.md)中执行测试，以使用暂存MCP服务器URL创建插件。
 
 提出与生成的操作之一匹配的问题。 验证：
 

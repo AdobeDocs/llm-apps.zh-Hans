@@ -103,7 +103,7 @@ Source文件名不需要与最终文件名匹配。 该技能按可见的UI状�
 ### `chatgpt-plugin-connect.png`
 
 - 状态：插件创建后确认。
-- 包括：**添加 <plugin> 到ChatGPT **和**&#x200B;连接&#x200B;**。
+- 包括：**添加 <plugin> 到ChatGPT &#x200B;** 和**&#x200B;连接&#x200B;**。
 - 掩码：浏览器URL和连接器标识符。
 - 替换文本： `ChatGPT — connect the new plugin`
 
