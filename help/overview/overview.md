@@ -1,9 +1,9 @@
 ---
 title: Adobe LLM应用程序概述
 description: 了解什么是Adobe LLM应用程序、其工作方式以及您需要什么来开始使用。
-source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
+source-git-commit: 1d677c4e21963d1b126abb6287fccedfc1933c1a
 workflow-type: tm+mt
-source-wordcount: '970'
+source-wordcount: '938'
 ht-degree: 1%
 
 ---
@@ -109,23 +109,20 @@ LLM交互与传统搜索有着根本的不同。 平均LLM会话的持续时间�
 
 ### [!DNL GitHub]
 
-您需要一个[!DNL GitHub]帐户能够：
+您需要一个[!DNL GitHub]帐户，以便&#x200B;**可以**&#x200B;执行以下操作。 这是权限检查 — 不要安装任何内容：
 
 - 在拥有应用程序的帐户或组织中创建两个存储库。
-- 安装或请求安装Adobe LLM应用程序[!DNL GitHub]应用程序。
-- 安装或请求安装适用于EDS存储库的AEM代码同步。
+- 稍后在设置过程中安装[!DNL GitHub]应用，或者拥有可以批准这些应用的组织管理员。
 
 要验证存储库创建权限，请打开[github.com/new](https://github.com/new)，并确认目标帐户或组织出现在&#x200B;**所有者**&#x200B;下。
 
 ![GitHub — 选择存储库所有者](/help/assets/overview/github-repo-owner-dropdown.png)
 
-对于组织拥有的存储库，组织管理员可能需要批准[!DNL GitHub]应用。 仅向LLM应用程序使用的存储库授予每个应用程序访问权限。
+对于组织拥有的存储库，组织管理员可能需要批准[!DNL GitHub]应用。
 
-### AEM Sites与Edge Delivery Services
-
-您的组织需要包含Edge Delivery Services (EDS)的Adobe Experience Manager Sites许可证。 您还需要具有从构件存储库创建的EDS站点的管理员访问权限。
-
-要验证访问权限，请打开[EDS用户管理工具](https://tools.aem.live/tools/user-admin/index.html)，输入组织名称，然后获取用户。 确认您的帐户具有&#x200B;**管理员**&#x200B;徽章。
+>[!NOTE]
+>
+>这是权限检查，而不是设置步骤。 尚未安装任何[!DNL GitHub]应用 — [自动创建您的第一个应用](/help/guides/create-app.md)将指导您完成每个应用的安装，每个应用均位于您创建的确切存储库所需的范围内。
 
 ### 网站
 
