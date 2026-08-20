@@ -2,10 +2,10 @@
 user-guide-title: LLM应用程序指南
 breadcrumb-title: LLM应用程序
 user-guide-description: 在支持的LLM平台（例如使用Adobe LLM应用程序的ChatGPT）中构建、自定义、部署和测试交互式体验。
-source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
+source-git-commit: e066f66b37914e2f747176e865e26dcc074bff20
 workflow-type: tm+mt
-source-wordcount: '100'
-ht-degree: 4%
+source-wordcount: '106'
+ht-degree: 3%
 
 ---
 
@@ -13,6 +13,7 @@ ht-degree: 4%
 # [!DNL LLM Apps] 指南 {#using}
 
 + [概述](/help/overview/overview.md)
++ [应用程序如何连接在一起](/help/overview/app-architecture.md)
 + 构建和启动您的第一个应用程序 {#build-first-app}
   + [自动创建您的第一个应用程序](/help/guides/create-app.md)
 + 自定义生成的应用程序 {#customize-generated-app}
