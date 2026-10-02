@@ -1,9 +1,8 @@
 ---
-source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
+source-git-commit: 03c918b1643d9c4e8ebee40fd67694acb6751a14
 workflow-type: tm+mt
-source-wordcount: '696'
+source-wordcount: '703'
 ht-degree: 0%
-
 ---
 # 生产屏幕快照过程
 
@@ -102,7 +101,7 @@ EDS repo: llm-apps-docs-<YYYYMMDD>-eds
    - 敏感信息；
    - 与文档冲突的生产行为。
 6. 不编辑源捕获。
-7. 对于每个接受的图像，使用`help/assets/guide-onboarding-agent/`下的稳定清单文件名创建一个经过清理的副本。
+7. 对于每个接受的图像，使用稳定清单文件名在其清单部分声明的输出目录下创建经过清理的副本。
 8. 仅当周围的UI未添加有用的上下文时裁切。
 9. 隐藏敏感值。 如果无法进行安全屏蔽，请要求重新捕获。
 10. 更新文章和替换文本以匹配捕获的工作流。
