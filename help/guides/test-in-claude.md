@@ -1,13 +1,11 @@
 ---
 title: 以Claude连接器测试您的LLM应用程序
 description: 从您的Adobe LLM应用程序MCP服务器URL创建一个Claude连接器，并在对话中进行测试。
-source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
+source-git-commit: fd41dbcabc4db0cae766de19cb042d7c85d8b7aa
 workflow-type: tm+mt
-source-wordcount: '399'
+source-wordcount: '448'
 ht-degree: 1%
-
 ---
-
 
 # 将您的LLM应用程序作为[!DNL Claude]连接器进行测试 {#test-in-claude}
 
@@ -20,6 +18,8 @@ ht-degree: 1%
 部署后，LLM应用程序会公开MCP服务器URL。 将此URL作为自定义连接器添加到[!DNL Claude]，然后测试生成的操作和小组件。
 
 这是构建、自定义或扩展应用程序后的最后一个验证步骤。
+
+本指南假定应用程序的操作是公开的。 如果应用启用了最终用户身份验证，[!DNL Claude]会要求您使用应用的身份提供程序登录，然后才能使用连接器，并且在您启用该验证之前不会列出任何工具。 查看[使用您自己的身份提供程序对最终用户进行身份验证](/help/guides/authentication.md)。
 
 ## 计划要求
 

@@ -1,19 +1,22 @@
 ---
-source-git-commit: bb3d8a02f22a91ceeeba5999453aeb4221060f80
+source-git-commit: 03c918b1643d9c4e8ebee40fd67694acb6751a14
 workflow-type: tm+mt
-source-wordcount: '398'
+source-wordcount: '1080'
 ht-degree: 0%
-
 ---
-# 入门屏幕快照清单
+# 屏幕快照清单
 
 捕获收件箱： `docs-captures/<YYYY-MM-DD>/`
-
-输出目录： `help/assets/guide-onboarding-agent/`
 
 仅捕获实质上帮助用户制定决策或验证状态的检查点。
 
 Source文件名不需要与最终文件名匹配。 该技能按可见的UI状态绘制屏幕截图，保留原始文件，并使用以下名称创建经过清理的副本。
+
+下面的每个指南都声明其自己的输出目录。 使用捕获所属的节的。
+
+&#x200B;# 入门指南
+
+输出目录： `help/assets/guide-onboarding-agent/`
 
 ## 必需捕获
 
@@ -123,3 +126,91 @@ Source文件名不需要与最终文件名匹配。 该技能按可见的UI状�
 - 插件图标上传。
 
 请勿为已用散文清除的静态字段列表添加屏幕截图。
+
+&#x200B;# 身份验证指南
+
+输出目录： `help/assets/guide-authentication/`
+
+由[authentication.md](../../../help/guides/authentication.md)引用。
+
+**[!UICONTROL 复制资源标识符]**&#x200B;步骤重用入门指南的
+`app-mcp-url.png`. 不要再捕获它。
+
+此部分中的每次捕获都会显示安全配置。 保存前蒙版：
+
+- **[!UICONTROL 颁发者]** URL以及标识身份提供程序或其供应商的任何主机名。
+- 无论出现在何处，MCP服务器URL都完整。
+- 租户、客户端和组织标识符。
+- 帐户名称、头像和电子邮件。
+
+使用字段必须保持清晰的中性占位符值 — 例如
+`https://auth.example.com`. 作用域名称应作为通用示例读取，例如`orders:read`。
+
+## 必需捕获
+
+### `auth-core-settings.png`
+
+- 状态： **[!UICONTROL 设置]** > **[!UICONTROL 身份验证]**，启用了&#x200B;**[!UICONTROL 启用身份验证]**，已填充&#x200B;**[!UICONTROL 核心设置]**。
+- 包括： **[!UICONTROL Workspace]**&#x200B;选取器，显示&#x200B;**[!UICONTROL 阶段]**、**[!UICONTROL 在其开启状态下启用身份验证]**、**[!UICONTROL 颁发者]**&#x200B;和受支持的&#x200B;**[!UICONTROL 作用域]**，它们至少包含两个作用域。
+- 包括折叠的&#x200B;**[!UICONTROL 高级设置]**&#x200B;控件，以便读者可以看到&#x200B;**[!UICONTROL JWKS URI]**&#x200B;是可选的，位于其所在位置。
+- 掩码：颁发者主机名。
+- 替换文本： `Authentication — enable authentication and complete the core settings`
+
+2026年8月25日被俘。 裁剪以放置空画布；无需进行掩蔽，因为
+**[!UICONTROL 颁发者]**&#x200B;在产品中设置为`https://auth.example.com`之前
+捕获。 希望如此，而不是以后编辑图像。 **[!UICONTROL 支持的范围]**&#x200B;保留
+一个范围(`read:all`)；两个范围可以更好地说明该字段，但这不值得
+自己重新捕获。
+
+### `auth-per-action.png`
+
+- 状态：启用身份验证后&#x200B;**[!UICONTROL 每个操作的配置]**，模式刻意混合。
+- 包括：至少三个操作，每个模式一个 — **[!UICONTROL 无]**、**[!UICONTROL 必需]**&#x200B;和&#x200B;**[!UICONTROL 可选]** — 以及在选中的操作上填充的&#x200B;**[!UICONTROL 作用域]**&#x200B;列。
+- 包括： **[!UICONTROL 需要对所有操作进行身份验证]**，最好处于其不确定状态，这是混合配置所生成的。
+- 仅使用夹具操作名称。
+- 替换文本： `Authentication — set an auth mode and scopes for each action`
+
+2026年8月25日被俘。 只裁切，没有遮盖物。 显示所有三种模式，填充模式
+**[!UICONTROL 作用域]**&#x200B;单元格和&#x200B;**[!UICONTROL 需要对其中的所有操作]**&#x200B;进行身份验证
+不确定的状态，将`Test Action 1/2/3`作为夹具名称。
+
+裁切&#x200B;**内部**&#x200B;设置面板自己的容器边框 — 每个边框都有一个全高1px规则
+将捕获的一侧作为一条散点线而保留在帧中时，将捕获的边缘作为一条散点线而显示
+图像。
+
+产品自身关于每个连接器应用[!DNL Claude]身份验证的警告为
+在此选项卡上在两个捕获轮次&#x200B;**中未观察到**，因此此处不需要它。 此
+指南改用散文陈述该行为。 如果后续版本中确实存在警告，
+将其捕获为`auth-claude-warning.png`并添加一个条目。
+
+### `chatgpt-authentication-mode.png`
+
+- 状态：已打开带有&#x200B;**[!UICONTROL 身份验证]**&#x200B;下拉列表的&#x200B;**[!UICONTROL 新插件]**&#x200B;对话框。
+- 包括：所有三个值 — **[!UICONTROL 无身份验证]**、**[!UICONTROL 混合]**&#x200B;和&#x200B;**[!UICONTROL OAuth]** — 因此，可以根据实际控件检查指南中的映射表。
+- 掩码： MCP服务器URL和浏览器URL中的任何连接器标识符。
+- 替换文本： `ChatGPT — select the authentication mode for the plugin`
+
+采用与入门指南的`chatgpt-new-plugin.png`相同的方式进行构建：对话框卡片使用
+页面周围仍会显示一条边距，左右大约40像素。 不裁剪刷新到
+卡片。
+
+捕获了2026-08-25（浅色模式），以匹配文档中的其他所有捕获。 此
+下拉列表包含&#x200B;**[!UICONTROL 服务器URL]**&#x200B;字段，因此MCP URL不可读 — 但是
+它半透明材料让现场内容的模糊图像流经旁边的
+选项。 三个未加亮显示的行用面板填充及其标签重新绘制
+重新呈现，这将删除它。 通过取样，而不是通过目测来验证：出血足够微弱，
+miss，它是MCP服务器URL。
+
+请注意，实时控件提供&#x200B;**4个**&#x200B;值 — **[!UICONTROL OAuth]**，**访问权限
+令牌/API密钥&rbrack;**、**&#x200B;[!UICONTROL 无身份验证]&#x200B;**&#x200B;和&#x200B;**&#x200B;[!UICONTROL 混合]**。 指南的映射
+该表仅涵盖应用程序的身份验证模式可以映射到的三个区域（虽然正确，但是未映射）
+将下拉列表描述为有三个选项。
+
+## 可选捕获
+
+仅当散文证明不足时添加：
+
+- `auth-scope-blocked.png` — **[!UICONTROL 保存]**&#x200B;被阻止，因为某个操作需要&#x200B;**[!UICONTROL 支持的作用域]**&#x200B;中缺少作用域。 对于疑难解答条目非常有用。
+- 对话中间登录提示会引发&#x200B;**[!UICONTROL 可选]**&#x200B;操作。 平台拥有的UI，它经常更改，已在散文中进行描述。
+
+不捕获身份提供方自己的登录页。 它标识了此文档未命名的供应商。
