@@ -14,7 +14,7 @@ Source文件名不需要与最终文件名匹配。 该技能按可见的UI状�
 
 下面的每个指南都声明其自己的输出目录。 使用捕获所属的节的。
 
-# 入门指南
+&#x200B;# 入门指南
 
 输出目录： `help/assets/guide-onboarding-agent/`
 
@@ -106,7 +106,7 @@ Source文件名不需要与最终文件名匹配。 该技能按可见的UI状�
 ### `chatgpt-plugin-connect.png`
 
 - 状态：插件创建后确认。
-- 包括：**添加 <plugin> 到ChatGPT **和**&#x200B;连接&#x200B;**。
+- 包括：**添加 <plugin> 到ChatGPT &#x200B;** 和**&#x200B;连接&#x200B;**。
 - 掩码：浏览器URL和连接器标识符。
 - 替换文本： `ChatGPT — connect the new plugin`
 
@@ -127,13 +127,13 @@ Source文件名不需要与最终文件名匹配。 该技能按可见的UI状�
 
 请勿为已用散文清除的静态字段列表添加屏幕截图。
 
-# 身份验证指南
+&#x200B;# 身份验证指南
 
 输出目录： `help/assets/guide-authentication/`
 
 由[authentication.md](../../../help/guides/authentication.md)引用。
 
-**[!UICONTROL 复制资源标识符]**步骤重用入门指南的
+**[!UICONTROL 复制资源标识符]**&#x200B;步骤重用入门指南的
 `app-mcp-url.png`. 不要再捕获它。
 
 此部分中的每次捕获都会显示安全配置。 保存前蒙版：
@@ -158,7 +158,7 @@ Source文件名不需要与最终文件名匹配。 该技能按可见的UI状�
 
 2026年8月25日被俘。 裁剪以放置空画布；无需进行掩蔽，因为
 **[!UICONTROL 颁发者]**&#x200B;在产品中设置为`https://auth.example.com`之前
-捕获。 希望如此，而不是以后编辑图像。 **[!UICONTROL 支持的范围]**保留
+捕获。 希望如此，而不是以后编辑图像。 **[!UICONTROL 支持的范围]**&#x200B;保留
 一个范围(`read:all`)；两个范围可以更好地说明该字段，但这不值得
 自己重新捕获。
 
@@ -171,15 +171,15 @@ Source文件名不需要与最终文件名匹配。 该技能按可见的UI状�
 - 替换文本： `Authentication — set an auth mode and scopes for each action`
 
 2026年8月25日被俘。 只裁切，没有遮盖物。 显示所有三种模式，填充模式
-**[!UICONTROL 作用域]**&#x200B;单元格和&#x200B;**[!UICONTROL 需要对其中的所有操作]**进行身份验证
+**[!UICONTROL 作用域]**&#x200B;单元格和&#x200B;**[!UICONTROL 需要对其中的所有操作]**&#x200B;进行身份验证
 不确定的状态，将`Test Action 1/2/3`作为夹具名称。
 
-裁切&#x200B;**内部**设置面板自己的容器边框 — 每个边框都有一个全高1px规则
+裁切&#x200B;**内部**&#x200B;设置面板自己的容器边框 — 每个边框都有一个全高1px规则
 将捕获的一侧作为一条散点线而保留在帧中时，将捕获的边缘作为一条散点线而显示
 图像。
 
 产品自身关于每个连接器应用[!DNL Claude]身份验证的警告为
-在此选项卡上在两个捕获轮次**中未观察到**，因此此处不需要它。 此
+在此选项卡上在两个捕获轮次&#x200B;**中未观察到**，因此此处不需要它。 此
 指南改用散文陈述该行为。 如果后续版本中确实存在警告，
 将其捕获为`auth-claude-warning.png`并添加一个条目。
 
@@ -195,14 +195,14 @@ Source文件名不需要与最终文件名匹配。 该技能按可见的UI状�
 卡片。
 
 捕获了2026-08-25（浅色模式），以匹配文档中的其他所有捕获。 此
-下拉列表包含**[!UICONTROL 服务器URL]**字段，因此MCP URL不可读 — 但是
+下拉列表包含&#x200B;**[!UICONTROL 服务器URL]**&#x200B;字段，因此MCP URL不可读 — 但是
 它半透明材料让现场内容的模糊图像流经旁边的
 选项。 三个未加亮显示的行用面板填充及其标签重新绘制
 重新呈现，这将删除它。 通过取样，而不是通过目测来验证：出血足够微弱，
 miss，它是MCP服务器URL。
 
-请注意，实时控件提供&#x200B;**4个**&#x200B;值 — **[!UICONTROL OAuth]**，**[!UICONTROL 访问权限
-令牌/API密钥]**、**[!UICONTROL 无身份验证]**&#x200B;和&#x200B;**[!UICONTROL 混合]**。 指南的映射
+请注意，实时控件提供&#x200B;**4个**&#x200B;值 — **[!UICONTROL OAuth]**，**访问权限
+令牌/API密钥&rbrack;**、**&#x200B;[!UICONTROL 无身份验证]&#x200B;**&#x200B;和&#x200B;**&#x200B;[!UICONTROL 混合]**。 指南的映射
 该表仅涵盖应用程序的身份验证模式可以映射到的三个区域（虽然正确，但是未映射）
 将下拉列表描述为有三个选项。
 
@@ -215,7 +215,7 @@ miss，它是MCP服务器URL。
 
 不捕获身份提供方自己的登录页。 它标识了此文档未命名的供应商。
 
-# 应用程序变量指南
+&#x200B;# 应用程序变量指南
 
 输出目录： `help/assets/guide-app-variables/`
 
@@ -251,7 +251,7 @@ miss，它是MCP服务器URL。
 
 ### `update-variable-dialog.png`
 
-- 状态： **[!UICONTROL 用**[!UICONTROL &#x200B;当前值&#x200B;]**`Good day`和**[!UICONTROL &#x200B;新值&#x200B;]**`Howdy`更新GREETING_PREFIX]**&#x200B;对话框。
+- 状态： **[!UICONTROL 用**&#x200B;[!UICONTROL &#x200B;当前值&#x200B;]&#x200B;**`Good day`和**&#x200B;[!UICONTROL &#x200B;新值&#x200B;]&#x200B;**`Howdy`更新GREETING_PREFIX]**&#x200B;对话框。
 - 替换文本： `Update GREETING_PREFIX — change the value from Good day to Howdy`
 
 2026年10月5日被俘。 裁剪了对话框下方的剪切页面标题和空叠加；绘制了`Howdy`之后的文本脱字符号。 没有可遮盖的。
