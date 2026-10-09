@@ -1,7 +1,7 @@
 ---
-source-git-commit: 03c918b1643d9c4e8ebee40fd67694acb6751a14
+source-git-commit: 41bd4b6239171c7a3af7dc6349eaa3cbb880449c
 workflow-type: tm+mt
-source-wordcount: '1080'
+source-wordcount: '1279'
 ht-degree: 0%
 ---
 # 屏幕快照清单
@@ -214,3 +214,51 @@ miss，它是MCP服务器URL。
 - 对话中间登录提示会引发&#x200B;**[!UICONTROL 可选]**&#x200B;操作。 平台拥有的UI，它经常更改，已在散文中进行描述。
 
 不捕获身份提供方自己的登录页。 它标识了此文档未命名的供应商。
+
+&#x200B;# 应用程序变量指南
+
+输出目录： `help/assets/guide-app-variables/`
+
+由[app-variables.md](../../../help/guides/app-variables.md)引用。
+
+在&#x200B;**[!UICONTROL 阶段]**&#x200B;工作区中使用值为`Good day`的夹具变量`GREETING_PREFIX`。 变量值在表中可见，因此切勿捕获实际设置。
+
+## 必需捕获
+
+### `variables-empty.png`
+
+- 状态： **[!UICONTROL 设置]** > **[!UICONTROL 变量和密钥]**，在&#x200B;**[!UICONTROL 阶段]**&#x200B;中没有变量。
+- 包括：设置导航、**[!UICONTROL Workspace]**&#x200B;选取器和&#x200B;**[!UICONTROL 添加]**。
+- 替换文本： `Variables & Secrets — empty Stage workspace with the Add button`
+
+2026年10月5日被俘。 裁剪以放置空画布；没有要遮盖的内容。
+
+### `add-variable-dialog.png`
+
+- 状态： **[!UICONTROL 添加变量或密码]**&#x200B;对话框在保存之前已填充。
+- 包括：尚不支持&#x200B;*密钥*&#x200B;通知、**[!UICONTROL 名称]** `GREETING_PREFIX`、**[!UICONTROL 类型]** **[!UICONTROL 变量]**&#x200B;和&#x200B;**[!UICONTROL 值]** `Good day`。
+- 替换文本： `Add Variable or Secret — GREETING_PREFIX set to Good day`
+
+2026年10月5日被俘。 已裁切到对话框下方；没有要遮盖的内容。
+
+### `variable-added.png`
+
+- 状态：保存后的变量表，具有一`GREETING_PREFIX`行。
+- 包括： **[!UICONTROL 名称]**、**[!UICONTROL 类型]**、**[!UICONTROL 值]**、**[!UICONTROL 上次更新时间]**&#x200B;以及复制、编辑和删除控件。
+- 替换文本： `Variables & Secrets — GREETING_PREFIX saved in the Stage workspace`
+
+2026年10月5日被俘。 裁剪以放置空画布；没有要遮盖的内容。
+
+### `update-variable-dialog.png`
+
+- 状态： **[!UICONTROL 用**&#x200B;[!UICONTROL &#x200B;当前值&#x200B;]&#x200B;**`Good day`和**&#x200B;[!UICONTROL &#x200B;新值&#x200B;]&#x200B;**`Howdy`更新GREETING_PREFIX]**&#x200B;对话框。
+- 替换文本： `Update GREETING_PREFIX — change the value from Good day to Howdy`
+
+2026年10月5日被俘。 裁剪了对话框下方的剪切页面标题和空叠加；绘制了`Howdy`之后的文本脱字符号。 没有可遮盖的。
+
+### `delete-variable-dialog.png`
+
+- 状态： **[!UICONTROL 删除GREETING_PREFIX？]** 确认对话框。
+- 替换文本： `Delete GREETING_PREFIX — confirm the permanent deletion`
+
+2026年10月5日被俘。 已裁剪对话框下方的空叠加图；没有要遮盖的对象。
