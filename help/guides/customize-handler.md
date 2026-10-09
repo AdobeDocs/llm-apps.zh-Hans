@@ -1,9 +1,9 @@
 ---
 title: 自定义生成的操作处理程序
 description: 了解Adobe LLM应用程序处理程序合同，替换生成的示例数据，并使处理程序输出与其小部件保持一致。
-source-git-commit: 2d8f44f4f258bf217992131de9d9450a4023560d
+source-git-commit: d9fb493c0b1708e4566e93a4f883e99bb4166e18
 workflow-type: tm+mt
-source-wordcount: '537'
+source-wordcount: '581'
 ht-degree: 0%
 ---
 
@@ -215,6 +215,8 @@ module.exports = async ({ query = '' } = {}) => {
 ```
 
 在处理程序中保留受保护的网络访问。 切勿将API凭据放入小组件JavaScript或源代码控制中。
+
+有关您的处理程序所需的非敏感设置，如服务URL，请参阅[配置应用程序变量和密钥](/help/guides/app-variables.md)。 变量按环境进行配置，并在下次部署时生效。 尚未提供密钥支持；请勿使用变量存储API凭据。
 
 ## 处理预期状态
 
