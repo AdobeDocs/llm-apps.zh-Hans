@@ -1,15 +1,13 @@
 ---
-title: 自动创建您的第一个LLM应用程序
-description: 从您的网站创建一个Adobe LLM应用程序，查看生成的操作，将其部署，然后在支持的LLM平台（如ChatGPT）中进行测试。
-source-git-commit: f91bb73a39cc5aacf44979ee55dd0ab5f69d4c81
+title: 基础架构设置
+description: 使用Adobe托管的基础架构创建一个Adobe LLM应用程序，或提供两个空的GitHub存储库供平台初始化。
+source-git-commit: a48b4022979d9a13b4fc3aa870c4ee6375e8bc13
 workflow-type: tm+mt
-source-wordcount: '1272'
+source-wordcount: '1330'
 ht-degree: 0%
-
 ---
 
-
-# 自动创建您的第一个应用程序 {#create-first-app}
+# 基础架构设置 {#create-first-app}
 
 >[!IMPORTANT]
 >
@@ -17,198 +15,135 @@ ht-degree: 0%
 >
 >此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
-该平台可将您的网站变成功能齐全的应用程序。 它建议操作、编写处理程序代码和测试、创建EDS小部件，并将生成的文件发送到您拥有的两个[!DNL GitHub]存储库。
+基础架构是应用程序的技术基础：存储其代码的存储库，以及运行其操作处理程序并将其构件交付给用户的服务。
 
-生成大约需要15分钟。 在本教程结束时，您将拥有一个已部署的应用程序，您可以在支持的LLM平台（如[!DNL ChatGPT]）中测试该应用程序。
+如[概述](/help/overview/overview.md#key-concepts)中所述，**操作处理程序**&#x200B;执行一项任务，如查找产品，而&#x200B;**小组件**&#x200B;在对话中将结果显示为交互式体验。
 
-**历程：**&#x200B;确认→创建两个存储库→创建应用程序→查看生成的操作→部署到暂存环境→测试插件→连接生产系统的要求。
+[!DNL LLM Apps]将处理程序和小组件源代码存储在两个单独的[!DNL GitHub]存储库中：
 
-## 开始之前
+- **操作存储库** — 包含服务器端处理程序及其测试。
+- **小组件存储库** — 包含交互式小组件的代码和样式。
 
-在开始本教程之前，请先完成所有[LLM应用要求](/help/overview/overview.md#requirements)。
+例如，产品搜索处理程序可检索匹配的产品，其小组件将它们显示为产品卡。 存储库存储该代码；Adobe I/O Runtime运行已部署的处理程序，Edge Delivery Services提供构件。
 
-本教程将为[Frescopa Coffee](https://frescopa.coffee/)创建一个LLM应用。
+安装向导会准备这些存储库，并连接应用程序所需的服务。 我们建议从&#x200B;**Adobe托管基础结构**&#x200B;开始，这是最快入门的方法。 Adobe会为您的操作处理程序和构件创建和托管存储库。 您无需自己设置存储库。
 
-## 创建两个空存储库
+或者，在您自己的帐户或组织中提供两个空的[!DNL GitHub]存储库。 平台会使用所需的项目文件将它们初始化；您无需预先准备操作或构件代码。
 
-该平台需要两个空存储库。 在同一个[!DNL GitHub]帐户或组织下创建两者：
+**在本指南中：**&#x200B;了解如何选择基础结构选项并使用安装向导创建您的应用程序。 安装后，继续[创建操作](/help/guides/creating-actions.md)。
 
-- **处理程序存储库** — 存储操作处理程序和测试。 例如，`my-brand-llm-app`。
-- **EDS存储库** — 存储生成的构件块和样式。 例如，`my-brand-llm-app-eds`。
+创建应用程序不会&#x200B;**生成**&#x200B;开始操作。 从应用程序页面单独开始生成操作。
 
-前往每个存储库的[github.com/new](https://github.com/new)。
+## 打开创建应用程序向导
 
-不要使用README、`.gitignore`或许可证初始化任一存储库。 该平台准备了所需的项目结构。
+打开[Adobe LLM应用程序](https://experience.adobe.com/llm-apps)。 从欢迎页面中，选择&#x200B;**[!UICONTROL 开始使用]**。 如果您已经打开了应用程序，请使用应用程序选择器并选择&#x200B;**[!UICONTROL 新建应用程序]**。
 
->[!TIP]
->
->使用可标识应用程序和每个存储库用途的存储库名称。 这使得在应用程序创建对话框中更容易识别它们。
+**[!UICONTROL 创建LLM应用程序]**&#x200B;向导以&#x200B;**[!UICONTROL 开始使用]**&#x200B;开始。 选择如何设置技术环境。
 
-## 启动应用程序
+![创建您的LLM应用程序 — 在Adobe托管的基础架构和连接您自己的存储库之间选择](/help/assets/guide-infrastructure/setup-choice.png)
 
-1. 打开[Adobe LLM应用程序](https://experience.adobe.com/#/@llmapps/llm-apps/)并选择&#x200B;**[!UICONTROL 创建应用程序]**。
-2. 输入&#x200B;**[!UICONTROL LLM应用程序名称]**&#x200B;和可选描述。
-3. 选择&#x200B;**[!UICONTROL Analytics区域]**。
+| 基础架构选项 | 在向导中选择 | 它的含义 |
+|---|---|---|
+| **Adobe托管基础结构** | **[!UICONTROL 让我们处理它]** | Adobe会为试用设置创建和托管存储库。 代码访问权限可应请求提供，您以后可以移至您自己的存储库。 |
+| **您自己的存储库** | **[!UICONTROL 我自己设置]** | 您提供两个空的GitHub存储库，并通过向导授予访问权限。 该平台初始化一个用于操作处理程序，另一个用于小组件。 |
 
-   >[!IMPORTANT]
-   >
-   >创建应用程序后，无法更改Analytics区域。
+这两个选项都支持以后自动生成操作。 这两个选项都不需要手动编写操作。
 
-4. 在&#x200B;**[!UICONTROL 构建我的应用程序]**&#x200B;中，选择&#x200B;**[!UICONTROL 自动构建我的应用程序]**。
-5. 在&#x200B;**[!UICONTROL 您的网站]**&#x200B;中，输入包括`https://`协议的网站URL。 该平台会分析此站点，以确定有用的操作和具有代表性的示例结果。
+## 使用Adobe托管的基础架构 {#adobe-managed-infrastructure}
 
-![创建LLM应用程序 — 启用应用程序详细信息并构建我的应用程序](/help/assets/guide-onboarding-agent/app-details-onboarding.png)
+使用此选项尝试该应用，而无需首先创建存储库或自行安装[!DNL GitHub]应用。
 
-## 授予[!DNL LLM Apps]对存储库的访问权限
-
-Adobe LLM Apps [!DNL GitHub]应用程序为您选择的存储库授予[!DNL LLM Apps]访问权限。
-
->[!NOTE]
->
->连接[!DNL GitHub]组织是一次性设置。 如果该组织已出现在对话框中，请使用&#x200B;**[!UICONTROL 在GitHub]**&#x200B;上管理存储库，而不是再次连接它。
-
-### 连接的组织
-
-如果在创建存储库之前已安装Adobe LLM应用程序[!DNL GitHub]应用程序：
-
-1. 选择连接的组织。
-2. 选择&#x200B;**[!UICONTROL 在GitHub上管理存储库]**。
-3. 将两个存储库添加到现有的[!DNL GitHub]应用程序安装中。
-4. 返回到[!DNL LLM Apps]并刷新存储库列表。
-
-### 仅首次连接
-
-如果组织未显示在对话框中：
-
-1. 选择&#x200B;**[!UICONTROL 连接GitHub组织]**。
-2. 安装Adobe LLM应用程序[!DNL GitHub]应用程序。
-3. 选择&#x200B;**[!UICONTROL 仅选择存储库]**&#x200B;并选择两个存储库。
-4. 返回创建LLM应用程序对话框。
-
-如果无法安装或更新[!DNL GitHub]应用程序，请咨询组织管理员。
-
-## 选择存储库
-
-1. 在&#x200B;**[!UICONTROL 样板存储库]**&#x200B;下，选择组织和空处理程序存储库。
-2. 在&#x200B;**[!UICONTROL EDS存储库]**&#x200B;下，选择组织和空的EDS存储库。
-
-   ![构建我的应用程序 — 选择GitHub组织、样板存储库和EDS存储库](/help/assets/guide-onboarding-agent/repos-selected.png)
-
-3. 根据&#x200B;**[!UICONTROL 条款和条件]**，选中&#x200B;**[!UICONTROL 我接受Adobe Developer条款]**。
+1. 选择&#x200B;**[!UICONTROL 让我们处理它]**。
+2. 选择&#x200B;**[!UICONTROL 下一步]**。
+3. 完成[应用详细信息](#app-details)。
 4. 选择&#x200B;**[!UICONTROL 创建应用程序]**。
 
-## 完成EDS设置
+在Adobe准备存储库并连接构件站点时，应用程序页面显示&#x200B;**[!UICONTROL 正在设置您的应用程序]**。 UI指示设置通常需要1-2分钟时间；操作、测试和部署在设置准备就绪之前不可用。
 
-当选定的EDS存储库为空时，[!DNL LLM Apps]会使用AEM样板将其初始化。 然后，该对话框会要求您在尝试再次创建应用程序之前安装AEM代码同步。
+![应用程序设置 — Adobe正在准备应用程序基础结构](/help/assets/guide-infrastructure/provisioning.png)
 
-1. 在EDS存储库下面的消息中，选择&#x200B;**[!UICONTROL 安装AEM代码同步]**。
-2. 在[!DNL GitHub]上，安装AEM Code Sync并授予它访问EDS存储库的权限。
+如果安装程序失败，请读取错误并选择&#x200B;**[!UICONTROL 重试]**。 如果页面无法检查进度，安装程序将在后台继续；请选择&#x200B;**[!UICONTROL 再次检查]**&#x200B;以重新连接。
 
-   在&#x200B;**AEM Code Sync已注册**&#x200B;确认页面的&#x200B;**[!UICONTROL 站点用户]**&#x200B;下，选择&#x200B;**[!UICONTROL +添加用户]**&#x200B;并添加用于使用&#x200B;**[!UICONTROL 管理员]**&#x200B;角色登录到[!DNL LLM Apps]的电子邮件地址。 然后选择页面底部的&#x200B;**[!UICONTROL 完成设置]**。
+安装完成后，继续执行[创建操作](/help/guides/creating-actions.md)。
 
-   ![AEM代码同步已注册 — 请将您自己添加为具有管理员角色的网站用户](/help/assets/guide-onboarding-agent/aem-code-sync-site-users-admin.png)
+## 连接您自己的存储库 {#your-own-repositories}
 
-3. 返回创建LLM应用程序对话框。
+选择&#x200B;**[!UICONTROL 我将自行设置它]**，然后选择&#x200B;**[!UICONTROL 下一步]**。 此路径包含四个向导步骤：
 
-![创建LLM应用程序 — 初始化了空的EDS存储库，需要AEM代码同步](/help/assets/guide-onboarding-agent/install-aem-code-sync.png)
+**开始→用操作基础结构设置→Widget基础结构设置→应用程序详细信息。**
 
-您必须是EDS站点的管理员。 如果对话框报告您不是管理员：
+您需要访问所选存储库和权限才能安装或配置所需的[!DNL GitHub]应用。 对于组织拥有的存储库，管理员可能需要批准访问权限。
 
-![创建LLM应用程序 — 需要EDS管理员访问权限](/help/assets/guide-onboarding-agent/eds-admin-required.png)
+创建两个空存储库：一个用于操作处理程序，另一个用于小组件。 不要使用README、许可证或`.gitignore`初始化。 在向导中验证每个存储库时，平台会添加所需的项目结构。
 
-1. 选择&#x200B;**[!UICONTROL 打开AEM Live Admin]**。
-2. 通过单击&#x200B;**[!UICONTROL +添加用户]**&#x200B;按钮，将您添加为EDS站点的管理员。
-
-   ![创建LLM应用程序 — 将您添加为EDS管理员](/help/assets/guide-onboarding-agent/add-eds-admin.png)
-
-3. 返回[!DNL LLM Apps]，刷新EDS存储库，然后再次选择&#x200B;**[!UICONTROL 创建应用程序]**。
-
-在存储库和管理员检查通过后，[!DNL LLM Apps]将创建应用程序并开始生成操作。
-
-## 等待操作生成
-
-从左侧转到&#x200B;**[!UICONTROL 操作]**&#x200B;页面。 “操作”页面显示&#x200B;**在代理分析网站并生成应用程序时发现对话体验的操作**。 生成通常大约需要15分钟。 您可以离开此页面，稍后再返回。
-
-![操作 — 生成推荐](/help/assets/guide-onboarding-agent/actions-generating.png)
-
-在生成期间，[!DNL LLM Apps]：
-
-1. 分析网站并确定有用的客户意图。
-2. 创建操作元数据，包括说明和输入参数。
-3. 为处理程序存储库中的每个操作生成一个处理程序并进行测试。
-4. 为EDS存储库中的每个操作生成一个EDS小组件。
-5. 准备操作以供您审阅。
-
-生成的处理程序最初使用从网站派生的示例数据。 它们演示了完整的体验，但未连接到您的生产系统。
-
-## 查看生成的操作
-
-生成完成后，“操作”页面将显示生成的操作和构件预览。 每个操作都有一个&#x200B;**[!UICONTROL AI生成的操作，需要审核]**&#x200B;徽章。
-
-![操作 — 生成的操作已准备好审查](/help/assets/guide-onboarding-agent/actions-ready-for-review.png)
-
-对于每个操作：
-
-1. 选择&#x200B;**[!UICONTROL 审阅]**。
-2. 查看名称、描述、参数、注释、生成的处理程序和小组件。
-3. 选择&#x200B;**[!UICONTROL 标记为已审阅]**。 这将合并生成的拉取请求。
-4. 返回到“操作”页面，然后对其余操作重复此操作。
-
-![生成的操作 — 已准备好标记为已审阅](/help/assets/guide-onboarding-agent/generated-action-review.png)
-
-审核所有操作后，选择&#x200B;**[!UICONTROL 转到应用程序页面]**。
-
-![操作 — 已审阅所有生成的操作](/help/assets/guide-onboarding-agent/actions-reviewed.png)
+如果您已经具有兼容的操作和EDS项目，则可以改为连接这些项目，但不需要使用现有代码。
 
 >[!NOTE]
 >
->生成的代码是您拥有的起点。 您可以在查看后更改操作元数据、处理程序、测试、构件JavaScript和小组件样式。
+>对于空存储库，验证会写入初始项目文件。 在选择&#x200B;**[!UICONTROL 验证存储库]**&#x200B;之前，请选择用于此应用的存储库。
 
-## 部署应用程序
+### 设置操作基础结构
 
-1. 返回到“应用程序详细信息”页面。
-2. 选择&#x200B;**[!UICONTROL 部署]**。
-3. 选择&#x200B;**[!UICONTROL Stage]**&#x200B;作为目标环境。
-4. 选择&#x200B;**[!UICONTROL 部署]**。
+操作存储库包含在LLM平台调用操作时运行的服务器端处理程序和测试。
 
-![部署 — 选择暂存环境](/help/assets/guide-onboarding-agent/deploy-stage.png)
+1. 在&#x200B;**[!UICONTROL 操作源]**&#x200B;下，选择&#x200B;**[!UICONTROL GitHub]**。 其他代码源当前不可用。
+2. 回答&#x200B;**[!UICONTROL 您是否已创建GitHub存储库？]**：
+   - 选择&#x200B;**[!UICONTROL 是，我将使用已创建的存储库]**&#x200B;连接兼容的现有项目或空存储库。
+   - 选择&#x200B;**[!UICONTROL 我还没有存储库]**，然后选择&#x200B;**[!UICONTROL 在GitHub上创建存储库]**，以创建空的操作存储库。 之后返回向导。
+3. 将存储库连接到Adobe LLM应用程序[!DNL GitHub]应用程序：
+   - 如果未连接任何组织，请选择&#x200B;**[!UICONTROL 在GitHub上安装]**。
+   - 如果已连接组织，请选择&#x200B;**[!UICONTROL 连接存储库]**&#x200B;并将存储库添加到该安装。
+4. 在[!DNL GitHub]上，选择&#x200B;**[!UICONTROL 仅选择存储库]**，并仅授予对此应用程序使用的存储库的访问权限。
+5. 返回到向导。 在&#x200B;**[!UICONTROL 选择存储库]**&#x200B;下，选择&#x200B;**[!UICONTROL 组织]**&#x200B;和&#x200B;**[!UICONTROL 存储库]**。
+6. 选择&#x200B;**[!UICONTROL 验证存储库]**。 验证使用Adobe LLM应用程序样板初始化空存储库。 现有存储库必须包含兼容的操作项目。
+7. 验证成功后，选择&#x200B;**[!UICONTROL 下一步]**。
 
-[!DNL LLM Apps]正在准备、生成和发布应用程序，请稍候。
+![操作基础结构设置 — 选择GitHub并连接操作存储库](/help/assets/guide-infrastructure/action-repository.png)
 
-![部署 — 部署管道正在运行](/help/assets/guide-onboarding-agent/deploy-running.png)
+如果缺少组织或存储库，请在其选取器中使用&#x200B;**[!UICONTROL 连接其他组织]**&#x200B;或&#x200B;**[!UICONTROL 连接其他存储库]**。 更改[!DNL GitHub]上的访问权限后，选择&#x200B;**[!UICONTROL 刷新组织和存储库]**。
 
-![部署 — 成功的暂存部署](/help/assets/guide-onboarding-agent/deploy-successful.png)
+### 设置构件基础设施
 
-部署后，**[!UICONTROL 测试应用程序]**&#x200B;部分显示暂存MCP服务器URL。 选择&#x200B;**[!UICONTROL 复制URL]**。
+小组件是附加到操作的可选可视化响应，例如产品卡或预订表单。 向导将连接[!DNL Edge Delivery Services] (EDS)存储库以托管它们。
 
-![应用程序详细信息 — 复制暂存MCP服务器URL](/help/assets/guide-onboarding-agent/app-mcp-url.png)
+1. 在&#x200B;**[!UICONTROL 构件源]**&#x200B;下，选择&#x200B;**[!UICONTROL 手动选择构件存储库]**。
+2. 在&#x200B;**[!UICONTROL 代码源]**&#x200B;下，选择&#x200B;**[!UICONTROL GitHub]**。
+3. 选择是否已具有存储库。 如果没有，请选择&#x200B;**[!UICONTROL 在GitHub上创建存储库]**，创建一个空的小组件存储库，然后返回到向导。
+4. 为此存储库安装或配置Adobe LLM应用程序[!DNL GitHub]应用程序，就像您为操作存储库所做的那样。
+5. 选择其&#x200B;**[!UICONTROL 组织]**&#x200B;和&#x200B;**[!UICONTROL 存储库]**。 请勿选择操作存储库。
+6. 选择&#x200B;**[!UICONTROL 验证存储库]**。 验证使用AEM样板初始化空存储库。 现有存储库必须是兼容的EDS项目。
+7. 选择&#x200B;**[!UICONTROL 安装AEM代码同步]**&#x200B;并授予AEM代码同步访问构件存储库的权限。
+8. 在安装确认页面上，使用安装向导将自己添加为EDS站点的管理员。
+9. 返回到[!DNL LLM Apps]并选择&#x200B;**[!UICONTROL 验证AEM代码同步安装]**。
+10. 当显示&#x200B;**[!UICONTROL 已安装的AEM代码同步]**&#x200B;时，请选择&#x200B;**[!UICONTROL 下一步]**。
 
-## 在[!DNL ChatGPT]中测试
+>[!NOTE]
+>
+>此向导将&#x200B;**[!UICONTROL 使用Cloud Manager Edge Delivery Services]**&#x200B;标记为&#x200B;**[!UICONTROL 即将推出]**，不允许进行选择。 使用手动构件存储库选项。
 
-在ChatGPT[&#128279;](/help/guides/test-in-chatgpt.md)中执行测试，以使用暂存MCP服务器URL创建插件。
+如果验证未检测到AEM代码同步，请确认AEM代码同步有权访问选定的构件存储库，并且您已将自己添加为站点管理员。 然后重新验证。
 
-提出与生成的操作之一匹配的问题。 验证：
+## 输入应用程序详细信息 {#app-details}
 
-- [!DNL ChatGPT]选择所需的操作。
-- 构件将渲染并包含预期的示例数据。
-- 构件控件产生预期的跟进行为。
-- 文本响应准确地总结了结果。
+两个基础结构选项均已完成，并显示&#x200B;**[!UICONTROL 应用详细信息]**。
 
-![ChatGPT — 生成的LLM应用程序插件响应](/help/assets/guide-onboarding-agent/chatgpt-generated-app.png)
+![应用程序详细信息 — 输入应用程序名称，选择AEM程序，然后选择Analytics数据区域](/help/assets/guide-infrastructure/app-details.png)
 
-您现在拥有功能齐全的端到端应用程序。
+1. 输入&#x200B;**[!UICONTROL LLM应用名称]**。 使用标识品牌或体验的名称，如&#x200B;*Frescopa Coffee*。
+2. 选择应用程序所属的&#x200B;**[!UICONTROL AEM程序]**。 如果您只能访问一个程序，向导会自动选择该程序。
+3. 在&#x200B;**[!UICONTROL Analytics数据区域]**&#x200B;下，选择&#x200B;**[!UICONTROL 美国（美国）]**&#x200B;或&#x200B;**[!UICONTROL 欧洲（欧盟）]**。
+4. 选择&#x200B;**[!UICONTROL 创建应用程序]**。
 
-## 使应用程序做好生产准备
+>[!IMPORTANT]
+>
+>创建应用程序后，无法更改AEM程序和Analytics数据区域。 Analytics区域可确定应用程序分析数据的存储位置。
 
-生成的应用程序使用示例数据。 在与客户一起使用之前：
+如果没有可用的AEM程序，请咨询您的管理员以获取访问权限。 如果加载程序失败，请选择&#x200B;**[!UICONTROL 重试加载程序]**。
 
-1. **连接您的系统** — [自定义每个生成的处理程序](/help/guides/customize-handler.md)，将样本数据替换为对API或数据源的调用。
-2. **保护凭据** — 将API URL和凭据存储在托管运行时配置中，而不是在源代码或小组件JavaScript中。
-3. **验证数据** — 验证操作参数和API响应，添加请求超时并返回安全错误消息。
-4. **更新构件** — 使每个构件与其处理程序的`structuredContent`保持一致，然后应用您的品牌推广和可访问性要求。 请参阅[自定义生成的构件](/help/guides/widgets.md)。
-5. **测试处理程序** — 涵盖有效输入、无效输入、空结果、API失败以及构件预期的数据形状。
-6. **在暂存中验证** — 通过[!DNL ChatGPT]插件重新部署和测试每个操作。
-7. **部署到生产** — 暂存测试成功后，部署到生产，并使用生产MCP服务器URL创建或更新插件。
+向导会在创建后打开应用程序页面。 使用Adobe托管基础架构，等待基础架构设置完成后再继续。
 
-若要添加平台未创建的功能，请参阅[从头开始创建操作](/help/guides/create-action.md)。
+## 下一步：创建操作
 
+您的应用程序现在具有基础架构，但尚未生成任何操作。 继续执行[创建操作](/help/guides/creating-actions.md)以分析网站或选择手动创建操作。
+
+有关操作元数据、处理程序、小部件和已部署的MCP服务器之间的关系，请参阅[如何将应用程序连接在一起](/help/guides/app-architecture.md)。

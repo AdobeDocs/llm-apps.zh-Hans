@@ -1,13 +1,11 @@
 ---
 title: 应用程序如何连接在一起
-description: 更仔细地了解您拥有的各个部分（操作元数据、处理程序代码和小部件）如何在构建时和运行时整合到一个正在运行的LLM应用程序中。
-source-git-commit: 2f3480b3667a6ab7c4ed65b999eed4638c383edb
+description: 了解LLM应用程序的三个部分，它们在对话中的工作方式，以及在何处进行更改。
+source-git-commit: af83670aebde1e6f73585c89a891bc7f5e92fb3a
 workflow-type: tm+mt
-source-wordcount: '335'
+source-wordcount: '573'
 ht-degree: 0%
-
 ---
-
 
 # 应用程序如何连接在一起 {#app-architecture}
 
@@ -17,69 +15,66 @@ ht-degree: 0%
 >
 >此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
 
-## 一句话
+**LLM应用程序**&#x200B;将您品牌的服务引入到AI对话中。 例如，客户请求提供咖啡推荐，您的应用程序找到匹配的产品，助手显示结果。
 
-**LLM应用程序**&#x200B;是您发布到单个终结点的一组&#x200B;**操作**（每个操作都是通过&#x200B;**模型上下文协议**&#x200B;或&#x200B;**MCP**&#x200B;公开的工具）。 像[!DNL ChatGPT]这样的聊天主机发现这些工具，在对话中调用这些工具，并呈现&#x200B;**交互式小组件**，结果直接显示在聊天中。
+**在本指南中：**&#x200B;了解应用程序每个部分的功能、更改位置以及当有人使用应用程序时，这些部分如何协同工作。
 
-## 整个线路，建造→运行
+## 应用程序的三个部分
 
-**图1 — 生成时间。** 您拥有三个单独的表面；平台将它们融合成一个可部署应用程序。
+一个应用可以对多个相关操作进行分组，如&#x200B;*浏览产品*、*比较产品*&#x200B;和&#x200B;*查找商店*。 每个操作都有自己的设置、处理程序和可选小组件。 添加操作不需要另一对存储库。
 
-```
-┌─────────────────────┐   ┌─────────────────────┐   ┌─────────────────────┐
-│ 1  LLM Apps UI      │   │ 2  Action Handler   │   │ 3  Widget repo      │
-│                     │   │    repo             │   │                     │
-│ Create, edit, and   │   │                     │   │ Each widget is an   │
-│ manage your action  │   │ Business logic —    │   │ EDS block,          │
-│ definitions here    │   │ built from our      │   │ published to a      │
-│ (metadata)          │   │ boilerplate         │   │ public URL on       │
-│                     │   │                     │   │ *.aem.page          │
-│                     │   │ Returns content     │   │                     │
-│                     │   │ (for the LLM) +     │   │                     │
-│                     │   │ structuredContent   │   │                     │
-│                     │   │ (for the widget)    │   │                     │
-└─────────────────────┘   └─────────────────────┘   └─────────────────────┘
-           │                         │                         │
-           └─────────────────────────┼─────────────────────────┘
-                                     ▼
-                       ┌─────────────────────────────┐
-                       │ LLM Apps deploy pipeline    │
-                       │ Combines the 3 surfaces     │
-                       │ into one running app        │
-                       └─────────────────────────────┘
-                                     │
-                                     ▼
-                 ┌─────────────────────────────────────────┐
-                 │ ONE MCP server on Adobe I/O Runtime     │
-                 │ https://<ns>.adobeioruntime.net/.../mcp │
-                 └─────────────────────────────────────────┘
+带交互式小组件的应用程序包含三个部分：操作设置、处理程序代码和小组件代码。 您管理[!DNL LLM Apps]中的设置。 处理程序和构件代码位于两个单独的[!DNL GitHub]存储库中。
+
+```text
+┌───────────────────────┐   ┌───────────────────────┐   ┌───────────────────────┐
+│ 1. LLM Apps UI        │   │ 2. Handler repository │   │ 3. Widget repository  │
+│                       │   │                       │   │                       │
+│ Action descriptions   │   │ Connects to your APIs │   │ Widget layout         │
+│ Required information  │   │ Runs the task         │   │ Branding and styles   │
+│ When to use an action │   │ Returns results       │   │ Interactive controls  │
+└───────────────────────┘   └───────────────────────┘   └───────────────────────┘
+            │                           │                           │
+            └───────────────────────────┼───────────────────────────┘
+                                        ▼
+                    ┌───────────────────────────────────────┐
+                    │ Your app in an AI conversation        │
+                    │ The action runs and the widget        │
+                    │ shows the result.                     │
+                    └───────────────────────────────────────┘
 ```
 
-- **LLM应用程序UI** — 在其中创建、编辑和管理每个操作的定义：其&#x200B;**代码标识符**（在此处设置一次的固定概要，例如`my_action`，该概要将整个UI、处理程序和构件中的同一操作绑定在一起）、描述、输入架构、构件选择和CSP/可见性标志。 无代码。
-- **操作处理程序存储库** — 用于编写业务逻辑的服务器端存储库（基于样板构建）。 每个处理程序函数返回两个内容：`content` （LLM *读取的纯文本）和`structuredContent` （WIDGET*&#x200B;读取的数据对象）。**
-- **构件存储库** — 每个构件都作为块存在并发布到公共`*.aem.page` URL的EDS存储库。 每个块都使用[`@adobe/llmapps-sdk`](https://www.npmjs.com/package/@adobe/llmapps-sdk)，即小部件与主机/服务器之间的桥梁。 它在一个简单的API后面实现&#x200B;**MCP应用程序规范**（底层协议），并抽象LLM主机本身，因此同一个小组件在[!DNL ChatGPT]、[!DNL Claude]、Gemini或任何其他MCP主机中不经修改即可工作。
+- **操作设置描述了任务。** 他们告知助理何时使用操作以及操作需要哪些信息。 对于产品搜索，该信息可能是类别或搜索词。
+- **处理程序执行工作。** 它从您的系统中获取数据或执行任务。 例如，产品搜索处理程序会从目录中检索匹配的产品。
+- **构件显示结果。** 它控制客户看到的内容并与之交互，如带有名称、价格和按钮的产品卡。
 
-**图2 — 运行时。** 一旦一台服务器处于活动状态，用户发送的每条消息都将发生什么情况？ 以[!DNL ChatGPT]作为示例主机显示 — 对于任何MCP主机（如[!DNL Claude]）播放相同的序列。
+我们建议为每个操作添加一个构件。 利用小组件，您可以控制结果的外观以及客户与它们的交互方式，而不是将演示文稿留给AI助手。 仅文本响应也受支持。
 
-```
-┌── ChatGPT  (the MCP host) ──────────────────────────────────────────────┐
-│  1  tools/list  >  sees `my_action` + its description + input schema    │
-│  2  user asks   >  "I need help with …"                                 │
-│  3  model picks >  the description matches -> calls this tool           │
-│  4  tools/call  >  { name: "my_action", arguments: {situation, ...} }   │
-└─────────────────────────────────────────────────────────────────────────┘
-                                     │
-                 routes by CODE IDENTIFIER  ->  my_action
-                                     ▼
-┌── Adobe I/O Runtime ────────────────────────────────────────────────────┐
-│  actions/my_action/index.js  --  your handler runs                      │
-│  returns  { content -> text for the model , structuredContent -> data } │
-└─────────────────────────────────────────────────────────────────────────┘
-                                     │
-                                     ▼
-┌── Rendered inside the conversation ─────────────────────────────────────┐
-│  5  render      >  ChatGPT renders the Widget repo's EDS block          │
-│  The EDS block reads the structuredContent the Action Handler repo      │
-│  returned, and draws the interactive card — live, inside the chat.      │
-└─────────────────────────────────────────────────────────────────────────┘
-```
+## 在何处进行更改
+
+| 您要更改的内容 | 编辑位置 |
+|---|---|
+| 助理使用操作时，或操作请求的信息 | LLM应用程序中的[操作设置](/help/reference/reference-docs.md) |
+| 结果来自何处，或者操作运行时会发生什么情况 | 处理程序存储库中的[处理程序代码](/help/guides/customize-handler.md) |
+| 结果的外观，包括布局、品牌和交互 | [构件存储库中的构件代码](/help/guides/widgets.md) |
+
+保持这三个部分的一致性。 例如，如果更改处理程序返回的信息，请更新构件以显示新结果。
+
+## 对话中发生的情况
+
+部署后，您的应用程序有一个连接URL，称为&#x200B;**MCP服务器URL**。 将此URL添加到支持的AI平台，以便助手能够发现并使用您应用程序的操作。
+
+对于具有产品搜索操作和小组件的应用程序：
+
+1. 一位客户要求助理&#x200B;*给我看咖啡盒。*
+2. 助手使用操作的描述来选择产品搜索操作。
+3. 处理程序从目录获取匹配的产品。
+4. 小组件会将产品显示为对话中的信息卡。
+5. 客户浏览结果或提出后续问题。
+
+当您的应用程序提供信息或服务时，客户将留在对话中。 构件支持依赖于LLM平台。
+
+## 应用并测试更改
+
+先发布构件更改并部署操作更改，然后再测试更新的体验。 请按照[部署您的应用程序](/help/guides/deploy-your-app.md)以部署到暂存环境并在支持的LLM平台上测试该应用程序。
+
+自动生成的操作以示例数据开头。 将处理程序连接到您的实际系统并测试应用程序，然后再将其提供给客户。
