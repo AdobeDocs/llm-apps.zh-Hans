@@ -1,9 +1,9 @@
 ---
 title: Adobe LLM应用程序概述
 description: 了解什么是Adobe LLM应用程序、其工作方式以及如何开始构建应用程序。
-source-git-commit: a48b4022979d9a13b4fc3aa870c4ee6375e8bc13
+source-git-commit: 14d94a68dabddd2f2ef2cef65c51d31645d4a958
 workflow-type: tm+mt
-source-wordcount: '621'
+source-wordcount: '606'
 ht-degree: 0%
 ---
 
@@ -50,7 +50,7 @@ LLM平台调用操作时运行的服务器端函数。 使用处理程序验证�
 
 ### 小组件 {#widgets-eds}
 
-随LLM回复一起显示的可视响应，如信息卡、轮盘或表格。 生成的构件是[!DNL Edge Delivery Services] (EDS)存储库中的块。 借助Adobe托管的基础架构，Adobe可为试用准备并托管存储库。 或者，连接您自己的存储库。
+随LLM回复一起显示的可视响应，如信息卡、轮盘或表格。 生成的构件是[!DNL Edge Delivery Services] (EDS)存储库中的块。 借助Adobe托管的基础架构，Adobe可为您准备并托管存储库。 或者，连接您自己的存储库。
 
 ### MCP服务器
 
@@ -76,7 +76,7 @@ LLM平台调用操作时运行的服务器端函数。 使用处理程序验证�
 
 创建应用程序和创建其操作是单独的步骤：
 
-1. [设置基础结构](/help/guides/create-app.md)。 使用Adobe托管的基础架构进行试用，或通过创建应用程序向导提供两个空的[!DNL GitHub]存储库。 该平台初始化一个用于操作处理程序，另一个用于小组件。
+1. [设置基础结构](/help/guides/create-app.md)。 使用Adobe托管的基础架构进行快速设置，或选择使用您自己的[!DNL GitHub]存储库。
 2. [创建您的操作](/help/guides/creating-actions.md)。 让平台分析您的网站并生成操作，或自行创建操作。
 3. [部署和测试应用程序](/help/guides/deploy-your-app.md)。 审阅生成的工作，部署到暂存环境，并在支持的LLM平台中进行测试。
 

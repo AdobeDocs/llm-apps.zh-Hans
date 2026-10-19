@@ -1,9 +1,9 @@
 ---
 title: 基础架构设置
 description: 使用Adobe托管的基础架构创建一个Adobe LLM应用程序，或提供两个空的GitHub存储库供平台初始化。
-source-git-commit: a48b4022979d9a13b4fc3aa870c4ee6375e8bc13
+source-git-commit: 14d94a68dabddd2f2ef2cef65c51d31645d4a958
 workflow-type: tm+mt
-source-wordcount: '1330'
+source-wordcount: '1337'
 ht-degree: 0%
 ---
 
@@ -44,14 +44,14 @@ ht-degree: 0%
 
 | 基础架构选项 | 在向导中选择 | 它的含义 |
 |---|---|---|
-| **Adobe托管基础结构** | **[!UICONTROL 让我们处理它]** | Adobe会为试用设置创建和托管存储库。 代码访问权限可应请求提供，您以后可以移至您自己的存储库。 |
+| **Adobe托管基础结构** | **[!UICONTROL 让我们处理它]** | Adobe可为您的应用程序创建和管理存储库及连接的服务。 可应请求访问代码。 |
 | **您自己的存储库** | **[!UICONTROL 我自己设置]** | 您提供两个空的GitHub存储库，并通过向导授予访问权限。 该平台初始化一个用于操作处理程序，另一个用于小组件。 |
 
 这两个选项都支持以后自动生成操作。 这两个选项都不需要手动编写操作。
 
 ## 使用Adobe托管的基础架构 {#adobe-managed-infrastructure}
 
-使用此选项尝试该应用，而无需首先创建存储库或自行安装[!DNL GitHub]应用。
+使用此选项可让Adobe为您的应用程序设置和管理存储库和连接的服务。 您不需要自己创建存储库或安装[!DNL GitHub]应用。
 
 1. 选择&#x200B;**[!UICONTROL 让我们处理它]**。
 2. 选择&#x200B;**[!UICONTROL 下一步]**。
