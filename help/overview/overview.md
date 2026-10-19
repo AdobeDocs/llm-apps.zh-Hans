@@ -1,13 +1,11 @@
 ---
 title: Adobe LLM应用程序概述
-description: 了解什么是Adobe LLM应用程序、其工作方式以及您需要什么来开始使用。
-source-git-commit: 2f3480b3667a6ab7c4ed65b999eed4638c383edb
+description: 了解什么是Adobe LLM应用程序、其工作方式以及如何开始构建应用程序。
+source-git-commit: 14d94a68dabddd2f2ef2cef65c51d31645d4a958
 workflow-type: tm+mt
-source-wordcount: '969'
-ht-degree: 1%
-
+source-wordcount: '606'
+ht-degree: 0%
 ---
-
 
 # Adobe LLM应用程序 — 概述 {#adobe-llm-apps-an-overview}
 
@@ -19,9 +17,9 @@ ht-degree: 1%
 
 ## 什么是[!DNL Adobe LLM Apps]？
 
-[!DNL Adobe LLM Apps]允许您的品牌在AI助理（如[!DNL ChatGPT]）内提供有用的操作，如产品发现、可用性检查或服务预订。
+[!DNL Adobe LLM Apps]允许您的品牌在受支持的AI助理（如[!DNL ChatGPT]和[!DNL Claude]）内提供有用的操作，如产品发现、可用性检查或服务预订。
 
-[!DNL LLM Apps]位于[experience.adobe.com](https://experience.adobe.com/#/@llmapps/llm-apps/)。
+[!DNL LLM Apps]位于[experience.adobe.com/llm-apps](https://experience.adobe.com/llm-apps)。
 
 ## 您可以使用[!DNL LLM Apps]做什么
 
@@ -29,7 +27,7 @@ ht-degree: 1%
 - **生成交互式LLM小组件** — 在[!DNL GitHub]存储库中创建作为AEM组件管理的可视化UI组件（产品卡、预订表单、商店定位器）。
 - **维护集中式品牌治理** — 作者和开发人员保留对LLM平台内公开的所有内容、副本和视觉效果的完全控制权，审批通过AEM进行管理。
 - **部署到暂存和生产** — 受控部署管道允许您在暂存环境中测试体验，然后再升级到生产。
-- **操作级别的控制可见性** — 部署后，可以在不重新部署整个应用程序的情况下打开或关闭各个操作。
+- **操作级别的控制可见性** — 启用或禁用单个操作，然后部署应用程序以应用更改。
 - **衡量推动决策的因素** — 内置分析（由Adobe Customer Journey Analytics提供支持）表面操作触发器计数、成功率、放弃率、热门用户提示和可见度分数。
 
 ## 为什么[!DNL LLM Apps]重要
@@ -44,15 +42,15 @@ LLM交互与传统搜索有着根本的不同。 平均LLM会话的持续时间�
 
 ### 操作 {#actions}
 
-应用提供的功能，如&#x200B;*查找分发服务器*&#x200B;或&#x200B;*浏览产品*。 当请求与其描述匹配时，LLM平台将调用操作。 操作元数据在[!DNL LLM Apps]中管理，而它的处理程序是您[!DNL GitHub]存储库中的代码。
+应用提供的功能，如&#x200B;*查找分发服务器*&#x200B;或&#x200B;*浏览产品*。 当请求与其描述匹配时，LLM平台将调用操作。 [!DNL LLM Apps]管理操作元数据，[!DNL GitHub]存储库存储处理程序代码。
 
 ### 操作处理程序
 
-调用操作时运行的服务器端函数。 它可以验证输入、调用API并返回文本和结构化数据。
+LLM平台调用操作时运行的服务器端函数。 使用处理程序验证输入，调用API，并返回文本和结构化数据。
 
 ### 小组件 {#widgets-eds}
 
-随LLM回复一起显示的可视响应，如信息卡、轮盘或表格。 生成的构件是您拥有的[!DNL Edge Delivery Services] (EDS)存储库中的块。
+随LLM回复一起显示的可视响应，如信息卡、轮盘或表格。 生成的构件是[!DNL Edge Delivery Services] (EDS)存储库中的块。 借助Adobe托管的基础架构，Adobe可为您准备并托管存储库。 或者，连接您自己的存储库。
 
 ### MCP服务器
 
@@ -60,7 +58,7 @@ LLM交互与传统搜索有着根本的不同。 平均LLM会话的持续时间�
 
 ## 工作原理
 
-从较高的层次来看，会发生三件事：你告诉[!DNL LLM Apps]你的品牌提供了什么，它就会变成一个AI助理可以做的事情，你的客户就会得到一个真正的答案 — 就在聊天室里。
+您在[!DNL LLM Apps]中定义您品牌的功能。 平台将这些功能作为操作提供，AI助手使用这些操作响应对话中的客户请求。
 
 ```
 ┌────────────────────┐          ┌────────────────────┐          ┌────────────────────┐
@@ -72,71 +70,14 @@ LLM交互与传统搜索有着根本的不同。 平均LLM会话的持续时间�
 └────────────────────┘          └────────────────────┘          └────────────────────┘
 ```
 
-想要技术细节 — 您构建什么，以及各个部分如何拼合？ 查看[应用程序如何连接在一起](/help/guides/app-architecture.md)。
+有关要构建的内容以及组件如何协作的技术详细信息，请参阅[应用程序如何连接在一起](/help/guides/app-architecture.md)。
 
-## 要求 {#requirements}
+## 开始使用 {#choose-your-journey}
 
-在创建应用程序之前，请完成以下所有要求。
+创建应用程序和创建其操作是单独的步骤：
 
-### Adobe Developer Console
+1. [设置基础结构](/help/guides/create-app.md)。 使用Adobe托管的基础架构进行快速设置，或选择使用您自己的[!DNL GitHub]存储库。
+2. [创建您的操作](/help/guides/creating-actions.md)。 让平台分析您的网站并生成操作，或自行创建操作。
+3. [部署和测试应用程序](/help/guides/deploy-your-app.md)。 审阅生成的工作，部署到暂存环境，并在支持的LLM平台中进行测试。
 
-您的Adobe IMS组织必须有权访问[[!DNL App Builder]](https://developer.adobe.com/app-builder/docs/intro_and_overview/)。 您需要&#x200B;**开发人员**&#x200B;或&#x200B;**系统管理员**&#x200B;角色。
-
-要验证您的访问权限，请打开[Adobe Developer Console](https://developer.adobe.com/console)。 “快速入门”屏幕确认您具有所需的访问权限。
-
-![Adobe Developer Console — 确认开发人员访问权限的快速入门屏幕](/help/assets/overview/dev-console-access-granted.png)
-
-如果您看到&#x200B;**受限访问**，请联系您的IMS组织管理员并请求开发人员角色。
-
-![Adobe Developer Console — 访问受限消息](/help/assets/overview/dev-console-access-denied.png)
-
-### [!DNL GitHub]
-
-您需要一个[!DNL GitHub]帐户，以便&#x200B;**可以**&#x200B;执行以下操作。 这是权限检查 — 不要安装任何内容：
-
-- 在拥有应用程序的帐户或组织中创建两个存储库。
-- 稍后在设置过程中安装[!DNL GitHub]应用，或者拥有可以批准这些应用的组织管理员。
-
-要验证存储库创建权限，请打开[github.com/new](https://github.com/new)，并确认目标帐户或组织出现在&#x200B;**所有者**&#x200B;下。
-
-![GitHub — 选择存储库所有者](/help/assets/overview/github-repo-owner-dropdown.png)
-
-对于组织拥有的存储库，组织管理员可能需要批准[!DNL GitHub]应用。
-
->[!NOTE]
->
->这是权限检查，而不是设置步骤。 尚未安装任何[!DNL GitHub]应用 — [自动创建您的第一个应用](/help/guides/create-app.md)将指导您完成每个应用的安装，每个应用均位于您创建的确切存储库所需的范围内。
-
-### 网站
-
-您需要一个公共HTTPS网站，以表示应用程序应支持的产品、服务或任务。 该平台分析该网站以建议操作并创建具有代表性的示例数据。
-
-请勿使用公开机密或受访问控制的信息的网站。
-
-### 用于测试的[!DNL ChatGPT]或[!DNL Claude]
-
-要完成入门教程，请使用支持且启用了开发人员模式的[!DNL ChatGPT]计划，或者使用支持且启用了自定义连接器的[!DNL Claude]计划。 Workspace或组织管理员可以限制访问权限。 查看ChatGPT中的[测试](/help/guides/test-in-chatgpt.md#plan-requirements)或Claude中的[测试](/help/guides/test-in-claude.md#plan-requirements)。
-
-## 选择您的历程 {#choose-your-journey}
-
-### &#x200B;1. 构建和启动您的第一个应用程序
-
-从[生成并启动您的第一个应用程序](/help/guides/create-app.md)开始。 此历程从两个空存储库开始，以作为受支持的LLM平台（如[!DNL ChatGPT]）中的插件测试的生产就绪应用程序结束。
-
-### &#x200B;2. 自定义生成的应用程序
-
-当平台自动创建应用程序并且您希望替换示例行为时，请选择此历程：
-
-1. [自定义生成的处理程序](/help/guides/customize-handler.md)以连接您的API并定义每个操作返回的数据。
-2. [自定义生成的构件](/help/guides/widgets.md)以使用该数据并应用您的交互和设计。
-
-### &#x200B;3. 从头开始添加新操作
-
-选择[从头开始添加新操作](/help/guides/create-action.md)以定义新元数据、编写处理程序、连接构件、测试和部署操作。
-
-### &#x200B;4. 连接现有EDS项目
-
-当您已经拥有EDS网站或未自动构建应用程序时，请选择[连接现有的EDS项目](/help/guides/bring-your-own-eds.md)。
-
-每个历程都使用共享的[部署](/help/guides/deploy-your-app.md)步骤，然后[ChatGPT插件测试](/help/guides/test-in-chatgpt.md)或[克劳德连接器测试](/help/guides/test-in-claude.md)。
-
+自动生成为您提供了示例行为的起点。 在将应用提供给客户之前，请[将处理程序连接到系统](/help/guides/customize-handler.md)和[自定义小组件](/help/guides/widgets.md)。
