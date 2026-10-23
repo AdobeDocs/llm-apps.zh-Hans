@@ -46,7 +46,7 @@ ht-degree: 2%
 您需要：
 
 - **支持的运行时和SDK。** 您的处理程序存储库必须使用`@adobe/llm-apps-runtime` 1.2.0或更高版本。 对于EDS小组件，请使用LLM应用程序SDK 0.1.13或更高版本。 若要在启用Analytics之前将旧版应用程序更新为最新的运行时和SDK，请按照[升级现有应用程序](/help/guides/upgrade-existing-app.md)中的说明进行操作。 满足这些要求的应用程序不需要升级。
-- **代理字段组。** 必须为代理信息和对话事件字段组启用您的组织。 如果向架构添加字段组时未显示这些字段组，请联系您的Adobe客户团队。 请参阅[实施对话分析](https://experienceleague.adobe.com/en/docs/analytics-platform/using/conversation-insights/implement#schema-and-datasets)。 操作调用记录在代理信息的`agenticExperience.tools`字段中，该字段位于[!DNL Experience Platform]的Beta中。
+- **代理字段组。** 必须为代理信息和对话事件字段组启用您的组织。 如果向架构添加字段组时未显示这些字段组，请联系您的Adobe客户团队。 请参阅[实施对话分析](https://experienceleague.adobe.com/zh-hans/docs/analytics-platform/using/conversation-insights/implement#schema-and-datasets)。 操作调用记录在代理信息的`agenticExperience.tools`字段中，该字段位于[!DNL Experience Platform]的Beta中。
 - **[!DNL Experience Platform]权限**，用于在沙盒中创建身份命名空间、架构、数据集和数据流。
 - **用于[!DNL Adobe Analytics]：**&#x200B;管理报表包和处理规则的权限。 默认情况下，产品管理员具有这两个角色。
 - **对于[!DNL Customer Journey Analytics]：**&#x200B;产品管理员创建连接和数据视图的访问权限。
@@ -60,7 +60,7 @@ ht-degree: 2%
 | 操作调用 | `mcp.tool_call` | LLM平台调用应用程序的某个操作，包括失败或返回登录提示的调用。 | 操作的代码标识符以及调用是否失败。 用户意图（当操作收集它并且平台提供意图时）。 当平台提供时：平台名称、对话ID、平台的用户ID、区域设置和组织，以及用户的大致位置。 |
 | 构件交互 | `web.webinteraction.linkClicks` | 有人在Edge Delivery Services小组件中选择链接或按钮。 | 链接或按钮标签，最多100个字符。 当由操作调用提供时，其对话ID和轮询ID。 Adobe Web SDK还添加了构件框架URL、屏幕和浏览器窗口大小、本地时间和时区，以及它自己的版本。 |
 
-在[!DNL Adobe Analytics]中，每个操作调用都计为名为`mcp:<code identifier>`的页面的页面视图，而每个小组件交互都计为链接点击。 查看Adobe Analytics中的[Edge Network事件类型](https://experienceleague.adobe.com/en/docs/analytics/implementation/aep-edge/hit-types)。
+在[!DNL Adobe Analytics]中，每个操作调用都计为名为`mcp:<code identifier>`的页面的页面视图，而每个小组件交互都计为链接点击。 查看Adobe Analytics中的[Edge Network事件类型](https://experienceleague.adobe.com/zh-hans/docs/analytics/implementation/aep-edge/hit-types)。
 
 每个action调用和每个Widget交互都是[!DNL Experience Platform]数据集中的一个[!DNL Adobe Analytics]点击和一个事件。 在高流量应用程序上，在启用Analytics之前，请检查您的合同是否涵盖此流量。
 
@@ -106,7 +106,7 @@ ht-degree: 2%
 | 身份符号 | `MCPHOSTUSER`，与显示的完全相同 |
 | 身份标识类型 | **[!UICONTROL 单个跨设备ID]** |
 
-有关过程，请参阅[创建自定义命名空间](https://experienceleague.adobe.com/en/docs/experience-platform/identity/features/namespaces#create-namespaces)。
+有关过程，请参阅[创建自定义命名空间](https://experienceleague.adobe.com/zh-hans/docs/experience-platform/identity/features/namespaces#create-namespaces)。
 
 ## 第2步：创建架构 {#schema}
 
@@ -127,7 +127,7 @@ ht-degree: 2%
 
 您不需要Adobe Analytics ExperienceEvent字段组。 用户意图改为通过处理规则达到[!DNL Adobe Analytics]。 请参阅[步骤4](#report-suite)。
 
-有关过程，请参阅[创建新架构](https://experienceleague.adobe.com/en/docs/experience-platform/xdm/ui/resources/schemas#create)和[添加字段组](https://experienceleague.adobe.com/en/docs/experience-platform/xdm/ui/resources/schemas#add-field-groups)。
+有关过程，请参阅[创建新架构](https://experienceleague.adobe.com/zh-hans/docs/experience-platform/xdm/ui/resources/schemas#create)和[添加字段组](https://experienceleague.adobe.com/zh-hans/docs/experience-platform/xdm/ui/resources/schemas#add-field-groups)。
 
 ## 步骤3：创建数据集 {#dataset}
 
@@ -141,7 +141,7 @@ ht-degree: 2%
 | 架构 | [步骤2](#schema)中的架构 |
 | 名称 | 任何名称，例如`AEM LLM Apps` |
 
-有关过程，请参阅[创建数据集](https://experienceleague.adobe.com/en/docs/experience-platform/catalog/datasets/user-guide#create)。
+有关过程，请参阅[创建数据集](https://experienceleague.adobe.com/zh-hans/docs/experience-platform/catalog/datasets/user-guide#create)。
 
 ## 步骤4：准备报表包 {#report-suite}
 
@@ -153,7 +153,7 @@ ht-degree: 2%
 
 创建报表包，或选择现有报表包。 记下完整的报表包ID，包括[!DNL Adobe Analytics]添加的前缀。 您需要[步骤5](#datastream)中的ID。
 
-有关过程，请参阅[创建报表包](https://experienceleague.adobe.com/en/docs/analytics/admin/admin-tools/manage-report-suites/c-new-report-suite/t-create-a-report-suite)。
+有关过程，请参阅[创建报表包](https://experienceleague.adobe.com/zh-hans/docs/analytics/admin/admin-tools/manage-report-suites/c-new-report-suite/t-create-a-report-suite)。
 
 ### 启用用户意图eVar {#user-intent-evar}
 
@@ -170,11 +170,11 @@ ht-degree: 2%
 
 如果报表包已使用eVar3，请选择另一个未使用的eVar，然后在处理规则中使用该eVar。
 
-有关过程，请参阅[添加或编辑转化变量](https://experienceleague.adobe.com/en/docs/analytics/admin/admin-tools/manage-report-suites/edit-report-suite/conversion-variables/conversion-var-admin#add-or-edit-conversion-variables)。
+有关过程，请参阅[添加或编辑转化变量](https://experienceleague.adobe.com/zh-hans/docs/analytics/admin/admin-tools/manage-report-suites/edit-report-suite/conversion-variables/conversion-var-admin#add-or-edit-conversion-variables)。
 
 ### 创建处理规则 {#processing-rule}
 
-[!DNL Adobe Analytics]将用户意图作为上下文数据变量接收，而不是作为eVar接收。 要了解原因，请参阅[隐式映射](https://experienceleague.adobe.com/en/docs/analytics/implementation/aep-edge/xdm-var-mapping#implicit-mapping)。 创建一个将用户意图复制到eVar中的处理规则：
+[!DNL Adobe Analytics]将用户意图作为上下文数据变量接收，而不是作为eVar接收。 要了解原因，请参阅[隐式映射](https://experienceleague.adobe.com/zh-hans/docs/analytics/implementation/aep-edge/xdm-var-mapping#implicit-mapping)。 创建一个将用户意图复制到eVar中的处理规则：
 
 - **条件：**&#x200B;上下文数据变量`a.x.conversation.prompt.raw.0.purpose`等于`intents`。
 - **操作：**&#x200B;使用上下文数据变量`a.x.conversation.prompt.raw.0.text`覆盖&#x200B;**用户意图(eVar3)**&#x200B;的值。
@@ -183,7 +183,7 @@ ht-degree: 2%
 
 其他字段，例如调用失败还是平台名称，也作为上下文数据变量到达。 要在[!DNL Adobe Analytics]中报告这些规则，请以相同方式创建更多处理规则。
 
-有关过程，请参阅[处理规则概述](https://experienceleague.adobe.com/en/docs/analytics/admin/admin-tools/manage-report-suites/edit-report-suite/report-suite-general/processing-rules/pr-overview)和[处理规则用例](https://experienceleague.adobe.com/en/docs/analytics/admin/admin-tools/manage-report-suites/edit-report-suite/report-suite-general/processing-rules/pr-use-cases)。
+有关过程，请参阅[处理规则概述](https://experienceleague.adobe.com/zh-hans/docs/analytics/admin/admin-tools/manage-report-suites/edit-report-suite/report-suite-general/processing-rules/pr-overview)和[处理规则用例](https://experienceleague.adobe.com/zh-hans/docs/analytics/admin/admin-tools/manage-report-suites/edit-report-suite/report-suite-general/processing-rules/pr-use-cases)。
 
 ## 步骤5：创建数据流 {#datastream}
 
@@ -202,7 +202,7 @@ ht-degree: 2%
 
 在与架构相同的沙盒中创建数据流。 创建数据流后，无法更改该沙盒。
 
-有关过程，请参阅[创建数据流](https://experienceleague.adobe.com/en/docs/experience-platform/datastreams/configure#create)。
+有关过程，请参阅[创建数据流](https://experienceleague.adobe.com/zh-hans/docs/experience-platform/datastreams/configure#create)。
 
 ### 添加服务 {#add-services}
 
@@ -217,7 +217,7 @@ ht-degree: 2%
 
 ![Adobe Experience Platform服务 — 选定事件数据集并清除其他选项](/help/assets/guide-analytics/datastream-platform-service.png)
 
-有关过程，请参阅[将服务添加到数据流](https://experienceleague.adobe.com/en/docs/experience-platform/datastreams/configure#add-services)、[Adobe Analytics设置](https://experienceleague.adobe.com/en/docs/experience-platform/datastreams/configure#analytics)和[Adobe Experience Platform设置](https://experienceleague.adobe.com/en/docs/experience-platform/datastreams/configure#aep)。
+有关过程，请参阅[将服务添加到数据流](https://experienceleague.adobe.com/zh-hans/docs/experience-platform/datastreams/configure#add-services)、[Adobe Analytics设置](https://experienceleague.adobe.com/zh-hans/docs/experience-platform/datastreams/configure#analytics)和[Adobe Experience Platform设置](https://experienceleague.adobe.com/zh-hans/docs/experience-platform/datastreams/configure#aep)。
 
 然后从数据流详细信息中复制&#x200B;**[!UICONTROL 数据流ID]**。 在[步骤6](#enable-analytics)中需要它。
 
@@ -273,7 +273,7 @@ ht-degree: 2%
 
 在此人员ID中，[!DNL Customer Journey Analytics]使用每个事件的主标识作为人员，并跳过没有主标识的事件。 查看[事件如何识别人员](#identities)。
 
-有关过程，请参阅[创建连接](https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-connections/create-connection#create-connection)、[事件数据集设置](https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-connections/create-connection#event-dataset-settings)和[将身份映射用作人员ID](https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-connections/create-connection#id-map)。
+有关过程，请参阅[创建连接](https://experienceleague.adobe.com/zh-hans/docs/analytics-platform/using/cja-connections/create-connection#create-connection)、[事件数据集设置](https://experienceleague.adobe.com/zh-hans/docs/analytics-platform/using/cja-connections/create-connection#event-dataset-settings)和[将身份映射用作人员ID](https://experienceleague.adobe.com/zh-hans/docs/analytics-platform/using/cja-connections/create-connection#id-map)。
 
 ### 创建数据视图 {#data-view}
 
@@ -299,7 +299,7 @@ ht-degree: 2%
 
 添加文本字段（如用户意图）作为维度。 添加为量度的文本字段只能计数，按其值划分时，显示&#x200B;**无效**。
 
-有关过程，请参阅[配置数据视图](https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-dataviews/create-dataview#configure)和[组件](https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-dataviews/create-dataview#components)。
+有关过程，请参阅[配置数据视图](https://experienceleague.adobe.com/zh-hans/docs/analytics-platform/using/cja-dataviews/create-dataview#configure)和[组件](https://experienceleague.adobe.com/zh-hans/docs/analytics-platform/using/cja-dataviews/create-dataview#components)。
 
 ## 步骤8：验证数据并部署到生产环境 {#verify}
 
@@ -315,7 +315,7 @@ ht-degree: 2%
 
 每个服务都会延迟处理数据，因此新事件不会立即显示。
 
-要生成报告，请参阅[在Adobe Analytics中创建项目](https://experienceleague.adobe.com/en/docs/analytics/analyze/analysis-workspace/build-workspace-project/create-projects)、[自由格式表概述](https://experienceleague.adobe.com/en/docs/analytics/analyze/analysis-workspace/visualizations/freeform-table/freeform-table)和[在Customer Journey Analytics中创建项目](https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-workspace/build-workspace-project/create-projects)。
+要生成报告，请参阅[在Adobe Analytics中创建项目](https://experienceleague.adobe.com/zh-hans/docs/analytics/analyze/analysis-workspace/build-workspace-project/create-projects)、[自由格式表概述](https://experienceleague.adobe.com/zh-hans/docs/analytics/analyze/analysis-workspace/visualizations/freeform-table/freeform-table)和[在Customer Journey Analytics中创建项目](https://experienceleague.adobe.com/zh-hans/docs/analytics-platform/using/cja-workspace/build-workspace-project/create-projects)。
 
 当数据正确时，[将您的应用程序](/help/guides/deploy-your-app.md)部署到生产环境。
 
