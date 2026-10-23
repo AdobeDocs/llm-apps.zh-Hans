@@ -334,7 +334,7 @@ ht-degree: 2%
 | 数据集不接收批次 | 在将Analytics设置保存到要测试的环境后，您部署了应用程序。 数据流ID正确。 数据流具有数据集中的&#x200B;**[!UICONTROL Adobe Experience Platform]**&#x200B;服务。 |
 | 批处理失败 | 该架构包括[步骤2](#schema)中的所有五个字段组。 |
 | [!DNL Adobe Analytics]没有数据 | 数据流使用正确的报表包ID启用了&#x200B;**[!UICONTROL Adobe Analytics]**&#x200B;服务。 |
-| **页面**&#x200B;显示`mcp:<code identifier>`，但&#x200B;**用户意图**，并且操作字段为空 | 您的处理程序存储库使用`@adobe/llm-apps-runtime` 1.2.0或更高版本，并且您在升级后进行了部署。 在开始之前[](#before-you-begin)，请参阅。 |
+| **页面**&#x200B;显示`mcp:<code identifier>`，但&#x200B;**用户意图**，并且操作字段为空 | 您的处理程序存储库使用`@adobe/llm-apps-runtime` 1.2.0或更高版本，并且您在升级后进行了部署。 在开始之前[&#128279;](#before-you-begin)，请参阅。 |
 | **用户意图**&#x200B;对于某些操作为空 | [步骤4](#processing-rule)中的处理规则完全按照所示使用上下文数据变量（小写形式）和正确的eVar。 该操作已打开&#x200B;**[!UICONTROL 收集用户意图]**。 该规则仅适用于保存后收集的数据。 |
 | [!DNL Customer Journey Analytics]显示的事件比数据集少 | **[!UICONTROL 导入所有新数据]**&#x200B;已打开。 跳过了没有主标识的事件，例如来自不提供用户ID的平台的操作调用。 |
 | 您无法更改数据流ID或关闭Analytics | 激活后，这些设置在“应用程序设置”中处于只读状态。 请与LLM应用程序团队联系以获取帮助。 要将数据路由到其他位置，请更改数据流本身的报表包或数据集。 |
