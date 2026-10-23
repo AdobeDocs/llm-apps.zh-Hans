@@ -1,7 +1,7 @@
 ---
-source-git-commit: a48b4022979d9a13b4fc3aa870c4ee6375e8bc13
+source-git-commit: 557173e8d95325b980efac4d72c06bb3d90dcd72
 workflow-type: tm+mt
-source-wordcount: '1052'
+source-wordcount: '1418'
 ht-degree: 1%
 ---
 # 屏幕快照清单
@@ -69,8 +69,8 @@ ht-degree: 1%
 | `widget-permissions.png` | 可选的浏览器权限，未使用的权限关闭 | 创建新操作 — 浏览器权限 |
 | `widget-csp.png` | 资源、连接、帧、重定向和基本URI域控制 | 创建新操作 — 内容安全策略域 |
 
-创建对话框具有&#x200B;**操作**&#x200B;和&#x200B;**小组件元数据**&#x200B;选项卡。 保存的编辑器
-具有&#x200B;**LLM构件详细信息**、**操作详细信息**&#x200B;和&#x200B;**Analytics**&#x200B;选项卡。 捕获
+创建对话框具有&#x200B;**操作**&#x200B;和&#x200B;**小组件元数据**选项卡。 保存的编辑器
+具有**LLM构件详细信息**、**操作详细信息**&#x200B;和&#x200B;**Analytics**选项卡。 捕获
 程序实际使用的布局。 填写示例字段而不保存，然后
 放弃编辑。
 
@@ -135,6 +135,28 @@ ht-degree: 1%
 屏幕截图需要当前经过身份验证的访问；否则，请使用正式供应商
 说明并忽略未验证的图像。
 
+## Analytics设置
+
+文章： `/help/guides/analytics-setup.md`
+
+输出目录： `help/assets/guide-analytics/`
+
+| 文件名 | 状态和有用上下文 | 建议的替换文本 |
+|---|---|---|
+| `analytics-settings.png` | 应用程序设置， Analytics选项卡，启用分析，空数据流ID，扩展要求，禁用保存更改 | 应用程序设置，Analytics选项卡 — 启用Analytics已打开，一个空的数据流ID字段和展开的要求列表 |
+| `datastream-analytics-service.png` | 使用虚拟报表包ID启用Data Collection、Add Service、Adobe Analytics | 添加服务 — 使用示例报表包ID启用Adobe Analytics |
+| `datastream-platform-service.png` | 数据收集，仅选择事件数据集的Adobe Experience Platform服务 | Adobe Experience Platform服务 — 选定的事件数据集且已清除其他选项 |
+| `datastream-services.png` | 已启用服务、虚拟数据流ID和映射架构的数据流详细信息 | 数据流详细信息 — 已启用两种服务，具有示例数据流ID和映射架构 |
+
+永远不要捕获真正的数据流ID。 不要选择&#x200B;**保存更改**：保存后，
+只有管理员才能更改数据流。 显示Experience Platform、Adobe Analytics、
+和Customer Journey Analytics屏幕，仅显示特定于
+LLM应用程序；链接到适用于其他所有内容的Experience League。 替换组织
+名称、报表包ID、数据流ID、数据集ID、电子邮件和个人姓名
+具有下列虚拟值： `example-org`、`demo.<suffix>`报表包、
+`00000000-0000-0000-0000-000000000000`、`0000…0001`、`user@example.com`和
+`Example User`.
+
 ## 现有捕获来源
 
 2026-10-19捕获运行使用了用户请求的本地UI，并具有匹配的UI/API
@@ -162,3 +184,25 @@ ht-degree: 1%
 保留在编辑器中。 存储库链接被屏蔽，帐户导航被屏蔽
 已排除。 在此刷新期间未保存、批准、切换或部署任何操作。
 原始捕获： `docs-captures/2026-10-19/remove-enabled/`。
+
+### Analytics设置，2026-10-21
+
+已从用户提供的`guide-analytics/analytics-settings.png`中刷新
+`Screenshot 2026-10-21 at 11.48.36.png`，不是代理驱动的运行。 来源
+环境：未记录且在映像上不可见；生产奇偶校验不是
+已验证。 通过视觉审阅确认启用Analytics开启，数据流ID字段
+为空，扩展了要求，并禁用了保存更改。 图像为
+复制时未进行任何编辑；标识符或帐户详细信息不可见。
+
+### 数据流屏幕截图，2026-10-19
+
+已添加`guide-analytics/datastream-analytics-service.png`，
+`datastream-platform-service.png`和现有`datastream-services.png`
+内部数据收集捕获（2026-07-29和2026-10-19）。 报表包ID
+和数据流ID已替换为虚拟文本叠加(`demo.aem.llm`和
+`00000000-0000-0000-0000-000000000000`)；叠加字体为San Francisco，因此它
+与产品字体略有不同。 无需平台服务映像
+更改。 Analytics服务图像仍显示来自
+原始捕获。 对最终图像执行OCR传递时，未找到原始标识符。
+替换为新捕获，这些新的捕获使用在UI中键入的虚值，当
+文章将下次更新。

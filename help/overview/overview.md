@@ -1,9 +1,9 @@
 ---
 title: Adobe LLM应用程序概述
 description: 了解什么是Adobe LLM应用程序、其工作方式以及如何开始构建应用程序。
-source-git-commit: 14d94a68dabddd2f2ef2cef65c51d31645d4a958
+source-git-commit: 557173e8d95325b980efac4d72c06bb3d90dcd72
 workflow-type: tm+mt
-source-wordcount: '606'
+source-wordcount: '624'
 ht-degree: 0%
 ---
 
@@ -81,3 +81,5 @@ LLM平台调用操作时运行的服务器端函数。 使用处理程序验证�
 3. [部署和测试应用程序](/help/guides/deploy-your-app.md)。 审阅生成的工作，部署到暂存环境，并在支持的LLM平台中进行测试。
 
 自动生成为您提供了示例行为的起点。 在将应用提供给客户之前，请[将处理程序连接到系统](/help/guides/customize-handler.md)和[自定义小组件](/help/guides/widgets.md)。
+
+要在您自己的[!DNL Adobe Analytics]或[!DNL Customer Journey Analytics]中报告您的应用程序，请参阅[设置Adobe Analytics和Customer Journey Analytics](/help/guides/analytics-setup.md)。

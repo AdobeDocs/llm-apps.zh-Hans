@@ -2,7 +2,7 @@
 title: 自带Edge Delivery Services项目
 description: 将现有Adobe Edge Delivery Services项目连接到Adobe LLM Apps操作。
 hidefromtoc: true
-source-git-commit: 0f9dd0a5b1008e183eb8ab5a4c2eae34a78923bb
+source-git-commit: 557173e8d95325b980efac4d72c06bb3d90dcd72
 workflow-type: tm+mt
 source-wordcount: '866'
 ht-degree: 1%
@@ -33,7 +33,7 @@ ht-degree: 1%
 
 链接现有存储库时，平台会检查`scripts/aem.js`、`blocks/`、`styles/styles.css`和`head.html`。 嵌入还导入`scripts/scripts.js`并调用其导出的`decorateMain`函数以准备块。 保持EDS块加载合同不变。 仅所需文件无法确认高度自定义的项目是否可以正确呈现。
 
-## 安装LLM应用程序SDK
+## 安装LLM应用程序SDK {#install-the-llm-apps-sdk}
 
 从EDS项目根目录：
 

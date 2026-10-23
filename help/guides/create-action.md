@@ -1,9 +1,9 @@
 ---
 title: 从头开始创建操作
 description: 定义操作元数据，实施其处理程序，连接EDS小组件，对其进行测试，然后使用Adobe LLM应用程序进行部署。
-source-git-commit: 0f9dd0a5b1008e183eb8ab5a4c2eae34a78923bb
+source-git-commit: 557173e8d95325b980efac4d72c06bb3d90dcd72
 workflow-type: tm+mt
-source-wordcount: '1453'
+source-wordcount: '1476'
 ht-degree: 0%
 ---
 
@@ -147,9 +147,11 @@ query
 
 使用稳定的参数名称。 更改名称还需要更改处理程序及其测试。
 
-### 配置analytics
+### 配置analytics {#configure-analytics}
 
 当您希望Analytics包含导致该操作的对话摘要时，启用&#x200B;**[!UICONTROL 收集用户意图]**。
+
+如果您设置自己的[!DNL Adobe Analytics]或[!DNL Customer Journey Analytics]，则用户意图也会被发送到该处。 请参阅[设置Adobe Analytics和Customer Journey Analytics](/help/guides/analytics-setup.md)。
 
 默认情况下启用用户意图收集。 查看&#x200B;**[!UICONTROL 用户意图描述]**，其中包含请求摘要的说明。 将说明限制为非敏感且匿名的意图，并在隐私政策中描述您的数据收集。 该描述最多可接受2,000个字符。
 
