@@ -1,7 +1,7 @@
 ---
-source-git-commit: a48b4022979d9a13b4fc3aa870c4ee6375e8bc13
+source-git-commit: fa80b7b68e1b905eb22d4789a74b2f0de886d70c
 workflow-type: tm+mt
-source-wordcount: '1109'
+source-wordcount: '1179'
 ht-degree: 0%
 ---
 # 代理驱动的屏幕快照过程
@@ -106,6 +106,13 @@ docs-captures/<run-id>/
 使用描述性文件名，如`setup-choice.png`、`action-basic-info.png`、
 和`generated-action-review.png`。 保留源捕获不变。 保持原始
 从提交项中捕获并浏览用户档案并审查存档。
+
+在编辑屏幕截图之前，请询问用户哪些非敏感详细信息要模糊
+以及在相关字段或控件周围添加红色轮廓标注。
+已提供重用首选项，无需再次询问。 确认是否
+要保留整个窗口或裁切窗口，请保留任务所需的导航。
+将标注“清除”标签，并解释它们是批注而非UI
+错误。 请勿将编辑对话或小版本历史记录存储在技能中。
 
 在清单的输出目录下创建最终副本：
 
