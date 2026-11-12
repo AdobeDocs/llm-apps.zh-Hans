@@ -1,9 +1,9 @@
 ---
 title: 从头开始创建操作
 description: 定义操作元数据，实施其处理程序，连接EDS小组件，对其进行测试，然后使用Adobe LLM应用程序进行部署。
-source-git-commit: 557173e8d95325b980efac4d72c06bb3d90dcd72
+source-git-commit: 74769d0b2eb2d9323a39ae645dc5359404450164
 workflow-type: tm+mt
-source-wordcount: '1476'
+source-wordcount: '1518'
 ht-degree: 0%
 ---
 
@@ -66,7 +66,9 @@ Widget: product cards
 
 打开应用程序并选择&#x200B;**[!UICONTROL 操作]**，然后选择&#x200B;**[!UICONTROL 创建操作]**。
 
-创建对话框包含&#x200B;**[!UICONTROL 操作]**&#x200B;和&#x200B;**[!UICONTROL 小组件元数据]**&#x200B;选项卡。 展开每个部分以配置其字段。
+创建对话框包含&#x200B;**[!UICONTROL Action]**、**[!UICONTROL Widget元数据]**&#x200B;和&#x200B;**[!UICONTROL ChatGPT扩展]**&#x200B;选项卡。 展开每个部分以配置其字段。
+
+可选的&#x200B;**[!UICONTROL ChatGPT扩展]**&#x200B;设置允许用户直接打开应用程序、使用自定义文件查看器，或在支持的客户端上的编辑器中查找资源。 在相应的操作和构件行为准备就绪后配置这些组件。 请参阅[配置ChatGPT扩展](/help/guides/chatgpt-extensions.md)。
 
 ### 输入基本信息
 

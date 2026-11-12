@@ -1,9 +1,9 @@
 ---
 title: 自定义生成的EDS小组件
 description: 了解和自定义由Adobe LLM应用程序自动创建的Edge Delivery Services构件。
-source-git-commit: 0f9dd0a5b1008e183eb8ab5a4c2eae34a78923bb
+source-git-commit: 74769d0b2eb2d9323a39ae645dc5359404450164
 workflow-type: tm+mt
-source-wordcount: '1065'
+source-wordcount: '1148'
 ht-degree: 0%
 ---
 
@@ -71,6 +71,8 @@ export default async function decorate(block, bridge) {
 - 保持其大小与`bridge.autoResize()`同步。
 
 本指南介绍常见的网桥方法。 查看完整API的[`@adobe/llmapps-sdk`包](https://www.npmjs.com/package/@adobe/llmapps-sdk)。
+
+若要让用户直接打开准备好的构件，在对话旁边，或作为受支持OpenAI客户端上的文件查看器，请参阅[配置ChatGPT扩展](/help/guides/chatgpt-extensions.md)。 该指南说明了UI设置和要求。 文件处理、选择上下文、深层链接和富消息控件需要构件实施；启用扩展不会自动添加该行为。 在使用可选API之前，请检查主机功能。 单独的`bridge.chatgpt`供应商API仅在ChatGPT中可用，在其他地方为`null`；它与标准网桥API不同。
 
 ## 了解数据合同
 

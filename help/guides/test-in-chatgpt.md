@@ -1,9 +1,9 @@
 ---
 title: 将LLM应用程序作为ChatGPT插件进行测试
 description: 从您的Adobe LLM应用程序MCP服务器URL创建一个ChatGPT插件，并在对话中进行测试。
-source-git-commit: 0f9dd0a5b1008e183eb8ab5a4c2eae34a78923bb
+source-git-commit: 2892acf4b3042c296203377a06bc3ff80fd375a5
 workflow-type: tm+mt
-source-wordcount: '546'
+source-wordcount: '627'
 ht-degree: 0%
 ---
 
@@ -71,6 +71,10 @@ OpenAI拥有设置UI，其布局可能因帐户而异。 如果显示的标签�
 - 构件控件按预期工作。
 
 此外，还要测试无效的输入、空结果、不相关的不调用应用程序的提示以及更改数据的操作。 审查每个确认和身份验证提示，而不是提前批准所有请求。
+
+### 测试可选扩展
+
+如果您配置了[ChatGPT扩展](/help/guides/chatgpt-extensions.md)，请尝试每个选定的入口点、显示设置和编辑器搜索，并将结果与该指南中的预期行为进行比较。 如果多个入口点使用相同的构件，请测试每个选定打开它的方式，包括没有“全局”或“线程”的文件。 连接应用程序或在对话中调用操作不会验证这些功能。 首先检查[客户端要求](/help/guides/chatgpt-extensions.md#before-you-begin)：文件入口点需要桌面，并且OpenAI的扩展Web支持不包括经典ChatGPT。
 
 ## 应用程序更改后刷新
 

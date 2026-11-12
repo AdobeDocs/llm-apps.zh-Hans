@@ -1,9 +1,9 @@
 ---
 title: 基础架构设置
 description: 使用Adobe托管的基础架构创建一个Adobe LLM应用程序，或提供两个空的GitHub存储库供平台初始化。
-source-git-commit: 14d94a68dabddd2f2ef2cef65c51d31645d4a958
+source-git-commit: 079eb2403f15a97842c5c336c03ec5bfe10de622
 workflow-type: tm+mt
-source-wordcount: '1337'
+source-wordcount: '1595'
 ht-degree: 0%
 ---
 
@@ -106,22 +106,51 @@ ht-degree: 0%
 
 小组件是附加到操作的可选可视化响应，例如产品卡或预订表单。 向导将连接[!DNL Edge Delivery Services] (EDS)存储库以托管它们。
 
+使用相同的Adobe帐户来访问[!DNL LLM Apps]、AEM站点访问权限和DA写入权限。
+
+#### 连接构件存储库 {#connect-widget-repository}
+
 1. 在&#x200B;**[!UICONTROL 构件源]**&#x200B;下，选择&#x200B;**[!UICONTROL 手动选择构件存储库]**。
 2. 在&#x200B;**[!UICONTROL 代码源]**&#x200B;下，选择&#x200B;**[!UICONTROL GitHub]**。
 3. 选择是否已具有存储库。 如果没有，请选择&#x200B;**[!UICONTROL 在GitHub上创建存储库]**，创建一个空的小组件存储库，然后返回到向导。
 4. 为此存储库安装或配置Adobe LLM应用程序[!DNL GitHub]应用程序，就像您为操作存储库所做的那样。
 5. 选择其&#x200B;**[!UICONTROL 组织]**&#x200B;和&#x200B;**[!UICONTROL 存储库]**。 请勿选择操作存储库。
 6. 选择&#x200B;**[!UICONTROL 验证存储库]**。 验证使用AEM样板初始化空存储库。 现有存储库必须是兼容的EDS项目。
-7. 选择&#x200B;**[!UICONTROL 安装AEM代码同步]**&#x200B;并授予AEM代码同步访问构件存储库的权限。
-8. 在安装确认页面上，使用安装向导将自己添加为EDS站点的管理员。
-9. 返回到[!DNL LLM Apps]并选择&#x200B;**[!UICONTROL 验证AEM代码同步安装]**。
-10. 当显示&#x200B;**[!UICONTROL 已安装的AEM代码同步]**&#x200B;时，请选择&#x200B;**[!UICONTROL 下一步]**。
+
+#### &#x200B;7. 设置AEM站点访问 {#aem-site-access}
+
+**新安装：**&#x200B;选择&#x200B;**[!UICONTROL 安装AEM代码同步]**&#x200B;并授予它访问构件存储库的权限。 完成安装确认页面上的安装向导，将自己添加为站点管理员。
+
+**现有EDS站点：**&#x200B;保留AEM Code Sync安装，并确认它涵盖所选的Widget存储库。 要求现有站点管理员在`https://tools.aem.live/tools/user-admin/index.html/?org=<org>&site=<site>`打开AEM用户管理员，并添加具有`admin`角色的Adobe帐户。 您无需重新安装“代码同步”。
+
+将`<org>`和`<site>`替换为您的AEM组织和网站名称。 站点管理员可以确认这些值。
+
+#### &#x200B;8. 授予DA写入权限 {#da-write-access}
+
+对于新站点和现有站点，请要求DA组织管理员：
+
+1. 在`https://da.live/config#/<org>/`处打开DA配置，将`<org>`替换为存储网站内容的DA组织。
+2. 打开&#x200B;**权限**&#x200B;表。 如果表不存在，请选择&#x200B;**[!UICONTROL 添加表]**，将其命名为`permissions`，并添加列标题&#x200B;**路径**、**组**&#x200B;和&#x200B;**操作**。 您还可以添加一个&#x200B;**注释**&#x200B;列来说明每个规则。
+3. 添加一行以授予您的Adobe帐户对网站中所有内容的写入访问权限：在&#x200B;**路径**&#x200B;中使用网站的内容路径，在&#x200B;**组**&#x200B;中使用您的Adobe帐户电子邮件，在&#x200B;**操作**&#x200B;中使用您的`write`帐户。 保存配置。
+
+   ![DA权限表，其中显示了“组”列中的示例帐户和“操作”列中的写入权限](/help/assets/guide-infrastructure/da-write-permissions.png)
+
+   屏幕截图使用虚构的帐户。 将`widget-author@example.com`替换为您的Adobe帐户电子邮件，并使用您网站的内容路径而不是组织范围的`/ + **`示例。 `CONFIG`行适用于配置管理员；您无需更改它即可授予内容访问权限。
+
+AEM站点角色不授予DA写入权限。 您不需要组织范围的写入权限。
+
+有关配置DA权限的详细信息，请参阅[权限和安全性](https://www.aem.live/docs/ew/administering/permissions)。
+
+#### &#x200B;9. 验证AEM设置 {#validate-aem-setup}
+
+1. 返回到[!DNL LLM Apps]并选择&#x200B;**[!UICONTROL 验证AEM设置]**。
+2. 显示&#x200B;**[!UICONTROL AEM安装验证]**&#x200B;时，选择&#x200B;**[!UICONTROL 下一步]**。
+
+如果验证失败，请按照消息检查[AEM站点访问](#aem-site-access)或[DA写入访问](#da-write-access)，然后再次验证。
 
 >[!NOTE]
 >
 >此向导将&#x200B;**[!UICONTROL 使用Cloud Manager Edge Delivery Services]**&#x200B;标记为&#x200B;**[!UICONTROL 即将推出]**，不允许进行选择。 使用手动构件存储库选项。
-
-如果验证未检测到AEM代码同步，请确认AEM代码同步有权访问选定的构件存储库，并且您已将自己添加为站点管理员。 然后重新验证。
 
 ## 输入应用程序详细信息 {#app-details}
 
