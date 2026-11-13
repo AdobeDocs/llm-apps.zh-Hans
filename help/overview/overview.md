@@ -1,23 +1,19 @@
 ---
 title: Adobe LLM应用程序概述
 description: 了解什么是Adobe LLM应用程序、其工作方式以及如何开始构建应用程序。
-source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
+source-git-commit: 07bcd58b3aab70b03f62523b5b25f30f4b6d7004
 workflow-type: tm+mt
-source-wordcount: '642'
-ht-degree: 0%
+source-wordcount: '596'
+ht-degree: 1%
 ---
 
 # Adobe LLM应用程序 — 概述 {#adobe-llm-apps-an-overview}
-
->[!IMPORTANT]
->
->所有AEM Sites Cloud Service客户都可以使用LLM应用程序来开发和管理自己的应用程序。 计数开始后，每个应用程序调用都将计入客户的AEM Sites内容请求。 Adobe将在计数生效之前公告计数率和开始日期。
 
 ## 什么是[!DNL Adobe LLM Apps]？
 
 [!DNL Adobe LLM Apps]允许您的品牌在受支持的AI助理（如[!DNL ChatGPT]和[!DNL Claude]）内提供有用的操作，如产品发现、可用性检查或服务预订。
 
->[!VIDEO](https://video.tv.adobe.com/v/3504883/?captions=chi_hans&learn=on&enablevpops)
+>[!VIDEO](https://video.tv.adobe.com/v/3504875/?learn=on&enablevpops)
 
 [!DNL LLM Apps]位于[experience.adobe.com/llm-apps](https://experience.adobe.com/llm-apps)。
 
