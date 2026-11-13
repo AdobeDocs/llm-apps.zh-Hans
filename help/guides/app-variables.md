@@ -1,9 +1,9 @@
 ---
 title: 配置应用程序变量和密钥
 description: 将特定于环境的变量添加到Adobe LLM应用程序应用程序中，在操作处理程序中读取这些变量，进行部署并解决常见问题。
-source-git-commit: 0f9dd0a5b1008e183eb8ab5a4c2eae34a78923bb
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '1170'
+source-wordcount: '1184'
 ht-degree: 1%
 ---
 
@@ -11,9 +11,7 @@ ht-degree: 1%
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。
->
->此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+>所有AEM Sites Cloud Service客户都可以使用LLM应用程序来开发和管理自己的应用程序。 计数开始后，每个应用程序调用都将计入客户的AEM Sites内容请求。 Adobe将在计数生效之前公告计数率和开始日期。
 
 使用变量和密钥配置应用程序，而无需在其操作处理程序中对值进行硬编码。 例如，将产品目录API URL配置为使用暂存中的测试服务和生产中的实时服务，而不更改处理程序代码。
 

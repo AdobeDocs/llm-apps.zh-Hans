@@ -1,9 +1,9 @@
 ---
 title: 部署您的应用程序
 description: 了解如何使用LLM应用程序UI将Adobe LLM应用程序部署到暂存和生产环境。
-source-git-commit: 557173e8d95325b980efac4d72c06bb3d90dcd72
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '444'
+source-wordcount: '458'
 ht-degree: 0%
 ---
 
@@ -11,9 +11,7 @@ ht-degree: 0%
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。
->
->此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+>所有AEM Sites Cloud Service客户都可以使用LLM应用程序来开发和管理自己的应用程序。 计数开始后，每个应用程序调用都将计入客户的AEM Sites内容请求。 Adobe将在计数生效之前公告计数率和开始日期。
 
 审查生成的操作或将自己的处理程序代码推送到链接的存储库后，从[!DNL LLM Apps]部署应用程序。 对于生成的操作，请在部署之前查看并合并生成的工作。
 

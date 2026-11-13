@@ -1,9 +1,9 @@
 ---
 title: Adobe LLM应用程序概述
 description: 了解什么是Adobe LLM应用程序、其工作方式以及如何开始构建应用程序。
-source-git-commit: d37cb1f4e199d77c94def7a034a55598bd3d8d83
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '624'
+source-wordcount: '642'
 ht-degree: 0%
 ---
 
@@ -11,9 +11,7 @@ ht-degree: 0%
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。
->
->此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+>所有AEM Sites Cloud Service客户都可以使用LLM应用程序来开发和管理自己的应用程序。 计数开始后，每个应用程序调用都将计入客户的AEM Sites内容请求。 Adobe将在计数生效之前公告计数率和开始日期。
 
 ## 什么是[!DNL Adobe LLM Apps]？
 
@@ -27,7 +25,7 @@ ht-degree: 0%
 ## 您可以使用[!DNL LLM Apps]做什么
 
 - **创建品牌拥有的LLM操作** — 定义要在AI助理中激活的特定业务流程（例如，*计划一个测试驱动器*，*比较产品*，*预订服务*）。
-- **生成交互式LLM小组件** — 在[!DNL GitHub]存储库中创建作为AEM组件管理的可视化UI组件（产品卡、预订表单、商店定位器）。
+- **构建交互式LLM小组件** — 在任何受支持的Git平台上创建作为AEM组件在Git存储库中管理的可视化UI组件（产品卡、预订表单、商店定位器）。
 - **维护集中式品牌治理** — 作者和开发人员保留对LLM平台内公开的所有内容、副本和视觉效果的完全控制权，审批通过AEM进行管理。
 - **部署到暂存和生产** — 受控部署管道允许您在暂存环境中测试体验，然后再升级到生产。
 - **操作级别的控制可见性** — 启用或禁用单个操作，然后部署应用程序以应用更改。
@@ -53,7 +51,7 @@ LLM平台调用操作时运行的服务器端函数。 使用处理程序验证�
 
 ### 小组件 {#widgets-eds}
 
-随LLM回复一起显示的可视响应，如信息卡、轮盘或表格。 生成的构件是[!DNL Edge Delivery Services] (EDS)存储库中的块。 借助Adobe托管的基础架构，Adobe可为您准备并托管存储库。 或者，连接您自己的存储库。
+随LLM回复一起显示的可视响应，如信息卡、轮盘或表格。 生成的构件是[!DNL Edge Delivery Services] (EDS)存储库中的块。 通过[!DNL LLM Apps]托管基础结构，Adobe可为您准备并托管存储库。 或者，连接您自己的存储库。
 
 ### MCP服务器
 
@@ -79,7 +77,7 @@ LLM平台调用操作时运行的服务器端函数。 使用处理程序验证�
 
 创建应用程序和创建其操作是单独的步骤：
 
-1. [设置基础结构](/help/guides/create-app.md)。 使用Adobe托管的基础架构进行快速设置，或选择使用您自己的[!DNL GitHub]存储库。
+1. [设置基础结构](/help/guides/create-app.md)。 使用[!DNL LLM Apps]托管基础架构进行快速设置，或使用您自己的已添加到[!DNL Cloud Manager]的存储库。
 2. [创建您的操作](/help/guides/creating-actions.md)。 让平台分析您的网站并生成操作，或自行创建操作。
 3. [部署和测试应用程序](/help/guides/deploy-your-app.md)。 审阅生成的工作，部署到暂存环境，并在支持的LLM平台中进行测试。
 

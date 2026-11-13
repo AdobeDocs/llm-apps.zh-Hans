@@ -1,9 +1,9 @@
 ---
 title: 自定义生成的EDS小组件
 description: 了解和自定义由Adobe LLM应用程序自动创建的Edge Delivery Services构件。
-source-git-commit: 74769d0b2eb2d9323a39ae645dc5359404450164
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '1148'
+source-wordcount: '1163'
 ht-degree: 0%
 ---
 
@@ -11,9 +11,7 @@ ht-degree: 0%
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。
->
->此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+>所有AEM Sites Cloud Service客户都可以使用LLM应用程序来开发和管理自己的应用程序。 计数开始后，每个应用程序调用都将计入客户的AEM Sites内容请求。 Adobe将在计数生效之前公告计数率和开始日期。
 
 >[!NOTE]
 >
@@ -27,7 +25,7 @@ ht-degree: 0%
 
 ## 查找生成的构件
 
-打开[基础结构设置](/help/guides/create-app.md)期间连接的EDS存储库。 如果您使用Adobe托管基础结构，请先请求代码访问权限，然后再继续。 每个生成的构件都是一个EDS块：
+打开[基础结构设置](/help/guides/create-app.md)期间连接的EDS存储库。 如果您使用[!DNL LLM Apps]托管基础结构，请先请求代码访问权限，然后再继续。 每个生成的构件都是一个EDS块：
 
 ```text
 blocks/
@@ -38,7 +36,7 @@ blocks/
 
 - JavaScript文件会读取操作结果并构建界面。
 - CSS文件控制布局、响应式行为和可视化设计。
-- 生成的拉取请求会显示为该操作创建的确切文件。
+- 生成的拉取请求或分支会显示为该操作创建的确切文件。
 
 概要文件使用连字符：代码标识符为`search_products`的操作使用诸如`blocks/search-products/`之类的块。 生成的构件页面通常为`/eds-widgets/search-products-demo`；在操作元数据中使用实际的&#x200B;**[!UICONTROL 构件URL]**。
 

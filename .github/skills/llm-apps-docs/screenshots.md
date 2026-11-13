@@ -1,7 +1,7 @@
 ---
-source-git-commit: fa80b7b68e1b905eb22d4789a74b2f0de886d70c
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '1179'
+source-wordcount: '1180'
 ht-degree: 0%
 ---
 # 代理驱动的屏幕快照过程
@@ -68,7 +68,7 @@ iframe内的应用程序；请勿采用固定帧索引。
 
 当需要新资源时，请确认目标组织、网站、
 基础架构选项、AEM程序和夹具名称，然后再创建它们。 对象
-Adobe管理的基础架构，由平台创建存储库。 对于
+LLM应用程序管理基础架构，允许平台创建存储库。 对于
 自有存储库路径，使用两个空存储库并在以下情况下获得批准
 验证会初始化它们。
 

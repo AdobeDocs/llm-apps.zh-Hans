@@ -1,9 +1,9 @@
 ---
 title: 配置ChatGPT扩展
 description: 配置仅限ChatGPT的入口点、操作图标、显示首选项和作者提及，以及要求和疑难解答。
-source-git-commit: caf0a247e481e1b6e833ade63c5b243a5b7b22ec
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '1710'
+source-wordcount: '1724'
 ht-degree: 0%
 ---
 
@@ -11,9 +11,7 @@ ht-degree: 0%
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。
->
->此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+>所有AEM Sites Cloud Service客户都可以使用LLM应用程序来开发和管理自己的应用程序。 计数开始后，每个应用程序调用都将计入客户的AEM Sites内容请求。 Adobe将在计数生效之前公告计数率和开始日期。
 
 **这些是仅限ChatGPT的扩展。** 它们未在[!DNL Claude]或其他LLM平台中配置功能。 您的应用程序仍然可以通过其标准操作和构件在这些平台上工作。
 

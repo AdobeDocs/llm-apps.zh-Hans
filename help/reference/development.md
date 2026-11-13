@@ -1,9 +1,9 @@
 ---
 title: 本地处理程序开发和测试
 description: Adobe LLM应用程序的处理程序项目结构、本地服务器命令、MCP测试和单元测试。
-source-git-commit: 0f9dd0a5b1008e183eb8ab5a4c2eae34a78923bb
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '664'
+source-wordcount: '677'
 ht-degree: 0%
 ---
 
@@ -11,9 +11,7 @@ ht-degree: 0%
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。
->
->此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+>所有AEM Sites Cloud Service客户都可以使用LLM应用程序来开发和管理自己的应用程序。 计数开始后，每个应用程序调用都将计入客户的AEM Sites内容请求。 Adobe将在计数生效之前公告计数率和开始日期。
 
 在本地开发处理程序时使用此引用。 有关处理程序结果协定，请参阅[自定义生成的处理程序](/help/guides/customize-handler.md)。
 
@@ -23,7 +21,7 @@ ht-degree: 0%
 - npm。
 - 链接处理程序存储库的本地克隆。
 
-对于Adobe托管的基础架构，请在遵循此参考之前请求存储库访问权限。 本地处理程序执行不需要Adobe凭据，但受保护的上游服务仍需要其自身的授权访问权限。
+对于[!DNL LLM Apps]托管基础结构，在遵循此参考之前请求存储库访问权限。 本地处理程序执行不需要Adobe凭据，但受保护的上游服务仍需要其自身的授权访问权限。
 
 ## 项目结构
 

@@ -1,19 +1,17 @@
 ---
 title: 操作和构件字段
 description: Adobe LLM应用程序中操作元数据、参数、小组件、CSP和权限的字段定义。
-source-git-commit: 2892acf4b3042c296203377a06bc3ff80fd375a5
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '1257'
-ht-degree: 3%
+source-wordcount: '1273'
+ht-degree: 2%
 ---
 
 # 操作和构件字段 {#action-widget-configuration}
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。
->
->此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+>所有AEM Sites Cloud Service客户都可以使用LLM应用程序来开发和管理自己的应用程序。 计数开始后，每个应用程序调用都将计入客户的AEM Sites内容请求。 Adobe将在计数生效之前公告计数率和开始日期。
 
 使用此页可在操作编辑器中查找字段。 有关创建步骤，请参阅[从头开始创建操作](/help/guides/create-action.md)。
 
@@ -30,7 +28,7 @@ ht-degree: 3%
 | **[!UICONTROL 分析]** | 用户意图收集和说明 |
 | **[!UICONTROL ChatGPT扩展]** | 直接打开的入口点、操作图标、显示首选项和作者提及 |
 
-要保存您的编辑，请选择&#x200B;**[!UICONTROL 保存更改]**。 正在等待审阅的生成操作改为显示&#x200B;**[!UICONTROL 标记为已审阅]**，它也处理其生成的拉取请求。
+要保存您的编辑，请选择&#x200B;**[!UICONTROL 保存更改]**。 正在等待审阅的生成操作改为显示&#x200B;**[!UICONTROL 标记为已审阅]**，这也会合并其生成的拉取请求或分支。
 
 ## 操作参数
 
