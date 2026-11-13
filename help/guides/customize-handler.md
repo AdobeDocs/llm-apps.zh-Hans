@@ -1,9 +1,9 @@
 ---
 title: 自定义生成的操作处理程序
 description: 了解Adobe LLM应用程序处理程序合同，替换生成的示例数据，并使处理程序输出与其小部件保持一致。
-source-git-commit: 0f9dd0a5b1008e183eb8ab5a4c2eae34a78923bb
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '880'
+source-wordcount: '895'
 ht-degree: 0%
 ---
 
@@ -11,9 +11,7 @@ ht-degree: 0%
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。
->
->此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+>所有AEM Sites Cloud Service客户都可以使用LLM应用程序来开发和管理自己的应用程序。 计数开始后，每个应用程序调用都将计入客户的AEM Sites内容请求。 Adobe将在计数生效之前公告计数率和开始日期。
 
 平台会为每个生成的操作创建一个工作处理程序。 处理程序最初会返回用于测试完整体验的示例数据。
 
@@ -21,7 +19,7 @@ ht-degree: 0%
 
 ## 查找生成的处理程序
 
-打开[基础结构设置](/help/guides/create-app.md)期间连接的处理程序存储库。 如果您使用Adobe托管基础结构，请先请求代码访问权限，然后再继续。
+打开[基础结构设置](/help/guides/create-app.md)期间连接的处理程序存储库。 如果您使用[!DNL LLM Apps]托管基础结构，请先请求代码访问权限，然后再继续。
 
 ```text
 actions/
@@ -38,7 +36,7 @@ test/
     └── <action-slug>.test.js
 ```
 
-使用生成的拉取请求来查找确切的文件。 文件夹概要文件使用连字符：平台在`actions/search-products/`下生成了一个代码标识符为`search_products`的操作。 运行时可识别断字表单以及与该标识符完全匹配的文件夹。
+使用生成的拉取请求或分支查找确切的文件。 文件夹概要文件使用连字符：平台在`actions/search-products/`下生成了一个代码标识符为`search_products`的操作。 运行时可识别断字表单以及与该标识符完全匹配的文件夹。
 
 编辑生成的`index.js`和任何关联的示例数据。 请勿更改运行时文件，如`entry.js`。
 

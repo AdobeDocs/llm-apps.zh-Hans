@@ -1,34 +1,33 @@
 ---
 title: 基础架构设置
-description: 使用Adobe托管的基础架构创建一个Adobe LLM应用程序，或提供两个空的GitHub存储库供平台初始化。
-source-git-commit: 079eb2403f15a97842c5c336c03ec5bfe10de622
+description: 使用由Adobe LLM应用程序管理的基础架构或您自己的已添加到Cloud Manager的存储库来创建一个LLM应用程序。
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '1595'
-ht-degree: 0%
+source-wordcount: '1947'
+ht-degree: 1%
 ---
 
 # 基础架构设置 {#create-first-app}
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。
->
->此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+>所有AEM Sites Cloud Service客户都可以使用LLM应用程序来开发和管理自己的应用程序。 计数开始后，每个应用程序调用都将计入客户的AEM Sites内容请求。 Adobe将在计数生效之前公告计数率和开始日期。
 
 基础架构是应用程序的技术基础：存储其代码的存储库，以及运行其操作处理程序并将其构件交付给用户的服务。
 
 如[概述](/help/overview/overview.md#key-concepts)中所述，**操作处理程序**&#x200B;执行一项任务，如查找产品，而&#x200B;**小组件**&#x200B;在对话中将结果显示为交互式体验。
 
-[!DNL LLM Apps]将处理程序和小组件源代码存储在两个单独的[!DNL GitHub]存储库中：
+[!DNL LLM Apps]将处理程序和小组件源代码存储在两个不同的存储库中：
 
 - **操作存储库** — 包含服务器端处理程序及其测试。
 - **小组件存储库** — 包含交互式小组件的代码和样式。
 
 例如，产品搜索处理程序可检索匹配的产品，其小组件将它们显示为产品卡。 存储库存储该代码；Adobe I/O Runtime运行已部署的处理程序，Edge Delivery Services提供构件。
 
-安装向导会准备这些存储库，并连接应用程序所需的服务。 我们建议从&#x200B;**Adobe托管基础结构**&#x200B;开始，这是最快入门的方法。 Adobe会为您的操作处理程序和构件创建和托管存储库。 您无需自己设置存储库。
+安装向导会准备这些存储库，并连接应用程序所需的服务。 从以下两个选项中选择一个：
 
-或者，在您自己的帐户或组织中提供两个空的[!DNL GitHub]存储库。 平台会使用所需的项目文件将它们初始化；您无需预先准备操作或构件代码。
+- **[!DNL LLM Apps]托管基础结构**&#x200B;是快速入门的方法。 Adobe会为您的操作处理程序和构件创建和托管存储库，因此您无需自行设置存储库。
+- **您自己的存储库**&#x200B;将您应用程序的代码保留在您拥有的存储库中，已添加到[!DNL Cloud Manager]。 它们可以托管在[!DNL GitHub]、[!DNL GitHub Enterprise]、[!DNL GitLab]、[!DNL Bitbucket]或[!DNL Azure DevOps]上。 该平台会使用所需的项目文件初始化空存储库，因此您无需预先准备操作或构件代码。
 
 **在本指南中：**&#x200B;了解如何选择基础结构选项并使用安装向导创建您的应用程序。 安装后，继续[创建操作](/help/guides/creating-actions.md)。
 
@@ -40,16 +39,16 @@ ht-degree: 0%
 
 **[!UICONTROL 创建LLM应用程序]**&#x200B;向导以&#x200B;**[!UICONTROL 开始使用]**&#x200B;开始。 选择如何设置技术环境。
 
-![创建您的LLM应用程序 — 在Adobe托管的基础架构和连接您自己的存储库之间选择](/help/assets/guide-infrastructure/setup-choice.png)
+![创建您的LLM应用程序 — 开始使用让我们处理它并使用我的Cloud Manager设置；红色的大纲标记了自己的存储库选项](/help/assets/guide-infrastructure/setup-choice.png)
 
 | 基础架构选项 | 在向导中选择 | 它的含义 |
 |---|---|---|
-| **Adobe托管基础结构** | **[!UICONTROL 让我们处理它]** | Adobe可为您的应用程序创建和管理存储库及连接的服务。 可应请求访问代码。 |
-| **您自己的存储库** | **[!UICONTROL 我自己设置]** | 您提供两个空的GitHub存储库，并通过向导授予访问权限。 该平台初始化一个用于操作处理程序，另一个用于小组件。 |
+| **[!DNL LLM Apps]托管基础结构** | **[!UICONTROL 让我们处理它]** | Adobe可为您的应用程序创建和管理存储库及连接的服务。 可应请求访问代码。 |
+| **您自己的存储库** | **[!UICONTROL 使用我的Cloud Manager设置]** | 您选择两个添加到[!DNL Cloud Manager]的存储库：一个用于操作处理程序，另一个用于小组件。 如果它们是空的，则平台会初始化它们。 |
 
 这两个选项都支持以后自动生成操作。 这两个选项都不需要手动编写操作。
 
-## 使用Adobe托管的基础架构 {#adobe-managed-infrastructure}
+## 使用[!DNL LLM Apps]托管基础结构 {#adobe-managed-infrastructure}
 
 使用此选项可让Adobe为您的应用程序设置和管理存储库和连接的服务。 您不需要自己创建存储库或安装[!DNL GitHub]应用。
 
@@ -66,17 +65,34 @@ ht-degree: 0%
 
 安装完成后，继续执行[创建操作](/help/guides/creating-actions.md)。
 
-## 连接您自己的存储库 {#your-own-repositories}
+## 使用您自己的存储库 {#your-own-repositories}
 
-选择&#x200B;**[!UICONTROL 我将自行设置它]**，然后选择&#x200B;**[!UICONTROL 下一步]**。 此路径包含四个向导步骤：
+选择&#x200B;**[!UICONTROL 使用我的Cloud Manager设置]**，然后选择&#x200B;**[!UICONTROL 下一步]**。 此路径包含四个向导步骤：
 
 **开始→用操作基础结构设置→Widget基础结构设置→应用程序详细信息。**
 
-您需要访问所选存储库和权限才能安装或配置所需的[!DNL GitHub]应用。 对于组织拥有的存储库，管理员可能需要批准访问权限。
+[!DNL LLM Apps]使用您的Adobe帐户通过[!DNL Cloud Manager]访问您的存储库。 您未安装[!DNL GitHub]应用。
 
-创建两个空存储库：一个用于操作处理程序，另一个用于小组件。 不要使用README、许可证或`.gitignore`初始化。 在向导中验证每个存储库时，平台会添加所需的项目结构。
+### 开始之前 {#own-repositories-prerequisites}
 
-如果您已经具有兼容的操作和EDS项目，则可以改为连接这些项目，但不需要使用现有代码。
+- 访问应用程序将所属的[!DNL Cloud Manager]程序。
+- 两个存储库，一个用于操作处理程序，另一个用于小组件。 空存储库没有问题，包括仅包含自述文件的Git主机的存储库。
+- 两个存储库[都作为专用存储库添加到Cloud Manager](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-manager/content/managing-code/external-repositories)，所有权已验证，状态为&#x200B;**就绪**。 [!DNL Cloud Manager]必须能够向其写入；只读访问令牌不够。
+
+仅列出您自己托管的存储库。 不支持[!DNL Cloud Manager]中由Adobe托管的存储库。
+
+#### 您的Widget存储库是一个Edge Delivery Services站点 {#widget-repository-is-an-eds-site}
+
+小组件从[!DNL Edge Delivery Services] (EDS)网站提供，您的小组件存储库保存该网站的代码。 确保Widget存储库属于EDS站点，或将要属于EDS站点。 有两种方法可以设置一个：
+
+- **任何Git提供商，带您自己的Git。** 在[!DNL Cloud Manager]中创建EDS站点，并使用&#x200B;**自带Git**&#x200B;将其链接到您的存储库。 [!DNL Cloud Manager]然后将存储库的代码同步到站点。 请在启动向导之前执行此操作。 查看[自带Git](https://www.aem.live/developer/byo-git)。
+- **具有AEM代码同步的[!DNL GitHub]存储库。** 自行设置EDS站点，如[Edge Delivery Services教程](https://www.aem.live/developer/tutorial)中所述。 该向导将指导您完成安装AEM代码同步并在验证存储库后检查访问权限。
+
+构件步骤将检测适用的情况。 请参阅[设置构件基础结构](#set-up-the-widget-infrastructure)。
+
+>[!TIP]
+>
+>即使贵公司已拥有EDS站点，请为您的[!DNL LLM Apps]小组件创建一个单独的EDS站点。
 
 >[!NOTE]
 >
@@ -86,38 +102,44 @@ ht-degree: 0%
 
 操作存储库包含在LLM平台调用操作时运行的服务器端处理程序和测试。
 
-1. 在&#x200B;**[!UICONTROL 操作源]**&#x200B;下，选择&#x200B;**[!UICONTROL GitHub]**。 其他代码源当前不可用。
-2. 回答&#x200B;**[!UICONTROL 您是否已创建GitHub存储库？]**：
-   - 选择&#x200B;**[!UICONTROL 是，我将使用已创建的存储库]**&#x200B;连接兼容的现有项目或空存储库。
-   - 选择&#x200B;**[!UICONTROL 我还没有存储库]**，然后选择&#x200B;**[!UICONTROL 在GitHub上创建存储库]**，以创建空的操作存储库。 之后返回向导。
-3. 将存储库连接到Adobe LLM应用程序[!DNL GitHub]应用程序：
-   - 如果未连接任何组织，请选择&#x200B;**[!UICONTROL 在GitHub上安装]**。
-   - 如果已连接组织，请选择&#x200B;**[!UICONTROL 连接存储库]**&#x200B;并将存储库添加到该安装。
-4. 在[!DNL GitHub]上，选择&#x200B;**[!UICONTROL 仅选择存储库]**，并仅授予对此应用程序使用的存储库的访问权限。
-5. 返回到向导。 在&#x200B;**[!UICONTROL 选择存储库]**&#x200B;下，选择&#x200B;**[!UICONTROL 组织]**&#x200B;和&#x200B;**[!UICONTROL 存储库]**。
-6. 选择&#x200B;**[!UICONTROL 验证存储库]**。 验证使用Adobe LLM应用程序样板初始化空存储库。 现有存储库必须包含兼容的操作项目。
-7. 验证成功后，选择&#x200B;**[!UICONTROL 下一步]**。
+1. 在&#x200B;**[!UICONTROL Cloud Manager项目]**&#x200B;下，选择包含操作存储库的项目。
+2. 在&#x200B;**[!UICONTROL Cloud Manager存储库]**&#x200B;下，选择操作存储库。 如果缺少该列表，请在[!DNL Cloud Manager]中添加它并&#x200B;**[!UICONTROL 转到Cloud Manager]**，然后刷新该列表。
+3. 选择&#x200B;**[!UICONTROL 验证存储库]**。 验证使用Adobe LLM应用程序样板初始化空存储库。 现有存储库必须包含兼容的操作项目。
+4. 显示&#x200B;**[!UICONTROL 存储库已验证]**&#x200B;时，选择&#x200B;**[!UICONTROL 下一步]**。
 
-![操作基础结构设置 — 选择GitHub并连接操作存储库](/help/assets/guide-infrastructure/action-repository.png)
+![操作基础结构设置 — 已选择Cloud Manager项目和存储库，已验证存储库](/help/assets/guide-infrastructure/action-repository.png)
 
-如果缺少组织或存储库，请在其选取器中使用&#x200B;**[!UICONTROL 连接其他组织]**&#x200B;或&#x200B;**[!UICONTROL 连接其他存储库]**。 更改[!DNL GitHub]上的访问权限后，选择&#x200B;**[!UICONTROL 刷新组织和存储库]**。
+平台将生成的操作代码推送到该存储库的分支。 选择&#x200B;**[!UICONTROL 标记为已审阅]**&#x200B;将合并分支。 请参阅[创建操作](/help/guides/creating-actions.md)。
 
-### 设置构件基础设施
+### 设置构件基础设施 {#set-up-the-widget-infrastructure}
 
-小组件是附加到操作的可选可视化响应，例如产品卡或预订表单。 向导将连接[!DNL Edge Delivery Services] (EDS)存储库以托管它们。
-
-使用相同的Adobe帐户来访问[!DNL LLM Apps]、AEM站点访问权限和DA写入权限。
-
-#### 连接构件存储库 {#connect-widget-repository}
+小组件是附加到操作的可选可视化响应，例如产品卡或预订表单。 Edge Delivery Services (EDS)从使用您的小组件存储库的站点为它们提供服务。
 
 1. 在&#x200B;**[!UICONTROL 构件源]**&#x200B;下，选择&#x200B;**[!UICONTROL 手动选择构件存储库]**。
-2. 在&#x200B;**[!UICONTROL 代码源]**&#x200B;下，选择&#x200B;**[!UICONTROL GitHub]**。
-3. 选择是否已具有存储库。 如果没有，请选择&#x200B;**[!UICONTROL 在GitHub上创建存储库]**，创建一个空的小组件存储库，然后返回到向导。
-4. 为此存储库安装或配置Adobe LLM应用程序[!DNL GitHub]应用程序，就像您为操作存储库所做的那样。
-5. 选择其&#x200B;**[!UICONTROL 组织]**&#x200B;和&#x200B;**[!UICONTROL 存储库]**。 请勿选择操作存储库。
-6. 选择&#x200B;**[!UICONTROL 验证存储库]**。 验证使用AEM样板初始化空存储库。 现有存储库必须是兼容的EDS项目。
 
-#### &#x200B;7. 设置AEM站点访问 {#aem-site-access}
+   ![构件基础设施设置 — 手动选择构件存储库的构件源](/help/assets/guide-infrastructure/widget-source.png)
+
+2. 在&#x200B;**[!UICONTROL Cloud Manager程序]**&#x200B;下，选择包含小组件存储库的程序。 它可能与操作存储库的程序不同。
+3. 在&#x200B;**[!UICONTROL Edge Delivery Services存储库]**&#x200B;下，选择小组件存储库。 请勿选择操作存储库。
+4. 选择&#x200B;**[!UICONTROL 验证存储库]**。 验证使用AEM样板初始化空存储库。 现有存储库必须是兼容的EDS项目。
+
+后续操作取决于构件存储库的托管位置。
+
+#### 其他提供商上的Widget存储库（自带Git） {#widget-repository-byog}
+
+对于[!DNL GitLab]、[!DNL Bitbucket]、[!DNL Azure DevOps]或[!DNL GitHub Enterprise]上的存储库，验证会找到[!DNL Cloud Manager]链接到存储库的EDS站点。 向导显示&#x200B;**[!UICONTROL Edge Delivery Services站点]**&#x200B;下的站点。
+
+![构件基础架构设置 — Cloud Manager已验证构件存储库并将其同步到Edge Delivery Services站点](/help/assets/guide-infrastructure/widget-repository.png)
+
+[!DNL Cloud Manager]将存储库的代码同步到该站点，因此您不需要AEM代码同步。 选择&#x200B;**[!UICONTROL 下一步]**。
+
+如果验证报告未链接任何站点，请使用&#x200B;**自带Git**&#x200B;将存储库链接到[!DNL Cloud Manager]中的EDS站点，然后再次验证。 查看[自带Git](https://www.aem.live/developer/byo-git)。
+
+#### GitHub上的构件存储库 {#widget-repository-github}
+
+[!DNL GitHub]存储库使用AEM代码同步来发布其代码。 验证后，该向导显示&#x200B;**[!UICONTROL 安装AEM代码同步]**。 使用相同的Adobe帐户来访问[!DNL LLM Apps]、AEM站点访问权限和DA写入权限。
+
+##### 设置AEM站点访问 {#aem-site-access}
 
 **新安装：**&#x200B;选择&#x200B;**[!UICONTROL 安装AEM代码同步]**&#x200B;并授予它访问构件存储库的权限。 完成安装确认页面上的安装向导，将自己添加为站点管理员。
 
@@ -125,7 +147,7 @@ ht-degree: 0%
 
 将`<org>`和`<site>`替换为您的AEM组织和网站名称。 站点管理员可以确认这些值。
 
-#### &#x200B;8. 授予DA写入权限 {#da-write-access}
+##### 授予DA写入权限 {#da-write-access}
 
 对于新站点和现有站点，请要求DA组织管理员：
 
@@ -141,7 +163,7 @@ AEM站点角色不授予DA写入权限。 您不需要组织范围的写入权�
 
 有关配置DA权限的详细信息，请参阅[权限和安全性](https://www.aem.live/docs/ew/administering/permissions)。
 
-#### &#x200B;9. 验证AEM设置 {#validate-aem-setup}
+##### 验证AEM设置 {#validate-aem-setup}
 
 1. 返回到[!DNL LLM Apps]并选择&#x200B;**[!UICONTROL 验证AEM设置]**。
 2. 显示&#x200B;**[!UICONTROL AEM安装验证]**&#x200B;时，选择&#x200B;**[!UICONTROL 下一步]**。
@@ -156,20 +178,26 @@ AEM站点角色不授予DA写入权限。 您不需要组织范围的写入权�
 
 两个基础结构选项均已完成，并显示&#x200B;**[!UICONTROL 应用详细信息]**。
 
-![应用程序详细信息 — 输入应用程序名称，选择AEM程序，然后选择Analytics数据区域](/help/assets/guide-infrastructure/app-details.png)
+![应用程序详细信息 — 输入的LLM应用程序名称、Cloud Manager存储库中的AEM程序集以及Application Insights数据区域](/help/assets/guide-infrastructure/app-details.png)
 
 1. 输入&#x200B;**[!UICONTROL LLM应用名称]**。 使用标识品牌或体验的名称，如&#x200B;*Frescopa Coffee*。
-2. 选择应用程序所属的&#x200B;**[!UICONTROL AEM程序]**。 如果您只能访问一个程序，向导会自动选择该程序。
-3. 在&#x200B;**[!UICONTROL Analytics数据区域]**&#x200B;下，选择&#x200B;**[!UICONTROL 美国（美国）]**&#x200B;或&#x200B;**[!UICONTROL 欧洲（欧盟）]**。
+2. 选择应用程序所属的&#x200B;**[!UICONTROL AEM程序]**。 如果您只能访问一个程序，向导会自动选择该程序。 对于您自己的存储库，项目是操作存储库的项目，不能在此处更改。
+3. 在&#x200B;**[!UICONTROL 应用程序分析数据区域]**&#x200B;下，选择&#x200B;**[!UICONTROL 美国(US)]**&#x200B;或&#x200B;**[!UICONTROL 欧洲(EU)]**。
 4. 选择&#x200B;**[!UICONTROL 创建应用程序]**。
 
 >[!IMPORTANT]
 >
->创建应用程序后，无法更改AEM程序和Analytics数据区域。 Analytics区域可确定应用程序分析数据的存储位置。
+>创建应用程序后，无法更改AEM程序和应用程序分析数据区域。 区域可确定应用程序Application Insights数据存储的位置。
 
 如果没有可用的AEM程序，请咨询您的管理员以获取访问权限。 如果加载程序失败，请选择&#x200B;**[!UICONTROL 重试加载程序]**。
 
-向导会在创建后打开应用程序页面。 使用Adobe托管基础架构，等待基础架构设置完成后再继续。
+向导会在创建后打开应用程序页面。 使用[!DNL LLM Apps]托管基础结构，等待基础结构设置完成后再继续。
+
+要稍后检查存储库，请打开应用程序的&#x200B;**[!UICONTROL 设置]**。 **[!UICONTROL 存储库]**&#x200B;部分显示每个存储库的程序和名称，对于使用自带Git的小组件存储库，显示其EDS网站和来源。 创建应用程序后，无法更改存储库。
+
+![应用程序设置 — 包含样板和Edge Delivery Services存储库的存储库部分，包括链接的网站和来源](/help/assets/guide-infrastructure/settings-repositories.png)
+
+之前使用Adobe LLM应用程序[!DNL GitHub]应用程序创建的应用程序将继续使用其现有存储库。
 
 ## 下一步：创建操作
 

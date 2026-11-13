@@ -1,7 +1,7 @@
 ---
-source-git-commit: fa80b7b68e1b905eb22d4789a74b2f0de886d70c
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '1963'
+source-wordcount: '2090'
 ht-degree: 1%
 ---
 # 屏幕快照清单
@@ -23,10 +23,19 @@ ht-degree: 1%
 
 | 文件名 | 状态和有用上下文 | 建议的替换文本 |
 |---|---|---|
-| `setup-choice.png` | 开始使用两个可见的基础架构选项 | 创建您的LLM应用程序 — 选择Adobe托管的基础架构或您自己的存储库 |
-| `app-details.png` | 应用程序名称、AEM程序、Analytics区域和不可变设置警告 | 应用程序详细信息 — 输入名称，选择AEM程序，然后选择Analytics区域 |
-| `action-repository.png` | 已选择GitHub且拥有存储库的路径以及存储库连接说明 | 操作基础结构设置 — 连接空的或兼容的操作存储库 |
-| `provisioning.png` | 正在执行已批准的Adobe托管设置 | 应用程序设置 — Adobe正在准备基础架构 |
+| `setup-choice.png` | 开始使用&#x200B;**让我们处理它**&#x200B;和&#x200B;**使用我的Cloud Manager设置**， callout on the own-repository选项 | 创建您的LLM应用程序 — 开始使用让我们处理它并使用我的Cloud Manager设置 |
+| `action-repository.png` | 已选择Cloud Manager项目和存储库，**已验证存储库** | 操作基础设施设置 — 已选择Cloud Manager项目和存储库 |
+| `widget-source.png` | 包含&#x200B;**手动选择构件存储库的构件源** （Cloud Manager EDS标记为即将推出） | 构件基础设施设置 — 构件源 |
+| `widget-repository.png` | 非GitHub构件存储库已验证，**Edge Delivery Services站点**&#x200B;注释 | 构件基础设施设置 — 已验证构件存储库及其链接的EDS站点 |
+| `app-details.png` | 应用程序名称，从存储库设置的AEM程序， Application Insights数据区域 | 应用程序详细信息 — 名称、AEM项目和应用程序分析数据区域 |
+| `settings-repositories.png` | 设置>包含Cloud Manager存储库信息卡和链接站点的存储库 | 应用程序设置 — “存储库”部分 |
+| `provisioning.png` | 正在设置已批准的LLM应用程序 | 应用程序设置 — Adobe正在准备基础架构 |
+
+上次捕获（除`provisioning.png`和`da-write-permissions.png`之外）： 2026-11-13，暂存
+(`experience-stage.adobe.com/llm-apps`)、GitLab操作和带有带来的Widget存储库
+自己的Git。 程序、存储库、站点和源值被遮罩；红色轮廓是标注。
+未捕获： GitHub构件路径（安装AEM代码同步，验证AEM设置）。 尚未
+已在生产中验证。
 
 排除帐户详细信息、组织ID、实际项目名称和存储库
 标识符和应用程序ID。 使用空字段或中性夹具名称，其中
@@ -70,8 +79,8 @@ ht-degree: 1%
 | `widget-csp.png` | 资源、连接、帧、重定向和基本URI域控制 | 创建新操作 — 内容安全策略域 |
 
 现有捕获在创建中显示&#x200B;**操作**&#x200B;和&#x200B;**小组件元数据**
-对话框和&#x200B;**LLM构件详细信息**、**操作详细信息**&#x200B;以及&#x200B;**Analytics**
-已保存编辑器。 当前实现在两者中还具有&#x200B;**ChatGPT扩展**
+对话框和**LLM构件详细信息**、**操作详细信息**&#x200B;以及&#x200B;**Analytics**
+已保存编辑器。 当前实现在两者中还具有**ChatGPT扩展**
 流；在刷新图像时验证运行UI中的选项卡。 捕获
 程序实际使用的布局。 填写示例字段而不保存，然后
 放弃编辑。

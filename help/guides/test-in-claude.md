@@ -1,9 +1,9 @@
 ---
 title: 以Claude连接器测试您的LLM应用程序
 description: 从您的Adobe LLM应用程序MCP服务器URL创建一个Claude连接器，并在对话中进行测试。
-source-git-commit: 0f9dd0a5b1008e183eb8ab5a4c2eae34a78923bb
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '676'
+source-wordcount: '690'
 ht-degree: 0%
 ---
 
@@ -11,9 +11,7 @@ ht-degree: 0%
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。
->
->此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+>所有AEM Sites Cloud Service客户都可以使用LLM应用程序来开发和管理自己的应用程序。 计数开始后，每个应用程序调用都将计入客户的AEM Sites内容请求。 Adobe将在计数生效之前公告计数率和开始日期。
 
 部署后，LLM应用程序会公开MCP服务器URL。 将此URL作为自定义连接器添加到[!DNL Claude]，然后测试生成的操作和小组件。
 

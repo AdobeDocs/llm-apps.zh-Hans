@@ -1,9 +1,9 @@
 ---
 title: 身份验证引用
 description: Adobe LLM应用程序中用于最终用户身份验证的字段定义、令牌要求、发现端点、处理程序API和LLM平台行为。
-source-git-commit: 0f9dd0a5b1008e183eb8ab5a4c2eae34a78923bb
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '1428'
+source-wordcount: '1442'
 ht-degree: 2%
 ---
 
@@ -11,9 +11,7 @@ ht-degree: 2%
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。
->
->此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+>所有AEM Sites Cloud Service客户都可以使用LLM应用程序来开发和管理自己的应用程序。 计数开始后，每个应用程序调用都将计入客户的AEM Sites内容请求。 Adobe将在计数生效之前公告计数率和开始日期。
 
 此页用于查找验证字段和协定。 有关设置说明，请参阅[使用您自己的身份提供程序对最终用户进行身份验证](/help/guides/authentication.md)。
 

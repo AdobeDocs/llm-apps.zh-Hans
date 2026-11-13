@@ -1,9 +1,9 @@
 ---
 title: 升级现有应用程序
 description: 在启用Adobe或Customer Journey Analytics之前，更新旧版Adobe Analytics LLM应用程序的运行时和EDS SDK 。
-source-git-commit: 557173e8d95325b980efac4d72c06bb3d90dcd72
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '793'
+source-wordcount: '803'
 ht-degree: 0%
 ---
 
@@ -11,9 +11,7 @@ ht-degree: 0%
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。
->
->此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+>所有AEM Sites Cloud Service客户都可以使用LLM应用程序来开发和管理自己的应用程序。 计数开始后，每个应用程序调用都将计入客户的AEM Sites内容请求。 Adobe将在计数生效之前公告计数率和开始日期。
 
 仅当您的应用程序使用1.2.0之前的`@adobe/llm-apps-runtime`或其EDS小组件使用0.1.13之前的LLM应用程序SDK时，才使用此指南。 已满足两个要求的应用可以直接进入[设置Adobe Analytics和Customer Journey Analytics](/help/guides/analytics-setup.md)。
 
@@ -21,7 +19,7 @@ ht-degree: 0%
 
 ## 开始之前 {#before-you-begin}
 
-您需要访问处理程序存储库，对于具有EDS小组件的应用程序，您需要访问链接到您的应用程序的EDS存储库。 如果您的应用程序使用Adobe托管的基础架构，请在更新之前请求代码访问权限。 请参阅[使用Adobe托管基础结构](/help/guides/create-app.md#adobe-managed-infrastructure)。
+您需要访问处理程序存储库，对于具有EDS小组件的应用程序，您需要访问链接到您的应用程序的EDS存储库。 如果您的应用程序使用[!DNL LLM Apps]托管基础结构，请在更新之前请求代码访问权限。 请参阅[使用 [!DNL LLM Apps] 托管基础结构](/help/guides/create-app.md#adobe-managed-infrastructure)。
 
 无需创建其他应用程序。 仅更新受支持版本以下的组件。 您可以重复使用符合[Analytics设置要求](/help/guides/analytics-setup.md#setup-checklist)的现有Adobe配置。
 
@@ -63,7 +61,7 @@ ht-degree: 0%
 
 1. 提交依赖项更新及其锁定文件，然后将更新推送并合并到处理程序存储库的默认分支（通常为`main`）。 部署该分支的克隆。 仅存在于本地或未合并的功能分支上的更新不包括在部署中。
 
-   当存在锁定文件时，部署将安装具有`npm ci`的依赖项，这将使用记录的版本。 重新部署不会自动升级运行时。 在重新部署之前，请在GitHub中的默认分支上确认升级的依赖项和已解析的版本。
+   当存在锁定文件时，部署将安装具有`npm ci`的依赖项，这将使用记录的版本。 重新部署不会自动升级运行时。 在重新部署之前，请确认存储库默认分支上的升级依赖项和已解析版本。
 
 ## 检查并更新LLM应用程序构件存储库 {#upgrade-sdk}
 

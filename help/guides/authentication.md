@@ -1,9 +1,9 @@
 ---
 title: 使用您自己的身份提供程序验证最终用户
 description: 为您的Adobe LLM应用程序启用最终用户身份验证，以便受支持的LLM平台在调用受保护的操作之前，将用户与您的身份提供程序登录。
-source-git-commit: 0f9dd0a5b1008e183eb8ab5a4c2eae34a78923bb
+source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
 workflow-type: tm+mt
-source-wordcount: '2136'
+source-wordcount: '2150'
 ht-degree: 0%
 ---
 
@@ -11,9 +11,7 @@ ht-degree: 0%
 
 >[!IMPORTANT]
 >
->[!DNL Adobe LLM Apps]当前在Beta中。
->
->此处显示的功能、工作流和UI不一定表示产品的最终状态。 要加入Beta，请发送电子邮件至llm-apps-beta@adobe.com 。
+>所有AEM Sites Cloud Service客户都可以使用LLM应用程序来开发和管理自己的应用程序。 计数开始后，每个应用程序调用都将计入客户的AEM Sites内容请求。 Adobe将在计数生效之前公告计数率和开始日期。
 
 默认情况下，应用程序中的每个操作都是公开的。 任何带有MCP服务器URL的LLM平台都可以调用这些操作，并且您的处理程序无法识别最终用户。
 
