@@ -77,7 +77,7 @@ ht-degree: 1%
 
 - 访问应用程序将所属的[!DNL Cloud Manager]程序。
 - 两个存储库，一个用于操作处理程序，另一个用于小组件。 空存储库没有问题，包括仅包含自述文件的Git主机的存储库。
-- 两个存储库[都作为专用存储库添加到Cloud Manager](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-manager/content/managing-code/external-repositories)，所有权已验证，状态为&#x200B;**就绪**。 [!DNL Cloud Manager]必须能够向其写入；只读访问令牌不够。
+- 两个存储库[都作为专用存储库添加到Cloud Manager](https://experienceleague.adobe.com/zh-hans/docs/experience-manager-cloud-manager/content/managing-code/external-repositories)，所有权已验证，状态为&#x200B;**就绪**。 [!DNL Cloud Manager]必须能够向其写入；只读访问令牌不够。
 
 仅列出您自己托管的存储库。 不支持[!DNL Cloud Manager]中由Adobe托管的存储库。
 
