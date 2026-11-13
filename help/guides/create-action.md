@@ -1,9 +1,9 @@
 ---
 title: 从头开始创建操作
 description: 定义操作元数据，实施其处理程序，连接EDS小组件，对其进行测试，然后使用Adobe LLM应用程序进行部署。
-source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
+source-git-commit: 0276ae4e4627e49157911ad579a42c0e77045eee
 workflow-type: tm+mt
-source-wordcount: '1532'
+source-wordcount: '1582'
 ht-degree: 0%
 ---
 
@@ -64,15 +64,15 @@ Widget: product cards
 
 打开应用程序并选择&#x200B;**[!UICONTROL 操作]**，然后选择&#x200B;**[!UICONTROL 创建操作]**。
 
-创建对话框包含&#x200B;**[!UICONTROL Action]**、**[!UICONTROL Widget元数据]**&#x200B;和&#x200B;**[!UICONTROL ChatGPT扩展]**&#x200B;选项卡。 展开每个部分以配置其字段。
+**[!UICONTROL 新建操作]**&#x200B;对话框有四个选项卡：**[!UICONTROL 操作详细信息]**、**[!UICONTROL LLM构件详细信息]**、**[!UICONTROL 应用程序分析]**&#x200B;和&#x200B;**[!UICONTROL ChatGPT扩展]**。 该对话框将在&#x200B;**[!UICONTROL 操作详细信息]**&#x200B;中打开。 保存的操作编辑器使用相同的选项卡。
 
 可选的&#x200B;**[!UICONTROL ChatGPT扩展]**&#x200B;设置允许用户直接打开应用程序、使用自定义文件查看器，或在支持的客户端上的编辑器中查找资源。 在相应的操作和构件行为准备就绪后配置这些组件。 请参阅[配置ChatGPT扩展](/help/guides/chatgpt-extensions.md)。
 
-### 输入基本信息
+### 输入操作信息和输入参数
 
-![创建操作 — 基本信息](/help/assets/guide-create-action/action-basic-info.png)
+![创建新操作 — 包含操作名称、代码标识符、描述和两个输入参数的操作详细信息](/help/assets/guide-create-action/action-basic-info.png)
 
-输入：
+在&#x200B;**[!UICONTROL 操作信息]**&#x200B;下，输入：
 
 - **[!UICONTROL 操作名称]** — 简短的任务名称，如&#x200B;*搜索产品*。
 - **[!UICONTROL 描述]** — 说明何时使用操作及其返回的内容。
@@ -88,48 +88,12 @@ products with their names, prices, categories, and image URLs.
 
 避免模糊描述，如&#x200B;*获取产品信息*。 LLM平台使用说明来选择不同的操作。
 
-### 选择注释
+在&#x200B;**[!UICONTROL 输入参数]**&#x200B;下，为处理程序接受的每个值选择&#x200B;**[!UICONTROL 添加参数]**&#x200B;一次。 对于每个参数，输入：
 
-注释描述该操作的行为：
-
-- **破坏性提示** — 该操作可以删除或永久更改数据。
-- **幂等（相同的参数=无额外效果）** — 重复相同的请求具有相同的效果。
-- **开放世界提示** — 该操作与外部系统通信。
-- **只读提示** — 该操作不会更改数据。
-
-仅选择为true的注释。 例如，产品搜索通常为只读、幂等和开放世界。
-
-### 添加OpenAI元数据
-
-输入在操作运行期间和完成之后显示的短信：
-
-```text
-Invoking: Searching products...
-Invoked: Products found
-```
-
-对于包含小部件的操作，添加&#x200B;**[!UICONTROL 小部件描述]**。 构件描述与操作描述不同：
-
-- **操作描述**&#x200B;可帮助模型决定何时调用操作。
-- **构件描述**&#x200B;映射到`_meta["openai/widgetDescription"]`并汇总呈现的组件所显示的内容，从而减少重复旁白。
-
-[!DNL LLM Apps]将构件描述作为组件元数据应用。 不要从处理程序返回描述。
-
-### 配置可见性
-
-- **[!UICONTROL 公开到AI模型]**&#x200B;允许模型选择操作。
-- **[!UICONTROL 在应用程序表面中显示为构件]**&#x200B;显示配置的构件。
-
-对于纯文本操作，请在&#x200B;**[!UICONTROL 构件元数据]** > **[!UICONTROL 类型]**&#x200B;下选择&#x200B;**[!UICONTROL 无构件]**。 可见性控件不选择操作的构件类型。
-
-### 添加输入参数
-
-为处理程序接受的每个值添加一个参数。 每个参数需要：
-
-- **名称** — 处理程序收到的键。
-- **类型** — 字符串、数字、整数或布尔值。
-- **描述** — 如何提取值。
-- **必需** — 操作是否需要该值。
+- **[!UICONTROL 参数名称]** — 处理程序收到的键。
+- **[!UICONTROL 类型]** — 字符串、数字、整数、布尔值、对象或文件。
+- **[!UICONTROL 必需]** — 操作是否需要该值。
+- **[!UICONTROL 描述]** — 如何提取值。
 
 对于&#x200B;**搜索产品**：
 
@@ -147,38 +111,70 @@ query
 
 使用稳定的参数名称。 更改名称还需要更改处理程序及其测试。
 
-### 配置analytics {#configure-analytics}
+### 配置LLM设置
 
-当您希望Analytics包含导致该操作的对话摘要时，启用&#x200B;**[!UICONTROL 收集用户意图]**。
+展开&#x200B;**[!UICONTROL LLM设置]**。 默认情况下，该部分处于折叠状态。
+
+![创建新操作 — LLM设置包含注释、OpenAI元数据状态文本和可见性](/help/assets/guide-create-action/action-llm-settings.png)
+
+在&#x200B;**[!UICONTROL 注释]**&#x200B;下，只选择对操作为true的提示：
+
+- **[!UICONTROL 破坏性提示]** — 该操作可以删除或永久更改数据。
+- **[!UICONTROL 幂等（相同的参数=无额外效果）]** — 重复相同的请求具有相同的效果。
+- **[!UICONTROL 开放世界提示]** — 该操作与外部系统通信。
+- **[!UICONTROL 只读提示]** — 该操作不会更改数据。
+
+例如，产品搜索通常为只读、幂等和开放世界。
+
+在&#x200B;**[!UICONTROL OpenAI元数据]**&#x200B;下，输入在操作运行期间和完成之后显示的短信，每个短信最多可包含64个字符：
+
+```text
+Invoking status text: Searching products...
+Invoked status text: Products found
+```
+
+在&#x200B;**[!UICONTROL 可见性]**&#x200B;下：
+
+- **[!UICONTROL 公开到AI模型]**&#x200B;允许模型选择操作。
+- **[!UICONTROL 在应用程序表面中显示为构件]**&#x200B;显示配置的构件。
+
+可见性不选择构件类型。 对于纯文本操作，请在&#x200B;**[!UICONTROL LLM构件详细信息]** > **[!UICONTROL 构件类型]**&#x200B;下选择&#x200B;**[!UICONTROL 无交互式UI]**。
+
+### 配置应用程序分析 {#configure-analytics}
+
+打开&#x200B;**[!UICONTROL Application Insights]**。 默认情况下已选择&#x200B;**[!UICONTROL 收集用户意图]**：LLM平台将创建操作运行时用户尝试完成的简短匿名摘要。
 
 如果您设置自己的[!DNL Adobe Analytics]或[!DNL Customer Journey Analytics]，则用户意图也会被发送到该处。 请参阅[设置Adobe Analytics和Customer Journey Analytics](/help/guides/analytics-setup.md)。
 
-默认情况下启用用户意图收集。 查看&#x200B;**[!UICONTROL 用户意图描述]**，其中包含请求摘要的说明。 将说明限制为非敏感且匿名的意图，并在隐私政策中描述您的数据收集。 该描述最多可接受2,000个字符。
+查看复选框下面的说明，该说明将指导摘要。 将它们限制为非敏感的、匿名的意图，并在您的隐私政策中描述您的数据收集。 说明最多可接受2,000个字符。 清除&#x200B;**[!UICONTROL 收集用户意图]**&#x200B;以不收集摘要。
 
-![创建操作 — 用户意图分析](/help/assets/guide-create-action/action-analytics-user-intent.png)
+![创建新操作 — 具有收集用户意图和默认说明的应用程序分析](/help/assets/guide-create-action/action-analytics-user-intent.png)
 
 有关完整的字段定义，请参阅[操作和小组件字段](/help/reference/reference-docs.md)。
 
 ## 配置构件
 
-对于纯文本操作，请打开&#x200B;**[!UICONTROL 构件元数据]**&#x200B;并将&#x200B;**[!UICONTROL Type]**&#x200B;设置为&#x200B;**[!UICONTROL 无构件]**。 然后，跳过其余的构件设置。
+打开&#x200B;**[!UICONTROL LLM构件详细信息]**。 对于纯文本操作，在&#x200B;**[!UICONTROL 小组件类型]**&#x200B;下选择&#x200B;**[!UICONTROL 无交互式UI]**，并跳过其余小组件设置。
 
-打开&#x200B;**[!UICONTROL 小组件元数据]**。
+![创建新操作 — 已选择Edge Delivery Services块的LLM构件详细信息以及示例模板URL](/help/assets/guide-create-action/widget-metadata.png)
 
-![创建操作 — 构件元数据](/help/assets/guide-create-action/widget-metadata.png)
+在&#x200B;**[!UICONTROL 小组件信息]**&#x200B;下，配置：
 
-配置：
-
-- **[!UICONTROL 类型]** — 为交互小组件选择&#x200B;**[!UICONTROL Edge Delivery Services块]**。
+- **[!UICONTROL 构件类型]** — 为交互式构件选择&#x200B;**[!UICONTROL Edge Delivery Services块]**。
 - **[!UICONTROL 构件域]** — 构件的沙盒来源。 UI会根据应用程序提交要求和每个应用程序的唯一性来标识它；它与EDS页面URL不同。
-- **首选边框** — 请求主机中的边框容器。
+- **[!UICONTROL 小组件描述]** — 小组件呈现后模型显示的内容，最多512个字符。
+
+构件描述与操作描述不同：
+
+- **操作描述**&#x200B;可帮助模型决定何时调用操作。
+- **构件描述**&#x200B;映射到`_meta["openai/widgetDescription"]`并汇总呈现的组件所显示的内容，从而减少重复旁白。
+
+[!DNL LLM Apps]将构件描述作为组件元数据应用。 不要从处理程序返回描述。
 
 展开&#x200B;**[!UICONTROL 模板URL]**&#x200B;并输入：
 
 - **[!UICONTROL 脚本URL]** — EDS小组件入口点。
 - **[!UICONTROL 小组件URL]** — 为此操作发布的EDS页面。
-
-![创建新操作 — EDS小组件的脚本和小部件URL](/help/assets/guide-create-action/widget-template-urls.png)
 
 典型URL包括：
 
@@ -190,15 +186,9 @@ Widget URL:
 https://main--<repo>--<owner>.aem.live/<widget-page>
 ```
 
-仅授予所需的浏览器权限和CSP域。
+在&#x200B;**[!UICONTROL CSP配置]**&#x200B;下，仅添加资产和网络请求所需的源。 如果加载外部资源的构件的CSP不完整，则可能不会呈现该构件。
 
-仅当小组件需要浏览器功能（如地理位置）时才展开&#x200B;**[!UICONTROL 权限（特定于MCP）]**。 关闭未使用的权限。
-
-![创建新操作 — 可选的浏览器权限](/help/assets/guide-create-action/widget-permissions.png)
-
-在&#x200B;**[!UICONTROL CSP配置]**&#x200B;下，添加资产和网络请求所需的源。 如果加载外部资源的构件的CSP不完整，则可能不会呈现该构件。
-
-![创建新操作 — 内容安全策略域列表](/help/assets/guide-create-action/widget-csp.png)
+![创建新操作 — CSP配置包含资源、连接、框架、重定向和基本URI域列表](/help/assets/guide-create-action/widget-csp.png)
 
 如果EDS项目或构件页面尚不存在，请完成[自带EDS项目](/help/guides/bring-your-own-eds.md)，然后返回到操作。
 
@@ -208,7 +198,7 @@ https://main--<repo>--<owner>.aem.live/<widget-page>
 
 保存将创建元数据，但操作仍需要处理程序。
 
-重新打开保存的操作时，编辑器具有&#x200B;**[!UICONTROL LLM构件详细信息]**、**[!UICONTROL 操作详细信息]**&#x200B;和&#x200B;**[!UICONTROL Analytics]**&#x200B;选项卡。 要保存以后的编辑，请选择&#x200B;**[!UICONTROL 保存更改]**。 创建对话框和保存的操作编辑器具有不同的布局。
+重新打开保存的操作时，编辑器将显示相同的选项卡。 要保存以后的编辑，请选择&#x200B;**[!UICONTROL 保存更改]**。
 
 ## 实施处理程序
 

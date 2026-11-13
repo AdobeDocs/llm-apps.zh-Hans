@@ -2,9 +2,9 @@
 user-guide-title: LLM应用程序指南
 breadcrumb-title: LLM 应用程序
 user-guide-description: 在支持的LLM平台（例如使用Adobe LLM应用程序的ChatGPT）中构建、自定义、部署和测试交互式体验。
-source-git-commit: 74769d0b2eb2d9323a39ae645dc5359404450164
+source-git-commit: 0276ae4e4627e49157911ad579a42c0e77045eee
 workflow-type: tm+mt
-source-wordcount: '127'
+source-wordcount: '133'
 ht-degree: 6%
 ---
 
@@ -27,6 +27,7 @@ ht-degree: 6%
 + 部署和测试 {#deploy-and-test}
   + [部署您的应用程序](/help/guides/deploy-your-app.md)
   + [将LLM应用程序作为ChatGPT插件进行测试](/help/guides/test-in-chatgpt.md)
+  + [准备应用程序以提交ChatGPT](/help/guides/prepare-submission.md)
   + [以Claude连接器测试您的LLM应用程序](/help/guides/test-in-claude.md)
   + [升级现有应用程序](/help/guides/upgrade-existing-app.md)
 + 测量您的应用程序 {#measure-your-app}

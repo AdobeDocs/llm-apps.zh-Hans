@@ -1,7 +1,7 @@
 ---
-source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
+source-git-commit: 0276ae4e4627e49157911ad579a42c0e77045eee
 workflow-type: tm+mt
-source-wordcount: '2090'
+source-wordcount: '2314'
 ht-degree: 1%
 ---
 # 屏幕快照清单
@@ -53,7 +53,7 @@ ht-degree: 1%
 | `build-choice.png` | 自动选择生成操作，输入公共网站，并稳定启动控制（如果包含） | 操作 — 选择自动生成并输入公共网站 |
 | `generating.png` | 正在运行生成、时间估计和转至操作 | 操作 — 生成正在运行 |
 | `actions-ready-for-review.png` | 夹具操作名称、审核徽章和审核控件 | 操作 — 生成的操作可供审查，并且未部署 |
-| `generated-action-review.png` | LLM构件详细信息、操作详细信息、Analytics、生成的拉取请求通知和标记为已审核 | 生成的操作 — 在批准之前检查小部件和处理程序 |
+| `generated-action-review.png` | 操作详细信息、LLM Widget详细信息、Application Insights、ChatGPT扩展、**分支推送**&#x200B;通知（自己的存储库）和标记为已审核。 上次捕获：2026-11-13，Stage，GitLab应用程序；应用程序名称被掩盖 | 生成的操作审阅 — 推送分支并标记为已审阅 |
 
 屏蔽私有存储库和拉取请求链接。 裁切生成的个人或
 当文章仅需要审核状态时联系人详细信息。 不选择
@@ -71,19 +71,16 @@ ht-degree: 1%
 
 | 文件名 | 状态和有用上下文 | 建议的替换文本 |
 |---|---|---|
-| `action-basic-info.png` | 搜索产品、其派生标识符、有用的描述和只读注释 | 创建新操作 — 基本信息和注释 |
-| `action-analytics-user-intent.png` | 收集用户意图和默认的匿名摘要说明 | 创建新操作 — 审查用户意图收集 |
-| `widget-metadata.png` | Edge Delivery Services块类型和安全的示例沙盒源 | 创建新操作 — 构件类型和沙盒域 |
-| `widget-template-urls.png` | 示例脚本和小部件URL | 创建新操作 — 脚本和小部件URL |
-| `widget-permissions.png` | 可选的浏览器权限，未使用的权限关闭 | 创建新操作 — 浏览器权限 |
-| `widget-csp.png` | 资源、连接、帧、重定向和基本URI域控制 | 创建新操作 — 内容安全策略域 |
+| `action-basic-info.png` | 操作详细信息：搜索产品、其代码标识符、描述以及`category`和`query`参数 | 创建新操作 — 包含操作信息和输入参数的操作详细信息 |
+| `action-llm-settings.png` | 扩展的LLM设置：只读、幂等、开放世界注释、状态文本、可见性 | 创建新操作 — LLM设置 |
+| `action-analytics-user-intent.png` | 应用程序分析：收集用户意图和默认说明 | 创建新操作 — Application Insights |
+| `widget-metadata.png` | LLM构件详细信息：Edge Delivery Services块，示例构件域、构件描述和模板URL | 创建新操作 — LLM构件详细信息 |
+| `widget-csp.png` | 模板URL和CSP配置域列表 | 创建新操作 — CSP配置 |
 
-现有捕获在创建中显示&#x200B;**操作**&#x200B;和&#x200B;**小组件元数据**
-对话框和&#x200B;**LLM构件详细信息**、**操作详细信息**&#x200B;以及&#x200B;**Analytics**
-已保存编辑器。 当前实现在两者中还具有&#x200B;**ChatGPT扩展**
-流；在刷新图像时验证运行UI中的选项卡。 捕获
-程序实际使用的布局。 填写示例字段而不保存，然后
-放弃编辑。
+上次捕获：2026-11-13，暂存，对话框重构后(与操作编辑器相同的选项卡：
+操作详细信息、LLM构件详细信息、应用程序分析、ChatGPT扩展；权限、
+首选边框，并且删除了“文件参数”部分)。 仅示例值；对话框
+取消而不保存。 红色轮廓是标注。
 
 ## 身份验证
 
@@ -226,6 +223,28 @@ LLM应用程序；链接到适用于其他所有内容的Experience League。 �
 具有下列虚拟值： `example-org`、`demo.<suffix>`报表包、
 `00000000-0000-0000-0000-000000000000`、`0000…0001`、`user@example.com`和
 `Example User`.
+
+## 准备提交
+
+文章： `/help/guides/prepare-submission.md`
+
+输出目录： `help/assets/guide-submission/`
+
+| 文件名 | 状态和有用上下文 | 建议的替换文本 |
+|---|---|---|
+| `submission-card.png` | 生产部署后的应用程序页面，通过设置准备提交信息卡 | 准备提交 — 生产准备状态和设置 |
+| `submission-setup.png` | 准备提交对话框、设置和准备、示例发布者详细信息以及两个图标均已保存 | 设置和准备 — 发布者和法律详细信息、批准的图标以及保存更改 |
+| `submission-prepare.png` | 滚动到“准备包”的同一对话框，“准备就绪”显示“准备就绪”，复选框已清除 | 准备包 — 准备就绪、确认复选框和准备包 |
+| `submission-progress.png` | 运行过程中显示相同的对话框 | 正在准备 — 进度条和开始时间 |
+| `submission-results.png` | 使用占位符法律链接完成运行后的结果：准备工作需要引起注意，下载包被禁用 | 结果 — 准备摘要、下载报告、下载包和下载录制 |
+| `submission-test-cases.png` | 结果，测试用例，第一例概述 | 测试案例 — 审查案例及其请求、预期行为和记录状态 |
+| `submission-before-submit.png` | 结果，在提交列表和PASS/WARN/FAIL检查之前；在裁切下方运行ID | 提交之前 — 剩余详细信息、更新详细信息和包检查 |
+
+在暂存环境中捕获，2026-11-13，从部署到生产环境的应用程序捕获。 仅使用
+示例发布者值(`Frescopa Coffee (example)`， `https://www.example.com/...`)
+和占位符图标。 每次准备运行都会调用已部署的应用程序，并执行
+20分钟；仅在“结果”屏幕需要刷新时启动一次。 屏蔽MCP URL，
+在结果捕获中运行ID和应用程序名称。
 
 ## 现有捕获来源
 

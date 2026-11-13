@@ -1,9 +1,9 @@
 ---
 title: 创建操作
 description: 从公共网站生成Adobe LLM应用程序操作，关注生成进度，查看生成的工作，或选择手动操作创建。
-source-git-commit: 9b2ec369baba5d533088d2dd4adefcb80f5c9727
+source-git-commit: 0276ae4e4627e49157911ad579a42c0e77045eee
 workflow-type: tm+mt
-source-wordcount: '1039'
+source-wordcount: '1047'
 ht-degree: 0%
 ---
 
@@ -81,9 +81,9 @@ UI预计生成最多需要30分钟。 离开页面，并在以后根据需要返
 5. 操作就绪后，选择&#x200B;**[!UICONTROL 标记为已审阅]**。
 6. 返回到操作列表，对其余操作重复此操作。
 
-保存的操作编辑器将&#x200B;**[!UICONTROL LLM构件详细信息]**、**[!UICONTROL 操作详细信息]**&#x200B;和&#x200B;**[!UICONTROL Analytics]**&#x200B;分隔开。 在相应的选项卡中查看生成的构件和处理程序更改。
+保存的操作编辑器将&#x200B;**[!UICONTROL 操作详细信息]**、**[!UICONTROL LLM构件详细信息]**、**[!UICONTROL 应用程序分析]**&#x200B;和&#x200B;**[!UICONTROL ChatGPT扩展]**&#x200B;分隔开。 在相应的选项卡中查看生成的构件和处理程序更改。
 
-![生成的操作 — 当前编辑器选项卡和标记为已审阅，隐藏存储库链接](/help/assets/guide-creating-actions/generated-action-review.png)
+![生成的操作审阅 — 已推送分支说明如何合并该分支，以及编辑器选项卡和标记为已审阅](/help/assets/guide-creating-actions/generated-action-review.png)
 
 选择&#x200B;**[!UICONTROL 标记为已审核]**&#x200B;会在没有剩余的合并阻止程序时合并生成的更改：具有[!DNL LLM Apps]托管基础结构的拉取请求，具有您自己的存储库的分支。 如果打开的拉取请求阻止了审核，请解决阻止程序并重试。 不批准具有未解析的代码生成或合并失败的实施。
 
